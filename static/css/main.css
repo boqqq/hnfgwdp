@@ -1,0 +1,31 @@
+
+/*每块背景和偏移样式*/
+body{
+  background-image:url('../../static/img/mian_BG.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.fix_left{
+  border: 1px solid #14436c;
+  margin-top: 3vh;
+  margin-left: 2vh;
+  height: 28vh;
+}
+.fix_right{
+  border: 1px solid #14436c;
+  margin-top: 3vh;
+  margin-right: 2vh;
+  height: 28vh;
+}
+.fix_center{
+  border: 1px solid #14436c;
+  margin-top: 3vh;
+  margin-right: 2vh;
+  margin-left: 2vh;
+  height: 28vh;
+}
+.chart_main{
+  margin-top: 4vh;
+}
+
