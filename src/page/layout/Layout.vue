@@ -106,7 +106,7 @@ export default {
       z-index: -1;
       h4{
         width: 100%;
-        font-size: 30px;
+        font-size: 2vw;
         color: #fff;
         text-align: center;
       }
@@ -166,7 +166,7 @@ export default {
             align-items: center;
             justify-content: space-between;
             h4{
-              font-size:24px;
+              font-size:1.5vw;
               color: #76CEFB;
               margin-left: 50px;
               font-weight: bolder;
