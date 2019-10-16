@@ -11,10 +11,10 @@
 
                 </div>
                 <el-row>
-                  <el-col span="24">
+                  <el-col :span="24">
                     <div class = "h1">
                       <span style="font-size:0.8vw;color:#1EFFFF;margin-left: 3%;">专家总数:{{professorCount}}</span>
-                      <span style="font-size:0.8vw;color:#1EFFFF;margin-right: 3%;float: right">经济与管理科学专家数:{{professorCount}}</span>
+                      <span style="font-size:0.8vw;color:#1EFFFF;margin-right: 3%;float: right" id="count"></span>
                     </div>
                   </el-col>
                 </el-row>
