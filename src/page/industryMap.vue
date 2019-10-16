@@ -2,98 +2,28 @@
   <div class="industry">
     <div class="chart_main">
       <el-row>
-        <el-col :span="6">
-          <div  class = "fix_left content-padding" style="height: 42vh">
-            <el-row>
-              <el-col :span="17">
-                <span class="title-gb1">十二大重点产业税收前10企业排名</span>
-              </el-col>
-              <el-col :span="7" style="text-align: right">
-                <el-select size="mini" v-model="rankingType" placeholder="请选择">
-                  <el-option
-                    v-for="item in options"
-                    :key="item.value"
-                    :label="item.label"
-                    :value="item.value">
-                  </el-option>
-                </el-select>
-              </el-col>
-            </el-row>
-            <div id="bar_ranking" style="height: 85%; margin-top: 10px">
-
-            </div>
-          </div>
-        </el-col>
-        <el-col :span="6">
-          <div  class = "fix_center content-padding" style="height: 42vh">
-            <el-row>
-              <el-col>
-                <span class="title-gb1">三次产业增加值</span>
-              </el-col>
-            </el-row>
-            <el-row style="margin: 10px 0">
-              <el-col style="text-align: center">
-                <el-button size="mini" @click="IncrementTypeChange(1)" :class="{'btn-selected':IncrementType == 1}">产业结构</el-button>
-                <el-button size="mini" @click="IncrementTypeChange(2)" :class="{'btn-selected':IncrementType == 2}" style="margin-left: 5px">增加值</el-button>
-                <el-button size="mini" @click="IncrementTypeChange(3)" :class="{'btn-selected':IncrementType == 3}" style="margin-left: 5px">增速</el-button>
-              </el-col>
-            </el-row>
-            <div id="bar_increment" style="height: 80%">
-
-            </div>
-          </div>
-        </el-col>
-        <el-col :span="6">
-          <div  class = "fix_right content-padding" style="height: 42vh">
-            <div id="bar_ranking2" style="height: 100%">
-
-            </div>
-          </div>
-        </el-col>
-        <el-col :span="6">
-          <div  class = "fix_right content-padding" style="height: 42vh">
-            <el-row>
-              <el-col>
-                <span class="title-gb1">三次产业增加值</span>
-              </el-col>
-            </el-row>
-            <div id="bar_newly" style="height: 85%; margin-top: 10px">
-
-            </div>
-          </div>
-        </el-col>
-
-      </el-row>
-      <el-row>
         <el-col :span="24">
-          <div  class = "fix_left fix_right" style="height: 45.2vh">
-            <el-row>
-              <el-col style="width: 23%">
-                <div  style="height: 45.2vh" class="content-padding">
-                  <el-row>
-                    <el-col>
-                      <span class="title-gb1">十二大产业税收贡献前5名</span>
-                    </el-col>
-                  </el-row>
-                  <div id="bar_contribution" style="height: 85%; margin-top: 10px">
-
-                  </div>
-                </div>
-              </el-col>
-              <el-col :span="2" style="height: 45.2vh;width: 8%">
-                <div style="height: 12vh; border: 1px solid #999; background-color: transparent;  margin-top: 3vh">
-
-                </div>
-                <div style="background-color: blue; height: 12vh; margin: 1.5vh 0">
-
-                </div>
-                <div style="background-color: blue; height: 12vh; margin-bottom: 3vh">
-
-                </div>
-              </el-col>
-              <el-col :span="5">123</el-col>
-              <el-col :span="9">123</el-col>
-            </el-row>
+          <el-row>
+            <el-col :span="6">
+              <div  class = "fix_left h12">
+              </div>
+            </el-col>
+            <el-col :span="6">
+              <div  class = "fix_center2 h12">
+              </div>
+            </el-col>
+            <el-col :span="6">
+              <div  class = "fix_center2 h12">
+              </div>
+            </el-col>
+            <el-col :span="6">
+              <div  class = "fix_right h12">
+              </div>
+            </el-col>
+          </el-row>
+        </el-col>
+        <el-col :span="24">
+          <div  class = "fix_center2 h12" style="margin: 2vh 2vh">
           </div>
         </el-col>
       </el-row>

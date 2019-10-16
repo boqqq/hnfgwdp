@@ -50,6 +50,12 @@ body{
   margin-right: 1vh;
   margin-left: 1vh;
 }
+.fix_center2{
+  border: 1px solid #23A9F3;
+  margin-top: 2vh;
+  margin-right: 1vh;
+  margin-left: 1vh;
+}
 .chart_main{
   margin-top: 6vh;
 }
