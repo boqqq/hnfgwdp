@@ -5,13 +5,13 @@
         <el-col :span="15">
           <el-row>
             <el-col :span="24">
-              <div class = "fix_center" style = "height:43vh">
+              <div class = "fix_left" style = "height:43vh">
                 <div id="professorMap" style="height:40vh;"></div>
                 <el-row>
                   <el-col span="24">
                     <div>
-                      <span style="font-size:12%;color:#1EFFFF;">专家总数:{{professorCount}}</span>
-                      <span id="count" style="font-size:12%;color:#1EFFFF;float:right"></span>
+                      <span style="font-size:10px;color:#1EFFFF;">专家总数:{{professorCount}}</span>
+                      <span id="count" style="font-size:10px;color:#1EFFFF;float:right"></span>
                     </div>
                   </el-col>
                 </el-row>
@@ -536,7 +536,7 @@
       structure(){
         var myChart = echarts.init(document.getElementById("structure"))
         var option = {
-          color: ['#9307C0', '#6AC9F5', '#E1427A', '#3a6ce1','#EA7D52'],
+          color: ['#9307C0', '#6AC9F5', '#E1427A', '#8DC1AA','#EA7D52'],
           title : {
             text: '人才需求结构',
             textStyle:{
@@ -569,7 +569,7 @@
             ],
             top: '10%',
             right: '10%',
-            left: '5%',
+            left: '10%',
             textStyle: {
               color: '#FFFFFF',
               fontSize: 10
@@ -986,7 +986,9 @@
           for(var i in child){
             count+=child[i]['value']
           }
-          document.getElementById("count").innerText=title+"专家数:"+count;
+          if(title !="海南"){
+            document.getElementById("count").innerText=title+"专家数:"+count;
+          }
         }
       },
       countProfessors(data){
