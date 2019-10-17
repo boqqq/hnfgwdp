@@ -238,7 +238,14 @@
           '教师公共厨房',
           '农贸市场改造',
           '农村饮水安全',
-        ]
+        ],
+        liveVal: [22, 33, 44, 55, 66, 77, 88, 99, 120, 145],
+        indexDate:['2017/2','2017/6','2017/10','2018/2','2018/4','2017/10'],
+        CPIVal:[66, 88, 73, 110, 90, 85, 66],
+        PPIVal:[88, 110, 99, 66, 77, 60, 99],
+        incDate:['2016', '2017', '2018Q1', '2018Q2', '2018Q3',],
+        incData:[11,22,33,44,80],
+        incVel:[64,68,72,76,80,84,86,90,94,96,100,110],
       }
     },
     components: {
@@ -314,7 +321,7 @@
             name: '',
             type: 'bar',
             barWidth:20,
-            data: [30,49,26, 60, 26, 30,49,26, 60, 26],        //数据
+            data:this.liveVal,        //数据
             itemStyle: {
               normal: {
                 color: new echarts.graphic.LinearGradient(
@@ -365,7 +372,7 @@
             textStyle:{
               color:'#fff'
             },
-            data: ['2016', '2017', '2018Q1', '2018Q2', '2018Q3',]
+            data: this.incDate,
           },
           yAxis: {
             show:false,
@@ -390,7 +397,7 @@
           },
           series: [
             {
-              data: [11,22,33,44,80],
+              data: this.incData,
               type: 'bar',
               name: '人均可支配收入',
               itemStyle: {
@@ -413,7 +420,7 @@
               }
             },
             {
-              data: [64,68,72,76,80,84,86,90,94,96,100,110],
+              data: this.incVel,
               type: 'line',
               name: '人均可支配收入增速',
               color:'#3f6999'
@@ -452,7 +459,7 @@
               }
             },
             boundaryGap: false,
-            data: ['2017/2','2017/6','2017/10','2018/2','2018/4','2017/10'],
+            data: this.indexDate,
             axisLabel: {
               show: true,
               textStyle: {
@@ -490,7 +497,7 @@
             {
               name:'CPI',
               type:'line',
-              data:[66, 88, 73, 110, 90, 85, 66],
+              data:this.CPIVal,
               lineStyle: {
                 color: '#b80295'
               },
@@ -498,7 +505,7 @@
             {
               name:'PPI',
               type:'line',
-              data:[88, 110, 99, 66, 77, 60, 99],
+              data:this.PPIVal,
               lineStyle: {
                 color: '#ff1e06'
               },
