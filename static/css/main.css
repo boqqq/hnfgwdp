@@ -94,7 +94,15 @@ body{
   color: #23A9F3;
 }
 
-
+._tit2 h4::before{
+  width: 10px;
+  content:"|";
+  border-radius: 2px;
+  color: red;
+  margin-right: 5px;
+  background-color: red;
+  margin-top: 0px;
+}
 ._tit2 h4{
   width: 100%;
   height: 4vh;
@@ -128,11 +136,21 @@ background-color: #066cf8 !important;
 }
 .el-input__inner{
   color: #fff !important;
-  font-size: 16px !important;
+  font-size: 0.8vw !important;
 }
 .el-select-dropdown__item{
   color: #fff !important;
-  font-size: 16px !important;
+  height: 1.3vw !important;
+  line-height: 1.3vw !important;
+  font-size: 0.8vw !important;
+}
+.el-input--mini .el-input__inner{
+  height: 1.3vw !important;
+  font-size: 0.8vw !important;
+  line-height: 1.3vw !important;
+}
+.el-select .el-input .el-select__caret{
+  font-size: 0.8vw !important;
 }
 .charts{
   width: 100%;
