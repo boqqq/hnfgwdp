@@ -34,15 +34,15 @@ export default {
     data(){
         return{
             nav: [
-                {title: '宏观经济运行', path: '/index'},
-                {title: '产业地图', path: '/industryMap'},
-                {title: '投资地图', path: '/investmentMap'},
-                {title: '消费地图',path:'/consumptionMap'},
-                {title: '开放发展', path: '/development'},
-                {title: '创新创业', path: '/innovate'},
-                {title: '人才地图', path: '/personnelMap'},
-                {title: '生态环境', path: '/environment'},
-                {title: '民生地图', path: '/livelihood'}
+                {title: '宏观经济运行', path: '/index'},//闫博
+                {title: '产业地图', path: '/industryMap'},//才峰
+                {title: '投资地图', path: '/investmentMap'},//泽潘
+                {title: '消费地图',path:'/consumptionMap'},//泽潘
+                {title: '开放发展', path: '/development'},//闫博
+                {title: '创新创业', path: '/innovate'},//闫博
+                {title: '人才地图', path: '/personnelMap'},//春宇
+                {title: '生态环境', path: '/environment'},//才峰
+                {title: '民生地图', path: '/livelihood'}//苗泫钦
             ],
             navIndex:0,
             title:'宏观经济运行',
@@ -76,12 +76,7 @@ export default {
         // }
     },
     mounted () {
-      $('.index_ul').mouseenter(function () {
-        alert(222)
-      });
-      $('.index_ul').mouseout(function () {
-        alert(1111)
-      });
+
     },
 }
 </script>
@@ -95,13 +90,14 @@ export default {
     }
     .norfont{}
     .icon_menu{
-      height: 20px;
-      width: 20px;
+      height: 30px;
+      width: 30px;
       display: flex;
       position: fixed;
-      top: 2%;
+      top: 2.5%;
       color: #fff;
       font-size: 25px;
+      margin-left: 10px;
     }
     .index_title{
       display: flex;
@@ -110,7 +106,7 @@ export default {
       z-index: -1;
       h4{
         width: 100%;
-        font-size: 1.6em;
+        font-size: 2vw;
         color: #fff;
         text-align: center;
       }
@@ -172,7 +168,7 @@ export default {
             h4{
               font-size:1.5vw;
               color: #76CEFB;
-              margin-left: 30px;
+              margin-left: 50px;
               font-weight: bolder;
               background-image: -webkit-linear-gradient(left, #74cdfb , #bcface );
               -webkit-text-fill-color: transparent;

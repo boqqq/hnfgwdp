@@ -5,13 +5,16 @@
         <el-col :span="15">
           <el-row>
             <el-col :span="24">
-              <div class = "fix_left" style = "height:43vh">
-                <div id="professorMap" style="height:40vh;"></div>
+              <div class = "fix_left h11">
+                <div class = "_tit2"><h4>专家地图</h4></div>
+                <div id = "professorMap" class = "h9">
+
+                </div>
                 <el-row>
-                  <el-col span="24">
-                    <div>
-                      <span style="font-size:10px;color:#1EFFFF;">专家总数:{{professorCount}}</span>
-                      <span id="count" style="font-size:10px;color:#1EFFFF;float:right"></span>
+                  <el-col :span="24">
+                    <div class = "h1">
+                      <span style="font-size:0.8vw;color:#1EFFFF;margin-left: 3%;">专家总数:{{professorCount}}</span>
+                      <span style="font-size:0.8vw;color:#1EFFFF;margin-right: 3%;float: right" id="count"></span>
                     </div>
                   </el-col>
                 </el-row>
@@ -22,11 +25,19 @@
             <el-col :span="24">
               <el-row>
                 <el-col :span="12">
-                  <div id= "pressure" class = "fix_left" style = "height:43vh">
+                  <div class = "fix_left h11">
+                    <div class = "_tit2"><h4>就业压力指数</h4></div>
+                    <div id = "pressure" class = "h10">
+
+                    </div>
                   </div>
                 </el-col>
                 <el-col :span="12">
-                  <div id= "structure" class = "fix_left" style = "height:43vh">
+                  <div class = "fix_center2 h11">
+                    <div class = "_tit2"><h4>人才需求结构</h4></div>
+                    <div id = "structure" class = "h10">
+
+                    </div>
                   </div>
                 </el-col>
               </el-row>
@@ -37,11 +48,19 @@
         <el-col :span="9">
           <el-row>
             <el-col :span="24">
-              <div id="relation" class = "fix_center" style = "height:53vh">
+              <div class = "fix_right2 h13">
+                <div class = "_tit2"><h4>各行业供需关系</h4></div>
+                <div id = "relation" class = "h12">
+
+                </div>
               </div>
             </el-col>
             <el-col :span="24">
-              <div id="compare" class = "fix_center" style = "height:33vh">
+              <div class = "fix_right2 h9">
+                <div class = "_tit2"><h4>行业人才需求对比</h4></div>
+                <div id = "compare" class = "h8">
+
+                </div>
               </div>
             </el-col>
           </el-row>
@@ -383,17 +402,11 @@
           danger.push(data[1].list[index].value);
         });
         var option ={
-          title:{
-            text:'就业压力指数',
-            textStyle:{
-              color:"#3a6ce1",
-              fontSize:13
-            }
-          },
+
           grid: {
             left: '5%',
             right: '5%',
-            top:'18%',
+            top:'10%',
             bottom: '15%',
             containLabel: false
           },
@@ -537,13 +550,6 @@
         var myChart = echarts.init(document.getElementById("structure"))
         var option = {
           color: ['#9307C0', '#6AC9F5', '#E1427A', '#8DC1AA','#EA7D52'],
-          title : {
-            text: '人才需求结构',
-            textStyle:{
-              color:"#3a6ce1",
-              fontSize:13
-            }
-          },
           legend: {
             data: [
               {
@@ -567,9 +573,8 @@
                 icon: 'roundRect'
               },
             ],
-            top: '10%',
-            right: '10%',
-            left: '10%',
+            top: '3%',
+            right: '5%',
             textStyle: {
               color: '#FFFFFF',
               fontSize: 10
@@ -581,8 +586,8 @@
           grid: {
             left: '3%',
             right: '3%',
-            top:'20%',
-            bottom: '15%',
+            top:'13%',
+            bottom: '20%',
             containLabel: false
           },
           tooltip: {
@@ -678,21 +683,15 @@
       compare(){
         var myChart=echarts.init(document.getElementById("compare"));
         var option = {
-          title : {
-            text: '行业人才需求对比',
-            textStyle:{
-              color:"#3a6ce1",
-              fontSize:13
-            }
-          },
+
           tooltip: {
             trigger: 'axis'
           },
           grid: {
             left: '5%',
             right: '5%',
-            bottom: '15%',
-            top:'20%',
+            bottom: '8%',
+            top:'10%',
             containLabel: false
           },
           legend: {
@@ -796,21 +795,13 @@
       relation(){
         var myChart=echarts.init(document.getElementById("relation"));
         var option = {
-          title : {
-            text: '各行业供需关系',
-            textStyle:{
-              color:"#3a6ce1",
-              fontSize:13
-            }
-
-          },
           tooltip : {
             trigger: 'axis'
           },
           grid: {
             left: '15%',
             right: '5%',
-            bottom: '10%',
+            bottom: '5%',
             top:'20%',
             containLabel: false
           },
@@ -920,14 +911,6 @@
 
         var myChart=echarts.init(document.getElementById("professorMap"));
         var option = {
-          title : {
-            text: '专家地图',
-            textStyle:{
-              color:"#3a6ce1",
-              fontSize:13
-            }
-
-          },
           tooltip: {
             trigger: 'item',
             triggerOn: 'mousemove'
