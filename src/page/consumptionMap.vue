@@ -1,6 +1,6 @@
 <template>
-  <div id="index">
-    <div class = "chart_main">
+  <div id="index" >
+    <div class = "chart_main" style="padding: 0">
       <el-row>
         <el-col :span="8">
           <div class = "fix_up content-padding">
@@ -58,9 +58,17 @@
         </el-col>
 
         <el-col :span="8">
-          <div class = "fix_down">
+          <div class = "fix_down content-padding ">
+            <div><span class="title-gb1">离岛免税购物</span></div>
+            <div id="shoppingType" style="float: right;padding-right: 23px"  >
+              <el-button size="mini" @click="shoppingTypeChange(1)" :class="{'btn-selected':IncrementType == 1}" style="margin-left: 40px;">人次</el-button>
+              <el-button size="mini" @click="shoppingTypeChange(2)" :class="{'btn-selected':IncrementType == 2}" style="margin-left: 10px">数量</el-button>
+              <el-button size="mini" @click="shoppingTypeChange(3)" :class="{'btn-selected':IncrementType == 3}" style="margin-left: 10px">金额</el-button>
+            </div>
+            <div id="taxfree-shopping" style="height: 100%;"></div>
 
-          </div>
+        </div>
+
         </el-col>
       </el-row>
 
@@ -97,6 +105,8 @@
         this.init_total_retail();
         //消费环境评价指数
         this.init_consume_index();
+        //离岛免税购物
+        this.init_taxfree_shopping()
     },
     methods: {
         //社会消费品零售总额
@@ -311,11 +321,8 @@
                         color:'rgb(255,22,141)',
                         areaStyle: {
                             color: {
-                                type: 'linear',
-                                x: 0,
-                                y: 0,
-                                x2: 0,
-                                y2: 1,
+                                type: 'linear',  x: 0, y: 0,
+                                x2: 0, y2: 1,
                                 colorStops: [{
                                     offset: 0, color: 'rgb(255,13,211,0.2)' // 0% 处的颜色
                                 }],
@@ -370,6 +377,80 @@
             };
             consume_index.setOption(option);
 
+        },
+        //离岛免税购物
+        init_taxfree_shopping(){
+            var taxfree_shopping = echarts.init(document.getElementById('taxfree-shopping'),'macarons');
+
+            var option = {
+                tooltip : {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'cross',
+                        label: {
+                            backgroundColor: '#6a7985'
+                        }
+                    }
+                },
+                legend: {
+                    top:'8%',
+                    right:'10%',
+                    textStyle:{
+                        color : 'white',
+                    },
+                    data:['总额','增速']
+                },
+                xAxis: {
+                    type: 'category',
+                    axisLabel:{
+                        interval:0,
+                        color:'#fff',
+
+                    },
+                    data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                grid: {
+                    top:'20%',
+                    left: '0%',
+                    right: '4%',
+                    bottom: '18%',
+                    containLabel: true
+                },
+                series: [{
+                    name:'总额',
+                    data: [120, 200, 150, 110, 100, 110, 130, 150, 105, 108, 110, 130],
+                    type: 'bar',
+                    itemStyle: {    // 图形的形状
+                        color: {
+                            type: 'linear',  x: 0, y: 0,
+                            x2: 0, y2: 1,
+                            colorStops: [{
+                                offset: 0.4, color: 'rgb(255,249,38)' // 0% 处的颜色
+                            },
+                                {
+                                    offset:1, color: 'rgb(255,22,141)' // 100% 处的颜色
+                                }],
+                            globalCoord: false // 缺省为 false
+                        },
+                        barBorderRadius: [5, 5, 0 ,0]
+                    },
+                },
+                    {
+                        name:'增速',
+                        type:'line',
+                        stack: '增速',
+                        itemStyle: {
+                            color:'rgb(30,129,238)'
+                        },
+                        data:[100, 200, 130, 110, 100, 110, 110, 130, 105, 108, 110, 130]
+                    }
+
+                ]
+            }
+            taxfree_shopping.setOption(option);
         }
 
     }
@@ -384,7 +465,7 @@
       margin-bottom: 1vh;
       margin-left: 1vh;
       margin-right: 1vh;
-      height: 43vh;
+      height: 45vh;
     }
 
     .fix_down{
@@ -393,7 +474,7 @@
       margin-bottom: 0vh;
       margin-left: 1vh;
       margin-right: 1vh;
-      height: 38vh;
+      height: 40vh;
     }
     .title-gb1{
       color: #128eee;
