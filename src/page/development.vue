@@ -131,6 +131,7 @@
 <script>
   import 'font-awesome/css/font-awesome.min.css';
   var echarts = require('echarts');
+  import {config} from '../../static/js/config/chartConfig.js';
   import '../../static/js/map/world.js';
   export default {
     name:"index",
@@ -176,13 +177,10 @@
             //icon: 'circle',//图例形状，示例为原型
             top: '3%',//图例离底部的距离
             right:"5%",
-            itemWidth: 22, // 图例标记的图形宽度。
-            itemHeight: 22, // 图例标记的图形高度。
+            itemWidth: config().fontSize, // 图例标记的图形宽度。
+            itemHeight: config().fontSize, // 图例标记的图形高度。
             itemGap: 20, // 图例每项之间的间隔。
-            textStyle: {//图例文字的样式设置
-              fontSize: 18,
-              color: '#fff'
-            },
+            textStyle: config().textStyle,
             data: ['海南', '福建', '广东'],//图例的名称数据
           },
           radar: [{//每个网格的指数名称，类似于X轴或Y轴上的数据的值大小
@@ -207,17 +205,14 @@
                 max: 100
               }
             ],
-            center: ['50%', '50%'],//统计图位置，示例是居中
-            radius: '70%',//统计图大小
+            center: ['50%', '58%'],//统计图位置，示例是居中
+            radius: '65%',//统计图大小
             startAngle: 90,//统计图起始的角度
             splitNumber: 3,//统计图蛛网的网格分段，示例分为三段
             // shape: 'circle',//蛛网是圆角还是尖角
             name: {
               formatter: '{value}',//蛛网轴尖的数据名称
-              textStyle: {//蛛网轴尖的文字样式
-                fontSize: 18, //外圈标签字体大小
-                color: '#fff' //外圈标签字体颜色
-              }
+              textStyle: config().textStyle,
             },
             splitArea: { // 蛛网在 grid 区域中的分隔区域，默认不显示。
               show: true,
@@ -239,6 +234,7 @@
           }, ],
           series: [{
             name: '',
+            center: ['50%','80%'],
             type: 'radar',//统计图专业名称为雷达图，这里叫做蛛网图
             itemStyle: {//数据样式设置
               emphasis: {//鼠标悬浮效果
@@ -277,7 +273,7 @@
                   position: 'top', // 标签的位置。[ default: top ]
                   distance: 4, // 距离图形元素的距离。当 position 为字符描述值（如 'top'、'insideRight'）时候有效。[ default: 5 ]
                   color: '#ccc', // 文字的颜色。如果设置为 'auto'，则为视觉映射得到的颜色，如系列色。[ default: "#fff" ]
-                  fontSize: 14, // 文字的字体大小
+                  fontSize: config().fontSize, // 文字的字体大小
                 },
                 emphasis: {
                   show: true,
@@ -327,7 +323,7 @@
                   position: 'top',
                   distance: 4,
                   color: '#ccc',
-                  fontSize: 14,
+                  fontSize: config().fontSize,
                 },
                 emphasis: {
                   show: true,
@@ -372,7 +368,7 @@
                   position: 'top',
                   distance: 4,
                   color: '#ccc',
-                  fontSize: 14,
+                  fontSize: config().fontSize,
                 },
                 emphasis: {
                   show: true,
@@ -585,7 +581,7 @@
               itemStyle: {
                 normal: {
                   show: false,
-                  color: '#f00'
+                  textStyle:config().textStyle,
                 }
               },
               data: item[1].map(function(dataItem) {
@@ -705,6 +701,7 @@
           color: ["#ed9d3c",'#4fd7fd'],
           tooltip : {
             trigger: 'axis',
+            textStyle: config().textStyle,
             axisPointer : {            // 坐标轴指示器，坐标轴触发有效
               type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
             }
@@ -722,10 +719,7 @@
               data : xData ,
               axisLabel: {
                 //rotate:45,//斜体字可不用
-                textStyle: {
-                  fontSize: '16',
-                  color:'#fff'
-                }
+                textStyle: config().textStyle
               },
             },
           ],
@@ -742,10 +736,7 @@
                 }
               },//设置横线样式
               axisLabel: {
-                textStyle: {
-                  fontSize: '16',
-                  color:'#fff'
-                }
+                textStyle: config().textStyle
               },
             },
             {
@@ -760,10 +751,7 @@
                 show: false
               },
               axisLabel: {
-                textStyle: {
-                  fontSize: '16',
-                  color:'#fff'
-                }
+                textStyle: config().textStyle
               },
             }
           ],
@@ -812,6 +800,7 @@
           color: ["#ed9d3c",'#4fd7fd'],
           tooltip : {
             trigger: 'axis',
+            textStyle: config().textStyle,
             axisPointer : {            // 坐标轴指示器，坐标轴触发有效
               type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
             }
@@ -829,10 +818,7 @@
               data : xData ,
               axisLabel: {
                 //rotate:45,//斜体字可不用
-                textStyle: {
-                  fontSize: '16',
-                  color:'#fff'
-                }
+                textStyle: config().textStyle
               },
             },
           ],
@@ -849,10 +835,7 @@
                 }
               },//设置横线样式
               axisLabel: {
-                textStyle: {
-                  fontSize: '16',
-                  color:'#fff'
-                }
+                textStyle: config().textStyle
               },
             }
           ],
@@ -890,17 +873,15 @@
             //icon: 'circle',//图例形状，示例为原型
             top: '3%',//图例离底部的距离
             right:"5%",
-            itemWidth: 22, // 图例标记的图形宽度。
-            itemHeight: 22, // 图例标记的图形高度。
-            itemGap: 20, // 图例每项之间的间隔。
-            textStyle: {//图例文字的样式设置
-              fontSize: 18,
-              color: '#fff'
-            },
+            itemWidth: config().fontSize, // 图例标记的图形宽度。
+            itemHeight: config().fontSize, // 图例标记的图形高度。
+            itemGap: config().fontSize, // 图例每项之间的间隔。
+            textStyle: config().textStyle,
             data: ['外资企业', '合资企业', '合作企业','外商投资股份制企业','增速'],//图例的名称数据
           },
           tooltip : {
             trigger: 'axis',
+            textStyle: config().textStyle,
             axisPointer : {            // 坐标轴指示器，坐标轴触发有效
               type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
             }
@@ -908,8 +889,8 @@
           grid: {
             left: '3%',
             right: '4%',
-            bottom: '10%',
-            top:'10%',
+            bottom: '4%',
+            top:'18%',
             containLabel: true
           },
           xAxis : [
@@ -918,10 +899,7 @@
               data : xData ,
               axisLabel: {
                 //rotate:45,//斜体字可不用
-                textStyle: {
-                  fontSize: '16',
-                  color:'#fff'
-                }
+                textStyle: config().textStyle
               },
             },
           ],
@@ -938,10 +916,7 @@
                 }
               },//设置横线样式
               axisLabel: {
-                textStyle: {
-                  fontSize: '16',
-                  color:'#fff'
-                }
+                textStyle: config().textStyle
               },
             },
             {
@@ -956,10 +931,7 @@
                 show: false
               },
               axisLabel: {
-                textStyle: {
-                  fontSize: '16',
-                  color:'#fff'
-                }
+                textStyle: config().textStyle
               },
             }
           ],
@@ -1050,17 +1022,15 @@
             //icon: 'circle',//图例形状，示例为原型
             top: '3%',//图例离底部的距离
             right:"5%",
-            itemWidth: 22, // 图例标记的图形宽度。
-            itemHeight: 22, // 图例标记的图形高度。
-            itemGap: 20, // 图例每项之间的间隔。
-            textStyle: {//图例文字的样式设置
-              fontSize: 18,
-              color: '#fff'
-            },
+            itemWidth: config().fontSize, // 图例标记的图形宽度。
+            itemHeight: config().fontSize, // 图例标记的图形高度。
+            itemGap: config().fontSize, // 图例每项之间的间隔。
+            textStyle: config().textStyle,
             data: ['外资企业', '合资企业', '合作企业','外商投资股份制企业','增速'],//图例的名称数据
           },
           tooltip : {
             trigger: 'axis',
+            textStyle: config().textStyle,
             axisPointer : {            // 坐标轴指示器，坐标轴触发有效
               type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
             }
@@ -1068,8 +1038,8 @@
           grid: {
             left: '3%',
             right: '4%',
-            bottom: '10%',
-            top:'10%',
+            bottom: '4%',
+            top:'18%',
             containLabel: true
           },
           xAxis : [
@@ -1078,10 +1048,7 @@
               data : xData ,
               axisLabel: {
                 //rotate:45,//斜体字可不用
-                textStyle: {
-                  fontSize: '16',
-                  color:'#fff'
-                }
+                textStyle: config().textStyle
               },
             },
           ],
@@ -1098,10 +1065,7 @@
                 }
               },//设置横线样式
               axisLabel: {
-                textStyle: {
-                  fontSize: '16',
-                  color:'#fff'
-                }
+                textStyle: config().textStyle
               },
             },
             {
@@ -1116,10 +1080,7 @@
                 show: false
               },
               axisLabel: {
-                textStyle: {
-                  fontSize: '16',
-                  color:'#fff'
-                }
+                textStyle: config().textStyle
               },
             }
           ],
@@ -1237,8 +1198,8 @@
       align-items: center;
       /*height:4vh;*/
       /*line-height: 4vh;*/
-      padding: 1.4vh 0;
-      font-size: 16px;
+      padding: 0.9vh 0;
+      font-size: 0.8vw;
       color: #0475C3;
       transition: all 0.5s;
       overflow: hidden;
@@ -1260,15 +1221,16 @@
 
     .in_out{
       float: left;
-      font-size: 22px;
+      font-size: 0.8vw;
       text-align: center;
       color: #fff;
       border: 1px #1a358c solid;
       border-radius: 5px;
-      width: 80px;
-      line-height: 1.5vh;
-      margin-top: 2.25vh;
-      margin-left: 2vh;
+      width: 3vw;
+      line-height: 1.3vw;
+      margin-top: 1.3vh;
+      margin-left: 0.5vh;
+
     }
     .dev_center{
       margin-right: 2vh;
@@ -1292,13 +1254,13 @@
         text-align: left;
       }
       .tltleBox,.textBox{
-        padding: 2vh 0;
+        padding: 1.5vh 0;
       }
       .countrys{
-        height: 20px;
-        width: 35px;
+        height: 1vw;
+        width: 1.6vw;
         background-repeat: no-repeat;
-        background-size: 35px 20px;
+        background-size: 1.6vw 1vw;
       }
       .cou1{
         background-image:url('../../static/img/guoqi/eluosi.png');

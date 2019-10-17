@@ -12,7 +12,7 @@
             </div>
             <div class = "fix_left h7">
               <div class = "chart_select">
-                <div class = "t_sel">
+                <div class = "t_sel" style="padding-top: 5%">
                   <el-select size="mini" v-model="value">
                     <el-option
                       v-for="item in options"
@@ -34,18 +34,18 @@
             </div>
             <div class = "fix_left h7">
               <div class = "chart_select">
-                <el-row :gutter="20" style="margin-left: 20%">
-                  <el-col :span="6">
+                <el-row :gutter="5">
+                  <el-col :span="8">
                     <div class = "t_tl">
                       十二大重点产业增加值
                     </div>
                   </el-col>
-                  <el-col :span="6">
+                  <el-col :span="9">
                     <div class = "t_tl">
                        城镇/农村居民可支配收入
                     </div>
                   </el-col>
-                  <el-col :span="5">
+                  <el-col :span="7">
                     <div class = "t_tl">
                         城镇新增就业人数
                     </div>
@@ -62,24 +62,24 @@
               <div class = "fl"><i class="fa fa-caret-right"></i></div>
             </div>
             <div class = "fix_left h7">
-              <div class = "chart_select">
-                <el-row :gutter="10" style="margin-left: 21%">
-                  <el-col :span="2">
+              <div class = "chart_select" style="width: 80%;margin-left: 10%">
+                <el-row :gutter="10">
+                  <el-col :span="4">
                     <div class = "t_tl">
                       PMI
                     </div>
                   </el-col>
-                  <el-col :span="4">
+                  <el-col :span="6">
                     <div class = "t_tl">
                       全行业用电量
                     </div>
                   </el-col>
-                  <el-col :span="5">
+                  <el-col :span="7">
                     <div class = "t_tl">
                       港口货运吞吐量
                     </div>
                   </el-col>
-                  <el-col :span="5">
+                  <el-col :span="7">
                     <div class = "t_tl">
                       新增银行贷款数
                     </div>
@@ -190,7 +190,7 @@
 
 <script>
   import 'font-awesome/css/font-awesome.min.css';
-  //import {config,xAxiss,yAxiss,grid,tooltip,dotHtml,legend} from '../../static/js/config/chartConfig.js';
+  import {config} from '../../static/js/config/chartConfig.js';
   var echarts = require('echarts');
   import '../../static/js/map/china.js';
   import '../../static/js/map/hainan.js';
@@ -251,7 +251,8 @@
             trigger: 'axis',
             axisPointer : {            // 坐标轴指示器，坐标轴触发有效
               type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
-            }
+            },
+            textStyle:  config().textStyle
           },
           grid: {
             left: '3%',
@@ -264,12 +265,13 @@
             {
               type : 'category',
               data : xData ,
+              axisLine: {
+                show: true,
+                lineStyle:config().lineStyle
+              },
               axisLabel: {
                 //rotate:45,//斜体字可不用
-                textStyle: {
-                  fontSize: '12',
-                  color:'#fff'
-                }
+                textStyle: config().textStyle
               },
             },
           ],
@@ -284,18 +286,19 @@
                   color: 'rgba(135,140,147,0.8)'
                 }
               },//设置横线样式
-              axisLabel: {
-                textStyle: {
-                  fontSize: '12',
-                  color:'#fff'
-                }
+              axisTick: {
+                show: false
               },
+              axisLine: {
+                show: false,
+                lineStyle:config().lineStyle
+              },
+              axisLabel: {
+                textStyle:  config().textStyle
+              }
             },
             {
               type: "value",
-              splitLine: {
-                show: false
-              },
               splitLine: {
                 show: false
               },
@@ -303,19 +306,17 @@
                 show: false
               },
               axisLine: {
-                show: false
+                show: false,
+                lineStyle:config().lineStyle
               },
               axisLabel: {
-                textStyle: {
-                  fontSize: '12',
-                  color:'#fff'
-                }
+                textStyle: config().textStyle
               },
             }
           ],
           series : [
             {
-              name:'',
+              name:'总量',
               type:'bar',
               data:data1,
               barWidth:'30%',
@@ -335,7 +336,7 @@
                 }
               }
             },{
-              name: "销售水量",
+              name: "增速",
               type: "line",
               yAxisIndex: 1, //使用的 y 轴的 index，在单个图表实例中存在多个 y轴的时候有用
               smooth: true, //平滑曲线显示
@@ -353,7 +354,6 @@
               zlevel: 11
             },
             {
-              name: '背景',
               type: 'bar',
               barWidth: '50%',
               barGap: '-130%',
@@ -362,6 +362,9 @@
                 normal: {
                   color: 'rgba(255,255,255,0.1)'
                 }
+              },
+              tooltip : {
+                show:false
               },
               zlevel: 9
             },
@@ -381,6 +384,7 @@
           color: ["#ed9d3c",'#4fd7fd'],
           tooltip : {
             trigger: 'axis',
+            textStyle: config().textStyle,
             axisPointer : {            // 坐标轴指示器，坐标轴触发有效
               type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
             }
@@ -398,10 +402,7 @@
               data : xData ,
               axisLabel: {
                 //rotate:45,//斜体字可不用
-                textStyle: {
-                  fontSize: '12',
-                  color:'#fff'
-                }
+                textStyle: config().textStyle
               },
             },
           ],
@@ -417,17 +418,11 @@
                 }
               },//设置横线样式
               axisLabel: {
-                textStyle: {
-                  fontSize: '12',
-                  color:'#fff'
-                }
+                textStyle: config().textStyle
               },
             },
             {
               type: "value",
-              splitLine: {
-                show: false
-              },
               splitLine: {
                 show: false
               },
@@ -438,10 +433,7 @@
                 show: false
               },
               axisLabel: {
-                textStyle: {
-                  fontSize: '12',
-                  color:'#fff'
-                }
+                textStyle: config().textStyle
               },
             }
           ],
@@ -498,7 +490,7 @@
         var option = {
           tooltip: {
             trigger: 'axis',
-
+            textStyle: config().textStyle,
             formatter: function (params) {
               return '金额' + ': ' + '<span style="color: yellow;">' + params[0].value + '</span>';
             }
@@ -536,10 +528,7 @@
               //interval: 0, //隔几个显示
               //rotate: 30,
               showMinLabel: true,
-              textStyle: {
-                fontSize: '16',
-                color:'#fff'
-              }
+              textStyle: config().textStyle
             }
           },
           yAxis:   {
@@ -553,10 +542,7 @@
               }
             },//设置横线样式
             axisLabel: {
-              textStyle: {
-                fontSize: '16',
-                color:'#fff'
-              }
+              textStyle: config().textStyle
             },
           },
           color: ['#e54035'],
@@ -598,6 +584,7 @@
              color: ["#ed9d3c",'#4fd7fd'],
              tooltip : {
                trigger: 'axis',
+               textStyle: config().textStyle,
                axisPointer : {            // 坐标轴指示器，坐标轴触发有效
                  type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
                }
@@ -615,10 +602,7 @@
                  data : xData ,
                  axisLabel: {
                    rotate:45,//斜体字可不用
-                   textStyle: {
-                     fontSize: '12',
-                     color:'#fff'
-                   }
+                   textStyle: config().textStyle
                  },
                }
              ],
@@ -633,17 +617,11 @@
                    }
                  },//设置横线样式
                  axisLabel: {
-                   textStyle: {
-                     fontSize: '12',
-                     color:'#fff'
-                   }
+                   textStyle: config().textStyle
                  },
                },
                {
                  type: "value",
-                 splitLine: {
-                   show: false
-                 },
                  splitLine: {
                    show: false
                  },
@@ -654,10 +632,7 @@
                    show: false
                  },
                  axisLabel: {
-                   textStyle: {
-                     fontSize: '12',
-                     color:'#fff'
-                   }
+                   textStyle: config().textStyle
                  },
                }
              ],
@@ -701,6 +676,7 @@
         var option = {
           tooltip: {
             trigger: 'axis',
+            textStyle: config().textStyle,
             axisPointer: {
               lineStyle: {
                 color: '#57617B'
@@ -714,10 +690,7 @@
             itemGap: 13,
             data: ['海南', '全国',],
             right: '4%',
-            textStyle: {
-              fontSize: 12,
-              color: '#ccc'
-            }
+            textStyle: config().textStyle,
           },
           grid: {
             left: '3%',
@@ -730,10 +703,7 @@
             type: 'category',
             boundaryGap: false,
             axisLabel: {
-              textStyle: {
-                color:'#fff',
-                fontSize: 16
-              }
+              textStyle: config().textStyle
             },
             axisLine: {
               lineStyle: {
@@ -755,10 +725,7 @@
             },
             axisLabel: {
               margin: 15,
-              textStyle: {
-                color:'#fff',
-                fontSize: 16
-              }
+              textStyle: config().textStyle
             },
             splitLine: {
               lineStyle: {
@@ -864,10 +831,10 @@
       chart_right1(){
         var title = {
           show: true,
-          offsetCenter: [0, "95%"], //相对于仪表盘中心的偏移位置，数组第一项是水平方向的偏移，第二项是垂直方向的偏移。可以是绝对的数值，也可以是相对于仪表盘半径的百分比。
+          offsetCenter: [0, "110%"], //相对于仪表盘中心的偏移位置，数组第一项是水平方向的偏移，第二项是垂直方向的偏移。可以是绝对的数值，也可以是相对于仪表盘半径的百分比。
           // 文字的颜色,默认 #333。
           color:"#fff",
-          fontSize: 16,
+          fontSize:config().fontSize
         };
         var axisLine = {
           show: true,
@@ -882,11 +849,15 @@
           }
         };
         var detail = {
-          fontSize: 16,
+          offsetCenter: [0, '80%'],
+          fontSize: config().fontSize,
           formatter: '{value}%'
         }
         var axisLabel = { // 刻度标签。
           show: true, // 是否显示标签,默认 true。
+          textStyle:{
+            fontSize: config().fontSize,
+          },
           formatter:function (v) {
             if(v == 0 || v == 50 || v == 100){
               return v;
@@ -1120,6 +1091,7 @@
         var option = {
           tooltip: {
             show: true,
+            textStyle: config().textStyle,
             formatter: function(params) {
               if (params.data) {
                 return `${params.name}(<span style="font-size:10px;">持有设备量:${params.data.devicesCount}</span>)</br>${params.marker}使用总数：${params.data.value}</br>${params.marker}活跃度：${params.data.devicesUseLv}`
@@ -1163,10 +1135,7 @@
             label: {
               normal: {
                 show: false,
-                textStyle: {
-                  color: '#999',
-                  fontSize: 13
-                }
+                textStyle: config().textStyle,
               },
               emphasis: {
                 show: false,
@@ -1195,7 +1164,6 @@
         window.onresize = chart_center1.resize;
       },
       chart_right2(){
-
         var chart_center1 = echarts.init(document.getElementById('chart_right2'));
         var d0 = [{"name":"省委","value":190},{"name":"合肥市","value":190},
           {"name":"六安市","value":190},{"name":"滁州市","value":190},
@@ -1229,19 +1197,9 @@
           {"name":"滁州市","value":[118.07,32.486,190]},
           {"name":"蚌埠市","value":[117.27,33.086,190]}];
         var  option = option = {
-          backgroundColor: '#091c3d',
-          title: {
-            top:20,
-            text: '',
-            subtext: '',
-            x: 'center',
-            textStyle: {
-              color: '#ccc'
-            }
-          },
-
           tooltip: {
             trigger: 'item',
+            textStyle: config().textStyle,
             formatter: function (params) {
               if(typeof(params.value)[2] == "undefined"){
                 return params.name + ' : ' + params.value;
@@ -1255,9 +1213,7 @@
             y: 'bottom',
             x:'right',
             data:['pm2.5'],
-            textStyle: {
-              color: '#fff'
-            }
+            textStyle: config().textStyle,
           },
           visualMap: {
             show: false,
@@ -1430,10 +1386,7 @@
           var tmp = {
             title: {
               text: tData[i],
-              textStyle: {
-                color: "#fff" ,//X轴文字颜色
-                fontSize: 18
-              }
+              textStyle: config().textStyle,
             },
             series: [{
               name: '上客量',
@@ -1469,7 +1422,8 @@
                 normal: {
                   show: true,
                   position: 'top',
-                  formatter: '{c}'
+                  formatter: '{c}',
+                  textStyle: config().textStyle,
                 }
               },
               data: data1[i]
@@ -1503,19 +1457,19 @@
             timeline: {
               axisType: 'category',
               autoPlay: true,
-              symbolSize: 12,
+              symbolSize: config().fontSize*0.8,
+              bottom:'3%',
+              left:'10%',
+              right:'10%',
               playInterval: 2000,
+              height:config().fontSize*2.5,
               data: tData,
               label: {
                 normal: {
-                  color: '#fff',
-                  fontSize: 16,
+                  textStyle: config().textStyle,
                 },
                 emphasis : {
-                  itemStyle : {
-                    color: '#fff',
-                    fontSize: 16,
-                  }
+                  textStyle: config().textStyle,
                 },
               },
               lineStyle: {
@@ -1534,26 +1488,15 @@
             calculable: true,
             grid: {
               top: '10%',
-              bottom: '17%',
+              bottom: '22%',
               left:'3%',
               right:'3%',
-              tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                  type: 'shadow',
-                  label: {
-                    show: true,
-                    formatter: function(params) {
-                      return params.value.replace('\n', '');
-                    }
-                  }
-                }
-              }
+
             },
             xAxis: [{
-              'type': 'category',
-              'axisLabel': {
-                'interval': 0
+              type: 'category',
+              axisLabel: {
+                interval: 0
               },
               data: xData,
               axisLine: {
@@ -1564,10 +1507,7 @@
               },
               axisLabel: {
                 show: true,
-                textStyle: {
-                  color: "#fff", //X轴文字颜色
-                  fontSize: 16
-                }
+                textStyle: config().textStyle,
               },
               axisLine: {
                 lineStyle: {
@@ -1585,7 +1525,8 @@
                 show: false //隐藏X轴刻度
               },
               axisLabel: {
-                show: false
+                show: false,
+                textStyle: config().textStyle,
               },
               axisLine: {
                 show: false
@@ -1604,7 +1545,8 @@
                   show: false //隐藏X轴刻度
                 },
                 axisLabel: {
-                  show: false
+                  show: false,
+                  textStyle: config().textStyle,
                 },
                 axisLine: {
                   show: false
@@ -1642,21 +1584,21 @@
       margin-top: 0;
     }
     .ind_tit{
-     font-size: 18px;
+     font-size: 0.8vw;
       color: #fff;
       text-align: center;
       height: 5vh;
       line-height: 5vh;
     }
     .ind_val{
-      font-size: 24px;
+      font-size: 1.8vw;
       color: #fff;
       text-align: center;
       height: 4vh;
       line-height: 4vh;
     }
     .ind_val span:nth-child(2){
-      font-size: 18px;
+      font-size: 0.8vw;
     }
     .ind_val1 span{
       color: #0000ff;
@@ -1677,17 +1619,17 @@
       height: 2vh;
       border: 1px #0091ff solid;
       border-radius: 5px;
-      font-size: 16px;
+      font-size: 0.8vw;
       color: #fff;
       line-height: 2vh;
       text-align: center;
       margin-top: 3vh;
-      margin-left: 10px;
     }
     .center_lis{
      background-color: #0E345B;
       width: 80%;
       height: 3vh;
+      font-size: 0.8vw;
       margin-left: 10%;
       margin-top: 1.5vh;
       color: #fff;

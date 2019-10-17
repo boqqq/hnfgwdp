@@ -82,7 +82,7 @@ body{
    border: 1px #23A9F3 solid;
    text-align: center;
    color: #fff;
-   font-size: 18px;
+   font-size: 1vw;
    line-height: 3vh;
    border-radius:5px;
  }
@@ -115,8 +115,9 @@ body{
 }
 
 .chart_select{
-  width: 100%;
+  width: 96%;
   height: 20%;
+  margin-left: 2%;
 }
 .t_sel{
   float: right;

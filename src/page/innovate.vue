@@ -7,7 +7,7 @@
             <div>
               <div class = "h1 _tit2"><h4>2018年1月-10月海南专利公开授权量在全国排名</h4></div>
                 <el-row>
-                  <el-col :span="10">
+                  <el-col :span="12">
                     <div class = "inn_topN h3_5">
                       <!--<span>&nbsp;3&nbsp;</span>-->
                       <span><div>3</div></span>
@@ -17,13 +17,13 @@
                       <span>1名</span>
                     </div>
                   </el-col>
-                  <el-col :span="7">
+                  <el-col :span="6">
                     <div class = "cou_max h3_5">
                       <p>全国最高值</p>
                       <p>25172</p>
                     </div>
                   </el-col>
-                  <el-col :span="7">
+                  <el-col :span="6">
                     <div class = "hn_max h3_5">
                       <p>海南当前值</p>
                       <p>174</p>
@@ -34,7 +34,7 @@
             <div>
               <div class = "h1 _tit2"><h4>2018年1月-10月海南发明专利占各类专利授权量比重排名</h4></div>
               <el-row>
-                <el-col :span="10">
+                <el-col :span="12">
                   <div class = "inn_topN h3_5">
                     <!--<span>&nbsp;3&nbsp;</span>-->
                     <span><div>2</div></span>
@@ -44,13 +44,13 @@
                     <span>1名</span>
                   </div>
                 </el-col>
-                <el-col :span="7">
+                <el-col :span="6">
                   <div class = "cou_max h3_5">
                     <p>全国最高占比</p>
                     <p>81.5%</p>
                   </div>
                 </el-col>
-                <el-col :span="7">
+                <el-col :span="6">
                   <div class = "hn_max h3_5">
                     <p>海南当前占比</p>
                     <p>35.06%</p>
@@ -117,6 +117,7 @@
 <script>
   import 'font-awesome/css/font-awesome.min.css';
   var echarts = require('echarts');
+  import {config} from '../../static/js/config/chartConfig.js';
   export default {
     name:"index",
     components: {
@@ -144,10 +145,15 @@
       left_chart2(){
         var top_chart = echarts.init(document.getElementById('left_chart2'));
         var option = {
-          tooltip: {},
+          tooltip: {
+            textStyle:config().textStyle
+          },
           grid: {
-            right: '12%',
+            left: '5%',
+            right: '10%',
             bottom: '15%',
+            top:'10%',
+            containLabel: true
           },
           dataZoom: [{
             show: true,
@@ -156,17 +162,15 @@
             start: 0,
             end: 20,
             bottom: '5%',
-            height: 15,
+            height: config().fontSize,
             backgroundColor: '#041257',
             borderColor: 'transparent',
             fillerColor: '#059DFA',
             handleStyle: {
-              fontSize:16,
+              fontSize:config().fontSize,
               color: 'transparent'
             },
-            textStyle: {
-              color: '#fff'
-            }
+            textStyle: config().textStyle
           }],
           visualMap: {
             show:false,
@@ -182,18 +186,12 @@
               symbolSize: [20, 60]
             },
             text: ['高', '低'],
-            textStyle: {
-              color: 'blue'
-            }
+            textStyle: config().textStyle
           },
           xAxis: {
-            type: "category",
             name: '专利数',
             nameGap: 25,
-            nameTextStyle: {
-              color: '#fff',
-              fontSize: 18
-            },
+            nameTextStyle:config().textStyle,
             axisLine: {
               lineStyle: {
                 width:2,
@@ -211,18 +209,12 @@
             },
             axisLabel: {
               margin:30,
-              textStyle: {
-                color: '#fff',
-                fontSize: 18
-              }
+              textStyle: config().textStyle
             }
           },
           yAxis: {
             name: '新增企业数',
-            nameTextStyle: {
-              color: '#fff',
-              fontSize: 18
-            },
+            nameTextStyle: config().textStyle,
             nameGap: 25,
             splitLine: {
               show: false,
@@ -243,10 +235,7 @@
             },
             axisLabel: {
               margin:30,
-              textStyle: {
-                color: '#fff',
-                fontSize: 18
-              }
+              textStyle: config().textStyle
             },
           },
           series: [{
@@ -278,6 +267,7 @@
         var option = {
           tooltip: {
             trigger: 'axis',
+            textStyle:config().textStyle,
             axisPointer: {
               lineStyle: {
                 color: {
@@ -320,10 +310,7 @@
             },
             axisLabel: { //坐标轴刻度标签的相关设置
               margin: 25,
-              textStyle: {
-                color: '#fff',
-                fontSize: 18,
-              },
+              textStyle:config().textStyle,
             },
             axisLine: {
               lineStyle: {
@@ -350,10 +337,7 @@
             axisLabel: {
               show: false,
               margin: 20,
-              textStyle: {
-                color: '#fff',
-                fontSize: 18,
-              },
+              textStyle:config().textStyle,
             },
             axisTick: {
               show: false,
@@ -374,10 +358,7 @@
               axisLabel: {
                 show: false,
                 margin: 20,
-                textStyle: {
-                  color: '#fff',
-                  fontSize: 18
-                }
+                textStyle:config().textStyle,
               },
               axisTick: {
                 show: false,
@@ -398,7 +379,7 @@
               borderColor: '#f0f'
             },
             label: {
-              show: true,
+              show: false,
               position: 'top',
               textStyle: {
                 color: '#fff',
@@ -446,11 +427,9 @@
                 borderColor: '#2599DF'
               },
               label: {
-                show: true,
+                show: false,
                 position: 'top',
-                textStyle: {
-                  color: '#fff',
-                }
+                textStyle:config().textStyle,
               },
               itemStyle: {
                 normal: {
@@ -496,25 +475,47 @@
         };
         var option = {
           color: ['#4DFFE3','#4DE0FF','#4DFF8F','#ADFF4D'],
+          title: [{
+            text: '教育文体',
+            left: '33%',
+            top: '12.5%',
+            textStyle: config().textStyle
+          },{
+            text: '互联网',
+            left: '33%',
+            top: '20%',
+            textStyle: config().textStyle
+          },{
+            text: '热带农业',
+            left: '33%',
+            top: '27.7%',
+            textStyle: config().textStyle
+          },{
+            text: '低碳制造',
+            left: '33%',
+            top: '35%',
+            textStyle: config().textStyle
+          },{
+            text: '高新技术',
+            left: '33%',
+            top: '42.7%',
+            textStyle: config().textStyle
+          }],
           tooltip : {
             show: true,
+            textStyle:config().textStyle,
             formatter: "{b} : {c}"
           },
 
           legend: {
+            show:false,
             top: "13.5%",
             x: 'right',
             left: "42%",
             itemWidth:0,itemHeight:0,
-            data: ['已婚已育','已婚未育','未婚' ,'学生'],
+            data: ['教育文体','互联网','热带农业' ,'低碳制造','高新技术'],
             itemGap: 38,
-            textStyle: {
-              color: '#fff',
-              align:'right',
-              x: 'right',
-              textAlign:'right'
-            },
-
+            textStyle:config().textStyle,
             selectedMode: true,
             orient: "vertical",
 
@@ -530,7 +531,7 @@
 
               data: [{
                 value: 7645434,
-                name: '已婚已育'
+                name: '教育文体'
               }, {
                 value: 3612343,
                 name: '总数',
@@ -551,7 +552,7 @@
 
               data: [{
                 value: 2,
-                name: '已婚未育'
+                name: '互联网'
               }, {
                 value: 10,
                 name: '总数',
@@ -570,7 +571,7 @@
 
               data: [{
                 value: 1823323,
-                name: '未婚'
+                name: '热带农业'
               }, {
                 value: 1812343,
                 name: '总数',
@@ -591,7 +592,30 @@
 
               data: [ {
                 value: 1342221,
-                name: '学生'
+                name: '低碳制造'
+              },{
+                value:1912343,
+                name: '总数',
+                tooltip: {
+                  show: false
+                },
+                itemStyle: placeHolderStyle
+              }
+
+              ]
+            },
+            {
+              name: 'Line 1',
+              type: 'pie',
+              clockWise: true,
+
+              radius: ['5%', '15%'],
+              itemStyle: dataStyle,
+              hoverAnimation: false,
+
+              data: [ {
+                value: 1342221,
+                name: '高新技术'
               },{
                 value:1912343,
                 name: '总数',
@@ -615,6 +639,7 @@
         var option = {
           tooltip: {
             trigger: 'axis',
+            textStyle:config().textStyle,
             axisPointer: {
               lineStyle: {
                 color: {
@@ -657,10 +682,7 @@
             },
             axisLabel: { //坐标轴刻度标签的相关设置
               margin: 25,
-              textStyle: {
-                color: '#fff',
-                fontSize: 18,
-              },
+              textStyle:config().textStyle,
             },
             axisLine: {
               lineStyle: {
@@ -687,10 +709,7 @@
             axisLabel: {
               show: false,
               margin: 20,
-              textStyle: {
-                color: '#fff',
-                fontSize: 18,
-              },
+              textStyle:config().textStyle,
             },
             axisTick: {
               show: false,
@@ -731,34 +750,34 @@
     .inn_topN{
       color: #fff;
       text-align: center;
-      font-size: 24px;
-      height: 13vh;
+      font-size: 1vw;
+      height: 8.5vh;
       span:nth-child(1) div,span:nth-child(2) div{
-        font-size: 90px;
+        font-size: 4vw;
         background-color: #494C5F;
         border-radius: 6px;
         float: left;
         margin-left: 20px;
-        width: 90px;
-        height: 150px;
-        line-height: 150px;
-        margin-top: 3vh;
+        width: 3vw;
+        //height: 14vw;
+        line-height: 5vw;
+        margin-top: 2vh;
       }
       span:nth-child(1) div{
-        margin-left: 20%;
+        margin-left: 15%;
       }
       span:nth-child(3),span:nth-child(5){
         float: left;
-        margin-left: 20px;
+        margin-left: 0.5vw;
         margin-top: 8.5vh;
       }
       span:nth-child(5){
         margin-left: 15px;
       }
       span:nth-child(4){
-        margin-left: 40px;
-        margin-top: 8vh;
-        font-size: 35px;
+        margin-left: 1vw;
+        margin-top: 8.7vh;
+        font-size: 1vw;
         float: left;
         color: #28ca09;
       }
@@ -767,13 +786,13 @@
       color: #fff;
       text-align: center;
       p:nth-child(1){
-        font-size: 24px;
-        line-height: 6vh;
+        font-size: 1vw;
+        line-height: 5.5vh;
       }
       p:nth-child(2){
         color: #6CCAF5;
-        font-size: 50px;
-        line-height: 6vh;
+        font-size: 2vw;
+        line-height: 7vh;
       }
     }
     .hn_max{
