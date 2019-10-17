@@ -71,12 +71,18 @@
             <el-row>
               <el-col :span="12">
                 <div class = "fix_right h13" style="margin-right: 1vh">
+                  <div class = "_tit2"><h4>创新平台</h4></div>
+                  <div id = "top_chart1" class="h12">
 
+                  </div>
                 </div>
               </el-col>
               <el-col :span="12">
                 <div class = "fix_right h13">
+                  <div class = "_tit2"><h4>创新结构分析</h4></div>
+                  <div id = "top_chart2" class="h12">
 
+                  </div>
                 </div>
               </el-col>
             </el-row>
@@ -117,6 +123,8 @@
 <script>
   import 'font-awesome/css/font-awesome.min.css';
   var echarts = require('echarts');
+  import '../../static/js/map/hainan.js';
+  import hainan from '../../static/js/json/hainan.json';
   import {config} from '../../static/js/config/chartConfig.js';
   export default {
     name:"index",
@@ -137,6 +145,7 @@
     },
     mounted () {
       this.left_chart2();
+      this.top_chart1();
       this.bottom_chart1();
       this.bottom_chart2();
       this.bottom_chart3();
@@ -258,6 +267,116 @@
         };
         top_chart.setOption(option)
         window.onresize = top_chart.resize;
+      },
+      top_chart1(){
+        var chart_center1 = echarts.init(document.getElementById('top_chart1'));
+        echarts.registerMap('hainan',  hainan)
+        var pd = [{"name":"海口","value":[110.326837,20.031624,"海口","20.18"]}]
+        var  option = option = {
+          tooltip: {
+            trigger: 'item',
+            textStyle: config().textStyle,
+            formatter: function (params) {
+              if(typeof(params.value)[2] == "undefined"){
+                return params.name + ' : ' + params.value;
+              }else{
+                return params.name + ' : ' + params.value[2];
+              }
+            }
+          },
+          legend: {
+            orient: 'vertical',
+            y: 'bottom',
+            x:'right',
+            data:['pm2.5'],
+            textStyle: config().textStyle,
+          },
+          visualMap: {
+            show: false,
+            min: 0,
+            max: 500,
+            left: 'left',
+            top: 'bottom',
+            text: ['高', '低'], // 文本，默认为数值文本
+            calculable: true,
+            seriesIndex: [1],
+            inRange: {
+              // color: ['#3B5077', '#031525'] // 蓝黑
+              // color: ['#ffc0cb', '#800080'] // 红紫
+              // color: ['#3C3B3F', '#605C3C'] // 黑绿
+              //color: ['#0f0c29', '#302b63', '#24243e'] // 黑紫黑
+              //color: ['#23074d', '#cc5333'] // 紫红
+              // color: ['#00467F', '#A5CC82'] // 蓝绿
+              // color: ['#1488CC', '#2B32B2'] // 浅蓝
+              // color: ['#00467F', '#A5CC82'] // 蓝绿
+              // color: ['#00467F', '#A5CC82'] // 蓝绿
+              // color: ['#00467F', '#A5CC82'] // 蓝绿
+              // color: ['#00467F', '#A5CC82'] // 蓝绿
+
+            }
+          },
+
+          geo: {
+            show: true,
+            map: 'hainan',
+            layoutSize: "500%",
+            zoom:9,
+            center: [109.76112,19.2472],
+            label: {
+              normal: {
+                show: false
+              },
+              emphasis: {
+                show: false,
+              }
+            },
+            roam: true,
+            itemStyle: {
+              normal: {
+                areaColor: 'transparent',
+                borderColor: '#3fdaff',
+                borderWidth: 2,
+                shadowColor: 'rgba(63, 218, 255, 0.5)',
+                shadowBlur: 30
+              },
+              emphasis: {
+                areaColor: '#2B91B7',
+              }
+            }
+          },
+          series : [
+            { //城市点位
+              name: 'city',
+              type: 'effectScatter',
+              coordinateSystem: 'geo',
+              symbol: 'circle',
+              symbolSize: 30,
+              itemStyle: {
+                normal: {
+                  color: 'red'
+                }
+              },
+              zlevel: 9,
+              data: pd,
+            },
+            { //城市点位
+              name: 'city',
+              type: 'scatter',
+              coordinateSystem: 'geo',
+              symbol: 'pin',
+              symbolSize: 50,
+              itemStyle: {
+                normal: {
+                  color: 'yellow'
+                }
+              },
+              zlevel: 9,
+              data: pd,
+            }
+          ]
+        };
+        chart_center1.setOption(option)
+        window.onresize = chart_center1.resize;
       },
       bottom_chart1(){
         var xData = ['2012', '2013', '2014', '2015', '2016', '2017'];

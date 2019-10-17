@@ -194,7 +194,7 @@
   var echarts = require('echarts');
   import '../../static/js/map/china.js';
   import '../../static/js/map/hainan.js';
-  import '../../static/js/map/jiangxi.js';
+  import hainan from '../../static/js/json/hainan.json';
   export default {
     name:"index",
     components: {
@@ -243,7 +243,6 @@
         var data1 = [3000,6000,14000,21000,5000,9000,11000,23000,6000,12000,18000,26000];
         var data2 = [3.2,2.4,5.2,6.9,3.1,4.4,6.3,8.5,9.1,6.6,4.7,8.1];
         var data3 =  [30000,30000,30000,30000,30000,30000,30000,30000,30000,30000,30000,30000]
-
         var chart_center1 = echarts.init(document.getElementById('chart_left1'));
         var option = {
           color: ["#ed9d3c",'#4fd7fd'],
@@ -1083,11 +1082,17 @@
         chart_center1.setOption(option)
         window.onresize = chart_center1.resize;
       },
-      chart_right21(){
+      chart_right23(){
 
         var chart_center1 = echarts.init(document.getElementById('chart_right2'));
-        var mapData = [{"name":"河北"},{"name":"山西"},{"name":"内蒙古"},{"name":"辽宁"},{"name":"吉林"},{"name":"黑龙江"},{"name":"江苏"},{"name":"浙江"},{"name":"安徽"},{"name":"福建"},{"name":"江西"},{"name":"山东"},{"name":"河南"},{"name":"湖北"},{"name":"湖南"},{"name":"广东"},{"name":"广西"},{"name":"海南"},{"name":"四川"},{"name":"贵州"},{"name":"云南"},{"name":"西藏"},{"name":"陕西"},{"name":"甘肃"},{"name":"青海"},{"name":"宁夏"},{"name":"新疆"},{"name":"北京"},{"name":"天津"},{"name":"上海"},{"name":"重庆"}];
-
+        var mapData = [{"name":"河北"},{"name":"山西"},{"name":"内蒙古"},{"name":"辽宁"},
+          {"name":"吉林"},{"name":"黑龙江"},{"name":"江苏"},{"name":"浙江"},{"name":"安徽"},
+          {"name":"福建"},{"name":"江西"},{"name":"山东"},{"name":"河南"},{"name":"湖北"},
+          {"name":"湖南"},{"name":"广东"},{"name":"广西"},{"name":"海南"},{"name":"四川"},
+          {"name":"贵州"},{"name":"云南"},{"name":"西藏"},{"name":"陕西"},{"name":"甘肃"},
+          {"name":"青海"},{"name":"宁夏"},{"name":"新疆"},{"name":"北京"},{"name":"天津"},
+          {"name":"上海"},{"name":"重庆"}];
+        alert(JSON.stringify(hainan))
         var option = {
           tooltip: {
             show: true,
@@ -1165,37 +1170,8 @@
       },
       chart_right2(){
         var chart_center1 = echarts.init(document.getElementById('chart_right2'));
-        var d0 = [{"name":"省委","value":190},{"name":"合肥市","value":190},
-          {"name":"六安市","value":190},{"name":"滁州市","value":190},
-          {"name":"蚌埠市","value":190},{"name":"淮南市","value":90},
-          {"name":"宿州市","value":120},{"name":"淮北市","value":120},
-          {"name":"亳州市","value":120},{"name":"阜阳市","value":120},
-          {"name":"安庆市","value":190},{"name":"池州市","value":190},
-          {"name":"黄山市","value":190},{"name":"宣城市","value":190},
-          {"name":"芜湖市","value":190},{"name":"马鞍山市","value":190},
-          {"name":"铜陵市","value":90}];
-        var d1 = [{"name":"省委","value":[117.37,31.786,190]},
-          {"name":"合肥市","value":[117.37,31.386,190]},
-          {"name":"六安市","value":[116.27,31.786,190]},
-          {"name":"滁州市","value":[118.07,32.486,190]},
-          {"name":"蚌埠市","value":[117.27,33.086,190]},
-          {"name":"淮南市","value":[116.67,32.786,90]},
-          {"name":"宿州市","value":[117.77,33.486,120]},
-          {"name":"淮北市","value":[116.67,33.686,120]},
-          {"name":"亳州市","value":[116.27,33.386,120]},
-          {"name":"阜阳市","value":[115.57,32.986,120]},
-          {"name":"安庆市","value":[116.47,30.486,190]},
-          {"name":"池州市","value":[117.47,30.386,190]},
-          {"name":"黄山市","value":[118.17,29.886,190]},
-          {"name":"宣城市","value":[119.27,30.916,190]},
-          {"name":"芜湖市","value":[118.17,31.186,190]},
-          {"name":"马鞍山市","value":[118.47,31.616,190]},
-          {"name":"铜陵市","value":[117.87,30.956,90]}];
-        var d2 = [{"name":"省委","value":[117.37,31.786,190]},
-          {"name":"合肥市","value":[117.37,31.386,190]},
-          {"name":"六安市","value":[116.27,31.786,190]},
-          {"name":"滁州市","value":[118.07,32.486,190]},
-          {"name":"蚌埠市","value":[117.27,33.086,190]}];
+        echarts.registerMap('hainan',  hainan)
+        var pd = [{"name":"海口","value":[110.326837,20.031624,"海口","20.18"]}]
         var  option = option = {
           tooltip: {
             trigger: 'item',
@@ -1239,20 +1215,13 @@
 
             }
           },
-          // toolbox: {
-          //     show: true,
-          //     orient: 'vertical',
-          //     left: 'right',
-          //     top: 'center',
-          //     feature: {
-          //             dataView: {readOnly: false},
-          //             restore: {},
-          //             saveAsImage: {}
-          //             }
-          // },
+
           geo: {
             show: true,
-            map: 'jiangxi',
+            map: 'hainan',
+            layoutSize: "500%",
+            zoom:9,
+            center: [109.76112,19.2472],
             label: {
               normal: {
                 show: false
@@ -1276,90 +1245,34 @@
             }
           },
           series : [
-            {
-              name: 'light',
-              type: 'scatter',
-              coordinateSystem: 'geo',
-              data: d1,
-              symbolSize: function (val) {
-                return val[2] / 10;
-              },
-              label: {
-                normal: {
-                  formatter: '{b}',
-                  position: 'right',
-                  show: true
-                },
-                emphasis: {
-                  show: true
-                }
-              },
-              itemStyle: {
-                normal: {
-                  color: '#F4E925'
-                }
-              }
-            },
-            {
-              type: 'map',
-              map: 'jiangxi',
-              geoIndex: 0,
-              aspectScale: 0.75, //长宽比
-              showLegendSymbol: false, // 存在legend时显示
-              label: {
-                normal: {
-                  show: false
-                },
-                emphasis: {
-                  show: false,
-                  textStyle: {
-                    color: '#fff'
-                  }
-                }
-              },
-              roam: true,
-              itemStyle: {
-                normal: {
-                  areaColor: '#031525',
-                  borderColor: '#FFFFFF',
-                },
-                emphasis: {
-                  areaColor: '#2B91B7'
-                }
-              },
-              animation: false,
-              data: d0
-            },
-            {
-              name: 'Top 5',
+            { //城市点位
+              name: 'city',
               type: 'effectScatter',
               coordinateSystem: 'geo',
-              data: d2,
-              symbolSize: function (val) {
-                return val[2] / 10;
-              },
-              showEffectOn: 'render',
-              rippleEffect: {
-                brushType: 'stroke'
-              },
-              hoverAnimation: true,
-              label: {
-                normal: {
-                  formatter: '{b}',
-                  position: 'right',
-                  show: true
-                }
-              },
+              symbol: 'circle',
+              symbolSize: 30,
               itemStyle: {
                 normal: {
-                  color: '#F4E925',
-                  shadowBlur: 10,
-                  shadowColor: '#05C3F9'
+                  color: 'red'
                 }
               },
-              zlevel: 1
+              zlevel: 9,
+              data: pd,
+            },
+            { //城市点位
+              name: 'city',
+              type: 'scatter',
+              coordinateSystem: 'geo',
+              symbol: 'pin',
+              symbolSize: 50,
+              itemStyle: {
+                normal: {
+                  color: 'yellow'
+                }
+              },
+              zlevel: 9,
+              data: pd,
             }
-
           ]
         };
         chart_center1.setOption(option)
