@@ -521,26 +521,28 @@
   .inv_col_box { margin: 10px; border:1px solid #14436c;}
   .live_col_tit {
     .el-button {
-      padding:5px 10px;
+      padding:1vh;
       background: none;
       border-color:#23b0e8;
       color: #fff;
+      border-radius: .4vh;
+      font-size:1.8vh;
     }
-     padding:10px;
+    padding:1vh 2vh;
      white-space: nowrap;
      overflow: hidden;
-     height: 1.4em;
+     height:4vh;
      span {
-       font-size:16px;
+       font-size:1.2vw;
        color: #fff;
        &:before,
        &:after {
          content:'◆';
-         font-size:20px;
+         font-size:1.6vw;
          color:#20baff;
          margin: 0 .2em;
          vertical-align:middle;
-         line-height: 14px;
+         line-height:1.2em;
        }
      }
    }
@@ -548,8 +550,8 @@
     margin: 0 1vw;
     border:1px solid #417fb0;
     height:36vh;
-    border-radius:12px;
-    padding:20px 10px;
+    border-radius:1vw;
+    padding:1vw;
     background: rgba(8,32,80 ,.5);
     box-shadow: 0 0 20px rgba(49,186,232 ,.6);
     text-align: center;
@@ -562,29 +564,30 @@
     }
   }
   .live_pop_vel {
-    margin-right: 10px;
+    margin-right:1vw;
     text-align: right;
+    padding: 1vw 0;
     .live_pop_tag {
       color: #fff;
-      font-size: 14px;
+      font-size:2vh;
       text-align: right;
       line-height: 1.2em;
     }
     .live_pop_num {
-      font-size: 24px;
+      font-size: 2vw;
       text-align: right;
       line-height: 1.2em;
       font-weight: 600;
     }
     .bar {
       float: right;
-      height: 4px;
-      padding: 1px;
-      width: 120px;
-      border-radius:5px;
-      border: 1px solid #e839ec;
+      height: .8vh;
+      padding:.1vh;
+      width: 8vw;
+      border-radius:1vh;
+      border: .1vh solid #e839ec;
       .rate {
-        height:4px;
+        height:.6vh;
         background:#e839ec;
       }
     }
@@ -607,17 +610,18 @@
     color: #fff;
     overflow: hidden;
     >h3 {
-      font-size: 14px;
+      font-size:1.2vw;
       margin-top:20%;
     }
     >p {
-      font-size: 24px;
+      font-size:1.6vw;
     }
   }
   .live_saf_list {
-    margin-bottom: 20px;
+    margin: 0 0 4vh;
+    padding:0 1vw !important;
     .tip {
-      font-size: 12px;
+      font-size:.8vw;
       color:#3e9ec4;
       margin-bottom: 10px;
       white-space: nowrap;
@@ -625,20 +629,20 @@
     }
     .vel_box {
       position: relative;
-      height:20px;
-      margin: 30px 0 0 20px;
-      font-size:14px;
+      height:4vh;
+      margin: 3vh 0 0 5vh;
+      font-size:1vw;
       color: #fff;
-      border:3px solid #43b8fe;
+      border:.36vh solid #43b8fe;
       border-top: none;
       border-left:none;
       >span {
         position:absolute;
-        top:-20px;
-        left: -20px;
+        top:-1.2vh;
+        left: -4vh;
         text-shadow: 0 0 10px #04cbe0;
       >b{
-        font-size: 28px;
+        font-size: 2vw;
         margin-right:6px;
       }
       }
@@ -647,28 +651,29 @@
   .live_pole_col {
     padding:10px;
     text-align: center;
+    margin-bottom: 3vh;
     .tip {
-      font-size: 12px;
+      font-size: 2vh;
       color: #fff;
-      margin-bottom: 10px;
+      margin-bottom: 1vh;
       white-space: nowrap;
       overflow: hidden;
-      text-shadow: 0 0 10px #1EFFFF;
+      text-shadow: 0 0 2vh #1EFFFF;
     }
     .vel_box {
-      margin: 0 20px;
-      padding:5px 10px;
-      font-size: 18px;
+      margin: 0 3vh;
+      padding:1vh 2vh;
+      font-size: 2vh;
       color: #fff;
     }
   }
   .diamond_tit_bg{
-    width: 12vw;
+    width: 14vw;
     height:4vh;
     line-height:4vh;
     margin: 1vh auto 2vh;
     color: #fff;
-    font-size: 14px;
+    font-size: 1.2vw;
     text-align: center;
     background: url("../../static/img/diamond_tit_bg.png") no-repeat;
     background-size: 100% 100%;
