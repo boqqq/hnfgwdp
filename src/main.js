@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import ElementUI from 'element-ui';
 import echarts from 'echarts';
+import  'echarts/theme/macarons.js'
 import 'element-ui/lib/theme-chalk/index.css';
 import axios from 'axios';
 import httpRequest from './utils/httpRequest';
