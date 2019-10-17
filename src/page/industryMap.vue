@@ -939,7 +939,7 @@
       height: 10.6vh;
       border: 1px #1D3C7D solid;
       width: 90%;
-      margin-top: 1vh;
+      margin-top: 2vh;
     }
     .cont_topN1{
       margin:0.3vh;
