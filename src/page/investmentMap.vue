@@ -638,9 +638,9 @@
             roam: true,
             itemStyle: {
               normal: {
-                areaColor: 'transparent',
-                borderColor: '#3fdaff',
-                borderWidth: 2,
+                areaColor: '#002492',
+                borderColor: 'rgba(63, 218, 255, 0.5)',
+                borderWidth: 1,
                 shadowColor: 'rgba(63, 218, 255, 0.5)',
                 shadowBlur: 30
               },
