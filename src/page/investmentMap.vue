@@ -166,7 +166,7 @@
                 <div class = "fl"><i class="fa fa-caret-right"></i></div>
               </div>
               <div class = "chart_box">
-                <div id="chart_bar_invImp" style="height:32vh"></div>
+                <div id="chart_bar_invImp" style="height:33vh"></div>
               </div>
             </el-col>
             <el-col :span="7">
@@ -179,16 +179,16 @@
               <div class = "chart_box">
                <el-row>
                   <el-col :span="12">
-                  <div id="chart_pie_rich4" style=" height:16vh;"></div>
+                  <div id="chart_pie_rich4" style=" height:16.5vh;"></div>
                   </el-col>
                   <el-col :span="12">
-                    <div id="chart_pie_rich5" style=" height:16vh;"></div>
+                    <div id="chart_pie_rich5" style=" height:16.5vh;"></div>
                   </el-col>
                   <el-col :span="12">
-                    <div id="chart_pie_rich6" style=" height:16vh;"></div>
+                    <div id="chart_pie_rich6" style=" height:16.5vh;"></div>
                   </el-col>
                   <el-col :span="12">
-                    <div id="chart_pie_rich7" style=" height:16vh;"></div>
+                    <div id="chart_pie_rich7" style=" height:16.5vh;"></div>
                   </el-col>
                 </el-row>
               </div>
@@ -694,7 +694,7 @@
   .chart_box {border:1px solid #23A9F3;}
   .fix_left{margin-top:0;}
   .chart_main { margin: 10px 15px; }
-  .chart_main .el-row { margin:0;}
+  .chart_main .el-row { margin:0 !important;}
   .inv_col_first { height: 50vh;}
   .inv_col_second { height: 39vh;}
   .inv_col_box { padding: 10px; border:1px solid #14436c;}
