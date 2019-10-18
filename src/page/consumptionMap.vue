@@ -54,8 +54,9 @@
         </el-col>
 
         <el-col :span="8">
-          <div class = "fix_down">
-
+          <div class = "fix_down content-padding ">
+            <div class = "_tit2"><h4>消费印象</h4></div>
+            <div style="margin-top: 10vh"><tag-cloud :data="hotTag" :config="config" ></tag-cloud></div>
           </div>
         </el-col>
 
@@ -94,6 +95,76 @@
         data(){
             return{
                 IncrementType:1,
+                hotTag: [{
+                    "id": "05023f8da31c4b4187cc6899e2a3aec2",
+                    "name": "风景很美"
+                }, {
+                    "id": "0ef028e5278f4f5ca31f99f1bd22b1cc",
+                    "name": "明珠广场肯德基"
+                }, {
+                    "id": "1a32ef04d3c548eaa6777abb46da32f2",
+                    "name": "五月华为旗舰店"
+                }, {
+                    "id": "2c26488325bd493687d16315fe0e5fdd",
+                    "name": "非常勿扰拍摄景点"
+                }, {
+                    "id": "3a786111828a4b9f89ae9da25753eedd",
+                    "name": "风景很美"
+                }, {
+                    "id": "4ed593eed91b4244969995237f5c96c5",
+                    "name": "假日海滩水很美"
+                }, {
+                    "id": "615d2c178f1a47cb8d473823e74f5386",
+                    "name": "bkycho"
+                }, {
+                    "id": "76f652df03db43349272a9aff492b065",
+                    "name": "海南岛自由行"
+                }, {
+                    "id": "8ff29d0d35e548feb945063b34ed9c9b",
+                    "name": "亚龙湾"
+                }, {
+                    "id": "a8ac2170008746fdadc05ea461bc5e37",
+                    "name": "景区很美人太多"
+                },
+                    {
+                        "id": "c05023f8da31c4b4187cc6899e2a3aec2",
+                        "name": "风景很美"
+                    }, {
+                        "id": "c0ef028e5278f4f5ca31f99f1bd22b1cc",
+                        "name": "明珠广场肯德基"
+                    }, {
+                        "id": "c1a32ef04d3c548eaa6777abb46da32f2",
+                        "name": "五月华为旗舰店"
+                    }, {
+                        "id": "c2c26488325bd493687d16315fe0e5fdd",
+                        "name": "非常勿扰拍摄景点"
+                    }, {
+                        "id": "c3a786111828a4b9f89ae9da25753eedd",
+                        "name": "风景很美"
+                    }, {
+                        "id": "c4ed593eed91b4244969995237f5c96c5",
+                        "name": "假日海滩水很美"
+                    }, {
+                        "id": "c615d2c178f1a47cb8d473823e74f5386",
+                        "name": "bkycho"
+                    }, {
+                        "id": "c76f652df03db43349272a9aff492b065",
+                        "name": "海南岛自由行"
+                    }, {
+                        "id": "c8ff29d0d35e548feb945063b34ed9c9b",
+                        "name": "亚龙湾"
+                    }, {
+                        "id": "ca8ac2170008746fdadc05ea461bc5e37",
+                        "name": "景区很美人太多"
+                    }],
+                config:{
+                    "radius":	270,	//滚动半径，Number，单位px
+                    "maxFont":	24,	//最大字体大小
+                    "color":	'#1e96ff',	//字体颜色。为null时随机
+                    "rotateAngleXbase":600,	//600	X方向旋转速度基数，数越小速度越快
+                    "rotateAngleYbase":600,	//600	Y方向旋转速度基数，数越小速度越快
+                    "hover":	false	//是否开启悬浮联动
+                }
             }
         },
         components: {
@@ -114,6 +185,8 @@
             this.init_taxfree_shopping()
             //商业圈分部
             this.init_shopping_center()
+            //消费印象
+            this.init_consume_impression()
         },
         methods: {
             //社会消费品零售总额
@@ -131,8 +204,8 @@
                         }
                     },
                     legend: {
-                        top:'10',
-                        right:'50',
+                        top:'3%',
+                        right:'4%',
                         textStyle:{
                             color : 'white',
                         },
@@ -202,8 +275,8 @@
                         }
                     },
                     legend: {
-                        top:1,
-                        right:40,
+                        top:'-5',
+                        right:'3%',
                         bottom:10,
                         orient: 'vertical',
                         textStyle:{
@@ -214,9 +287,9 @@
                     grid: {
                         left: '3%',
                         right: '3%',
-                        bottom: '60%',
-                        top:'9%',
-                        height: '75%',
+                        bottom: '1%',
+                        top:'14%',
+                        height: '72%',
                         containLabel: true
                     },
                     xAxis : [
@@ -294,7 +367,7 @@
                         right: '4%',
                         bottom: '4%',
                         height:'70%',
-                        width:'90%',
+                        //width:'90%',
                         show:false,
                         containLabel: true
                     },
@@ -422,10 +495,10 @@
                         type: 'value'
                     },
                     grid: {
-                        top:'13%',
+                        top:'12%',
                         left: '2%',
                         right: '2%',
-                        bottom: '22%',
+                        bottom: '20%',
                         containLabel: true
                     },
                     series: [{
@@ -571,6 +644,10 @@
                 };
                 shopping_center.setOption(option)
                 window.onresize = shopping_center.resize;
+            },
+            //消费印象
+            init_consume_impression(){
+
             }
         }
     }
