@@ -257,21 +257,21 @@
               text:'投资项目总数',
               color:'#42b1e8',
               val:8454,
-              relVal:0,
+              relVal:8454,
               formatter: '{c}',
             },
             {
               text:'备案类项目',
               color:'#33ce12',
               val:4521,
-              relVal:0,
+              relVal:4521,
               formatter: '{c}',
             },
             {
               text:'审批类项目',
               color:'#feb544',
               val:1245,
-              relVal:0,
+              relVal:1245,
               formatter: '{c}',
             },
             {
@@ -315,7 +315,7 @@
     mounted () {
       this.chart_pie_rich('chart_pie_rich1', this.richArr[0].text, this.richArr[0].color, this.richArr[0].val, this.richArr[0].relVal, this.richArr[0].formatter)
       this.chart_pie_rich('chart_pie_rich2', this.richArr[1].text, this.richArr[1].color, this.richArr[1].val, this.richArr[1].relVal, this.richArr[1].formatter)
-      this.chart_pie_rich('chart_pie_rich3', this.richArr[2].text, this.richArr[2].color, this.richArr[1].val, this.richArr[2].relVal, this.richArr[2].formatter)
+      this.chart_pie_rich('chart_pie_rich3', this.richArr[2].text, this.richArr[2].color, this.richArr[2].val, this.richArr[2].relVal, this.richArr[2].formatter)
       this.chart_pie_rich('chart_pie_rich4', this.richArr[3].text, this.richArr[3].color, this.richArr[3].val, this.richArr[3].relVal, this.richArr[3].formatter)
       this.chart_pie_rich('chart_pie_rich5', this.richArr[4].text, this.richArr[4].color, this.richArr[4].val, this.richArr[4].relVal, this.richArr[4].formatter)
       this.chart_pie_rich('chart_pie_rich6', this.richArr[5].text, this.richArr[5].color, this.richArr[5].val, this.richArr[5].relVal, this.richArr[5].formatter)
@@ -569,7 +569,6 @@
         chart_bar_fold.setOption(option)
         window.onresize=chart_bar_fold.resize;
       },
-
       //各市县投资进度
       // chart_map_hnInv(){
       //   var chart_map_hnInv = echarts.init(document.getElementById('chart_map_hnInv'));
