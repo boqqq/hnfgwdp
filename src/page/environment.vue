@@ -1,5 +1,5 @@
 <template>
-  <div id="index">
+  <div class="environment">
     <div class = "chart_main">
       <el-row>
         <el-col :span="7">
@@ -11,7 +11,26 @@
                 <div class = "fl"><i class="fa fa-caret-right"></i></div>
               </div>
               <div class = "fix_left h7" style="height:38vh">
-                <div id = "chart_left1" class = "chart80"></div>
+                <el-row style="padding-top: 5%;">
+                  <el-col :span="14" style="padding: 0 5%">
+                    <el-col :span="24">
+                      <div style="text-align: center; height: 2vh; line-height: 2vh">
+                        <span style="color: #fff; font-size: 0.8vw;">{{dataLabel}}</span>
+                      </div>
+                    </el-col>
+                    <el-col :span="24">
+                      <vCalendar
+                        v-on:choseDay="clickDay"
+                        v-on:changeMonth="changeDate"
+                        v-on:isToday="clickToday"
+                      ></vCalendar>
+                    </el-col>
+                  </el-col>
+                  <el-col :span="10">
+
+                  </el-col>
+                </el-row>
+
               </div>
             </el-col>
             <el-col :span="24">
@@ -132,19 +151,19 @@
   import '../../static/js/map/china.js';
   import '../../static/js/map/hainan.js';
   import '../../static/js/map/jiangxi.js';
+  import vCalendar from 'vue-calendar-component';
+
   //import {config,xAxiss,yAxiss,grid,tooltip,dotHtml,legend} from '../../static/js/config/chartConfig.js';
   var echarts = require('echarts');
   export default {
     name:"index",
-    components: {
-
-    },
     data(){
       return{
-
+        dataLabel:'',
       }
     },
     components: {
+      vCalendar
     },
     created () {
     },
@@ -161,6 +180,18 @@
       this.chart_center1();
     },
     methods: {
+      clickDay(data) {
+        this.dataLabel = data
+        console.log(data); //选中某天
+      },
+      changeDate(data) {
+        this.dataLabel = data
+        console.log(data); //左右点击切换月份
+      },
+      clickToday(data) {
+        this.dataLabel = data
+        console.log(data); // 跳到了本月
+      },
       chart_left2(){
         var myChart=echarts.init(document.getElementById("chart_left2"));
         var  colorList=['#7564FF', '#2BBEC5', '#15C8FF', '#3bafff', '#f1bb4c','#aff', "rgba(250,250,250,0.5)"];
@@ -1298,8 +1329,8 @@
     }
   }
 </script>
-<style lang="scss" scoped>
-  #index{
+<style lang="scss" >
+  .environment{
     .fix_left{
       margin-top: 0;
     }
@@ -1375,6 +1406,29 @@
       color: #fff;
       line-height: 7vh;
       text-align: center;
+    }
+    .wh_container{
+      max-width: none;
+    }
+    .wh_content_item{
+      height: 4.5vh;
+      font-size: 0.8vw;
+    }
+    .wh_top_changge li{
+      display: none;
+    }
+    .wh_content_all {
+      background-color: transparent !important;
+    }
+    .wh_item_date, .wh_top_tag{
+      height: 3vh;
+      width: 3vh;
+    }
+    .wh_content_item .wh_chose_day{
+      background: #FF808F;
+    }
+    .wh_content_all{
+      background-color: transparent;
     }
   }
 </style>
