@@ -11,25 +11,31 @@
                 </div>
                 <el-row :gutter="20">
                   <el-col :span="8">
-                    <div id="chart_pie_rich" style=" height:17vh;"></div>
+                    <div id="chart_pie_rich1" style=" height:17vh;"></div>
+                  </el-col>
+                  <el-col :span="8">
+                    <div id="chart_pie_rich2" style=" height:17vh;"></div>
+                  </el-col>
+                  <el-col :span="8">
+                    <div id="chart_pie_rich3" style=" height:17vh;"></div>
                   </el-col>
                 </el-row>
               </div>
             </el-col>
             <el-col :span="12">
-              <div style="height: 30vh;">
+              <div style="height: 24vh;">
                 <div class="inv_col_tit">
                   <span>全省政府投资项目行业</span>
                 </div>
-                <div id="chart_bar_fold" style=" height:22vh;"></div>
+                <div id="chart_bar_fold1" style=" height:22vh;"></div>
               </div>
             </el-col>
             <el-col :span="12">
-              <div style="height: 30vh;">
+              <div style="height: 24vh;">
                 <div class="inv_col_tit">
                   <span>全省社会投资项目行业</span>
                 </div>
-                <div id="" style=" height:80%;"></div>
+                <div id="chart_bar_fold2" style=" height:22vh;"></div>
               </div>
             </el-col>
           </el-row>
@@ -89,7 +95,7 @@
                     <div class="inv_col_tit">
                       <span>项目开竣工进展</span>
                     </div>
-                    <div  style=" height:80%;" id="chart_bar_rate"></div>
+                    <div  style=" height:80%;" id="chart_bar_rate1"></div>
                   </div>
                 </el-col>
               </el-row>
@@ -108,7 +114,7 @@
                     <div class="inv_col_tit">
                       <span>省重点项目</span>
                     </div>
-                    <div style=" height:80%;">
+                    <div style=" height:12vh;">
                       <ul class="round_list">
                         <li style="width: 25%;">
                           <div class="round_item">
@@ -139,11 +145,11 @@
                   </div>
                 </el-col>
                 <el-col>
-                  <div style="height: 30vh;">
+                  <div style="height:12vh;">
                     <div class="inv_col_tit">
                       <span>重点项目投资进度情况</span>
                     </div>
-                    <div  style=" height:80%;" id="">重点项目投资进度情况</div>
+                    <div  style=" height:10vh;" id="chart_bar_rate2"></div>
                   </div>
                 </el-col>
               </el-row>
@@ -158,7 +164,22 @@
             </el-col>
             <el-col :span="7">
               <!--各领域重点项目投资进度-->
-              <div>123</div>
+              <div>
+                <el-row>
+                  <el-col :span="12">
+                    <div id="chart_pie_rich4" style=" height:17vh;"></div>
+                  </el-col>
+                  <el-col :span="12">
+                    <div id="chart_pie_rich5" style=" height:17vh;"></div>
+                  </el-col>
+                  <el-col :span="12">
+                    <div id="chart_pie_rich6" style=" height:17vh;"></div>
+                  </el-col>
+                  <el-col :span="12">
+                    <div id="chart_pie_rich7" style=" height:17vh;"></div>
+                  </el-col>
+                </el-row>
+              </div>
             </el-col>
             <el-col :span="7">
               <!--重点项目完成进度-->
@@ -188,7 +209,26 @@
     },
     data(){
       return{
-
+        richSource1:[
+          {product: '2018Q1', '新开工': 93.3, '续建': 85.8, '竣工': 93.7},
+          {product: '2018Q2', '新开工': 83.1, '续建': 93.4, '竣工': 95.1},
+          {product: '2018Q3', '新开工': 86.4, '续建': 85.2, '竣工': 92.5},
+          {product: '2018Q4', '新开工': 92.4, '续建': 99.9, '竣工': 99.1}
+        ],
+        richSource2:[
+          {product: '2018Q1', '竣工': 93.3, '续建': 85.8, '新开工': 93.7},
+          {product: '2018Q2', '竣工': 83.1, '续建': 93.4, '新开工': 95.1},
+          {product: '2018Q3', '竣工': 86.4, '续建': 85.2, '新开工': 92.5},
+          {product: '2018Q4', '竣工': 92.4, '续建': 99.9, '新开工': 99.1}
+        ],
+        richDim1: ['product', '新开工', '续建', '竣工'],
+        richDim2: ['product', '竣工', '续建', '新开工'],
+        foldAxis1:['教育', '城建', '环保', '公路水路港口', '林业'],
+        foldAxis2:['经贸', '公路水路港口', '城建', '教育', '环保',],
+        foldAmount1:[15,15,14,10,30],
+        foldAmount2:[33,10,22,14,15],
+        foldSum1:[15,14,20,11,10],
+        foldSum2:[22,10,30,50,14],
       }
     },
     components: {
@@ -199,17 +239,25 @@
 
     },
     mounted () {
-      this.chart_pie_rich()
-      this.chart_bar_rate()
+      this.chart_pie_rich('chart_pie_rich1')
+      this.chart_pie_rich('chart_pie_rich2')
+      this.chart_pie_rich('chart_pie_rich3')
+      this.chart_pie_rich('chart_pie_rich4')
+      this.chart_pie_rich('chart_pie_rich5')
+      this.chart_pie_rich('chart_pie_rich6')
+      this.chart_pie_rich('chart_pie_rich7')
+      this.chart_bar_rate('chart_bar_rate1', this.richDim1, this.richSource1)
+      this.chart_bar_rate('chart_bar_rate2', this.richDim2, this.richSource2)
       // this.chart_bar_inv()
       this.chart_bar_invImp()
       // this.chart_map_hnInv()
-      this.chart_bar_fold()
+      this.chart_bar_fold('chart_bar_fold1', this.foldAxis1, this.foldAmount1, this.foldSum1)
+      this.chart_bar_fold('chart_bar_fold2', this.foldAxis2, this.foldAmount2, this.foldSum2)
     },
     methods: {
       //全省固定资产投资情况-各领域重点项目投资进度
-      chart_pie_rich(){
-        var chart_pie_rich = echarts.init(document.getElementById('chart_pie_rich'));
+      chart_pie_rich(id){
+        var chart_pie_rich = echarts.init(document.getElementById(id));
         var option = {
           title:{
             text: '投资项目总数',
@@ -230,7 +278,7 @@
           },
           series: [{
             name: 'pie',
-            startAngle:'270',
+            startAngle:'270',//起始角度
             type: 'pie',
             color:'#42b1e8',
             radius: ['64%', '70%'],
@@ -244,7 +292,7 @@
               name: '占有率',
               label: {
                 normal: {
-                  formatter: '{d}',
+                  formatter: '{c}',
                   textStyle: {
                     fontSize: 16,
                     fontWeight:'bold',
@@ -272,8 +320,8 @@
         window.onresize = chart_pie_rich.resize;
       },
       //项目开竣工进度-重点项目投资进度
-      chart_bar_rate(){
-        var chart_bar_rate = echarts.init(document.getElementById('chart_bar_rate'));
+      chart_bar_rate(id, richDim,richSource){
+        var chart_bar_rate = echarts.init(document.getElementById(id));
         var option = {
           legend: {
             textStyle:{
@@ -287,13 +335,8 @@
           barGap:'50%',
           tooltip: {},
           dataset: {
-            dimensions: ['product', '新开工', '续建', '竣工'],
-            source: [
-              {product: '2018Q1', '新开工': 93.3, '续建': 85.8, '竣工': 93.7},
-              {product: '2018Q2', '新开工': 83.1, '续建': 93.4, '竣工': 95.1},
-              {product: '2018Q3', '新开工': 86.4, '续建': 85.2, '竣工': 92.5},
-              {product: '2018Q4', '新开工': 92.4, '续建': 99.9, '竣工': 99.1}
-            ]
+            dimensions:richDim,
+            source: richSource,
           },
           xAxis: {
             type: 'category',
@@ -402,15 +445,15 @@
         window.onresize = chart_bar_invImp.resize;
 
       },
-      chart_bar_fold(){
-        var chart_bar_fold = echarts.init(document.getElementById('chart_bar_fold'));
+      chart_bar_fold(id,axis,amount,sum){
+        var chart_bar_fold = echarts.init(document.getElementById(id));
         var option = {
           angleAxis: {
             show:false,
           },
           radiusAxis: {
             type: 'category',
-            data: ['教育', '城建', '环保', '公路水路港口', '林业'],
+            data:axis,
             z: 10,
             axisLabel: {
               interval:0,
@@ -424,14 +467,14 @@
           },
           series: [{
             type: 'bar',
-            data: [55,10,10,10,10],
+            data: amount,
             coordinateSystem: 'polar',
             color:'#61a2ff',
             name: '项目总数',
             stack: 'a'
           }, {
             type: 'bar',
-            data: [30,55,30,10,10],
+            data: sum,
             coordinateSystem: 'polar',
             color:'#f82939',
             name: '项目金额',
@@ -468,13 +511,13 @@
   .chart_main { margin: 10px 15px; }
   .chart_main .el-row { margin:0;}
   .inv_col_first { height: 50vh;}
-  .inv_col_second { height: 36vh;}
+  .inv_col_second { height: 39vh;}
   .inv_col_box { padding: 10px; border:1px solid #14436c;}
   .inv_col_tit {
     padding:1vh 2vh;
     white-space: nowrap;
     overflow: hidden;
-    height: 4vh;
+    height: 3vh;
     span {
      font-size:1vw;
      color: #fff;
