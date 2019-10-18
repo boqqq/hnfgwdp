@@ -12,22 +12,51 @@
               </div>
               <div class = "fix_left h7" style="height:38vh">
                 <el-row style="padding-top: 5%;">
-                  <el-col :span="14" style="padding: 0 5%">
-                    <el-col :span="24">
+                  <el-col :span="14">
+                    <el-row>
                       <div style="text-align: center; height: 2vh; line-height: 2vh">
-                        <span style="color: #fff; font-size: 0.8vw;">{{dataLabel}}</span>
+                        <span style="color: #fff; font-size: 0.8vw;">{{enObj.dataLabel}}</span>
                       </div>
-                    </el-col>
-                    <el-col :span="24">
+                    </el-row>
+                    <el-row style="padding: 0 5%">
                       <vCalendar
+                        ref="vcalendar"
                         v-on:choseDay="clickDay"
-                        v-on:changeMonth="changeDate"
                         v-on:isToday="clickToday"
                       ></vCalendar>
-                    </el-col>
+                    </el-row>
+                    <el-row style="padding-left: 5%">
+                      <el-col :span="4" style="padding-left: 0.5vh"><el-col class="wh-color1"></el-col></el-col>
+                      <el-col :span="4" style="padding-left: 0.5vh"><el-col class="wh-color2"></el-col></el-col>
+                      <el-col :span="4" style="padding-left: 0.5vh"><el-col class="wh-color3"></el-col></el-col>
+                      <el-col :span="4" style="padding-left: 0.5vh"><el-col class="wh-color4"></el-col></el-col>
+                      <el-col :span="4" style="padding-left: 0.5vh"><el-col class="wh-color5"></el-col></el-col>
+                    </el-row>
+                    <el-row style="padding-left: 5%; color: #fff; font-size: 0.8vw; margin-top: 0.5vh">
+                      <el-col :span="4">50</el-col>
+                      <el-col :span="4">100</el-col>
+                      <el-col :span="4">150</el-col>
+                      <el-col :span="4">200</el-col>
+                      <el-col :span="4">250</el-col>
+                      <el-col :span="4">500</el-col>
+                    </el-row>
                   </el-col>
                   <el-col :span="10">
-
+                    <el-row class="en-box-item">
+                      <el-col :span="12"><span class="en-box-label">PM<br>2.5</span>
+                      </el-col>
+                      <el-col :span="12"><span :class="getEnVlaClass(enObj.pm25)">{{enObj.pm25}}</span></el-col>
+                    </el-row>
+                    <el-row class="en-box-item">
+                      <el-col :span="12"><span class="en-box-label">PM<br>10</span>
+                      </el-col>
+                      <el-col :span="12"><span :class="getEnVlaClass(enObj.pm10)">{{enObj.pm10}}</span></el-col>
+                    </el-row>
+                    <el-row class="en-box-item">
+                      <el-col :span="12"><span class="en-box-label">AQI</span>
+                      </el-col>
+                      <el-col :span="12"><span :class="getEnVlaClass(enObj.aqi)">{{enObj.aqi}}</span></el-col>
+                    </el-row>
                   </el-col>
                 </el-row>
 
@@ -159,7 +188,12 @@
     name:"index",
     data(){
       return{
-        dataLabel:'',
+        enObj:{
+          dataLabel:'',
+          pm25:38,
+          pm10:26,
+          aqi:75,
+        }
       }
     },
     components: {
@@ -170,6 +204,7 @@
     beforeDestroy() {
 
     },
+
     mounted () {
       this.chart_left2();
       this.chart_left3();
@@ -181,16 +216,44 @@
     },
     methods: {
       clickDay(data) {
-        this.dataLabel = data
-        console.log(data); //选中某天
+        this.enObj.dataLabel = data
+        this.enObj.pm25 = Math.floor(Math.random()*300);
+        this.enObj.pm10 = Math.floor(Math.random()*300);
+        this.enObj.aqi = Math.floor(Math.random()*300);
+        console.log('clickDay',data); //选中某天
       },
       changeDate(data) {
-        this.dataLabel = data
-        console.log(data); //左右点击切换月份
+        this.enObj.dataLabel = data
+        console.log('changeDate',data); //左右点击切换月份
       },
       clickToday(data) {
-        this.dataLabel = data
-        console.log(data); // 跳到了本月
+        if (this.enObj.dataLabel.length == 0) {
+          this.enObj.dataLabel = data
+          this.$refs.vcalendar.ChoseMonth(data.replace('/', '-'))
+        }
+
+        console.log('clickToday', data); // 跳到了本月
+      },
+      getEnVlaClass(val){
+        console.log('val',val)
+        if (val < 50) {
+          return 'en-box-val'
+        }
+        if (50 < val && val < 100) {
+          return 'en-box-val1'
+        }
+        if (100 < val && val < 150) {
+          return 'en-box-val2'
+        }
+        if (150 < val && val < 200) {
+          return 'en-box-val3'
+        }
+        if (200 < val && val < 250) {
+          return 'en-box-val4'
+        }
+        if (val > 250) {
+          return 'en-box-val5'
+        }
       },
       chart_left2(){
         var myChart=echarts.init(document.getElementById("chart_left2"));
@@ -1411,7 +1474,7 @@
       max-width: none;
     }
     .wh_content_item{
-      height: 4.5vh;
+      height: 4.2vh;
       font-size: 0.8vw;
     }
     .wh_top_changge li{
@@ -1424,11 +1487,78 @@
       height: 3vh;
       width: 3vh;
     }
+    .wh_content_item .wh_isToday{
+      background: transparent;
+    }
+    .wh_item_date:hover{
+      background-color: transparent;
+    }
     .wh_content_item .wh_chose_day{
       background: #FF808F;
     }
     .wh_content_all{
       background-color: transparent;
+      padding-bottom: 0;
+    }
+    .en-box-item{
+      height: 10vh;
+      padding-top: 4vh;
+
+      .en-box-label{
+        font-size: 1vw;
+        line-height: 2vh;
+        color: #fff;
+      }
+      .en-box-val{
+        color: #33E8BF;
+        font-size: 2vw;
+        font-weight: bold;
+      }
+      .en-box-val1{
+        color: #24D349;
+        font-size: 2vw;
+        font-weight: bold;
+      }
+      .en-box-val2{
+        color: #DFCC22;
+        font-size: 2vw;
+        font-weight: bold;
+      }
+      .en-box-val3{
+        color: #D9793C;
+        font-size: 2vw;
+        font-weight: bold;
+      }
+      .en-box-val4{
+        color: #D83D3B;
+        font-size: 2vw;
+        font-weight: bold;
+      }
+      .en-box-val5{
+        color: #4D2324;
+        font-size: 2vw;
+        font-weight: bold;
+      }
+    }
+    .wh-color1{
+      background-color: #24D349;
+      height: 1vh;
+    }
+    .wh-color2{
+      background-color: #DFCC22;
+      height: 1vh;
+    }
+    .wh-color3{
+      background-color: #D9793C;
+      height: 1vh;
+    }
+    .wh-color4{
+      background-color: #D83D3B;
+      height: 1vh;
+    }
+    .wh-color5{
+      background-color: #4D2324;
+      height: 1vh;
     }
   }
 </style>
