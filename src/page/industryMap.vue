@@ -45,6 +45,10 @@
             </el-col>
             <el-col :span="6">
               <div  class = "fix_center2 h11">
+                <div class = "_tit2"><h4>现代农业示范区</h4></div>
+                <div id="demonstration_area" class = "h10">
+
+                </div>
               </div>
             </el-col>
             <el-col :span="6">
@@ -117,10 +121,11 @@
 </template>
 
 <script>
-  //import axios from 'axios';
   import 'font-awesome/css/font-awesome.min.css';
-  //import {config,xAxiss,yAxiss,grid,tooltip,dotHtml,legend} from '../../static/js/config/chartConfig.js';
+  import {config} from '../../static/js/config/chartConfig.js';
   var echarts = require('echarts');
+  import '../../static/js/map/hainan.js';
+  import hainan from '../../static/js/json/hainan.json';
   export default {
     name:"index",
     components: {
@@ -185,7 +190,8 @@
       this.initRanking('bar_ranking', this.label1, this.value1, false)
       this.initRanking('bar_newly', this.label2, this.value2, true)
       this.initIncrement()
-      // this.initNewly()
+      this.demonstration_area()
+
       this.initContribution()
       this.investmentRate()
       this.developmentSituation()
@@ -200,6 +206,7 @@
           color: ['#0A81E9'],
           tooltip: {
             trigger: 'axis',
+            textStyle:config().textStyle,
             axisPointer: {
               type: 'shadow'
             },
@@ -219,10 +226,7 @@
             interval: 20,
             axisLabel: {
               formatter: '{value}%',
-              textStyle: {
-                // color: '#fff',
-                fontWeight: '80'
-              }
+              textStyle:config().textStyle
             }
           },
           yAxis: {
@@ -231,16 +235,6 @@
               color: '#0A81E9'
             },
             type: 'category',
-            // data: ['海南逸盛石化有限公司',
-            //   '中国石化有限公司海南石油分公司',
-            //   '中国烟草总公司海南省公司',
-            //   '海南电网有限责任公司',
-            //   '海马汽车集团股份有限公司',
-            //   '海南省建设集团有限公司',
-            //   '海南农垦投资控股集团有限公司',
-            //   '中国石化海南炼油化工有限公司',
-            //   '海南华信国际控股有限公司',
-            //   '海航集团有限公司'],
             data:labels,
             axisLabel: {
               show: true,
@@ -248,11 +242,7 @@
               rotate: 0,
               margin: 10,
               inside: false,
-              textStyle: {
-                color: '#fff',
-                fontWeight: '50',
-                fontSize:10
-              }
+              textStyle:config().textStyle
             },
             axisLine:{
               lineStyle:{
@@ -268,6 +258,7 @@
                 show: labelShow,
                 // formatter: '{c}',
                 position:'right',
+                textStyle:config().textStyle,
                 formatter: function(v) {
                   var val = v.data;
                   if (val == 0) {
@@ -278,7 +269,7 @@
                 color: '#fff'
               }
             },
-            barWidth : 10,
+            barWidth : '40%',
             // data: [22, 33, 44, 55, 66, 77, 88, 99, 120, 145]
             data: values
           }]
@@ -290,16 +281,15 @@
         var option = {
           tooltip : {
             trigger: 'axis',
+            textStyle:config().textStyle,
             axisPointer : {            // 坐标轴指示器，坐标轴触发有效
               type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
             }
           },
+          color:['#E02EFF','#139DFF','#E11054'],
           legend: {
             data:['第一产业','第二产业','第三产业'],
-            textStyle:{//图例文字的样式
-              color:'#fff',
-              fontSize:10
-            },
+            textStyle:config().textStyle
           },
           grid: {
             left: '4%',
@@ -312,11 +302,9 @@
             {
               type : 'category',
               axisLabel: {
+                margin:config().fontSize,
                 rotate:45,//斜体字可不用
-                textStyle: {
-                  fontSize: '12',
-                  color:'#fff'
-                }
+                textStyle:config().textStyle
               },
               data : ['2011','2012','2013','2014','2015','2016','2017','2018Q3']
             }
@@ -324,26 +312,32 @@
           yAxis : [
             {
               show:false,
-              type : 'value'
+              type : 'value',
+              axisLabel: {
+                rotate:45,//斜体字可不用
+                textStyle:config().textStyle
+              },
             }
           ],
           series : [
             {
               name:'第一产业',
               type:'bar',
-              barWidth : 15,
+              barWidth : '40%',
               stack: '产业结构',
               data:[220, 432, 501, 534, 790, 830, 920, 1021]
             },
             {
               name:'第二产业',
               type:'bar',
+              barWidth : '40%',
               stack: '产业结构',
               data:[120, 132, 101, 134, 290, 230, 220, 330]
             },
             {
               name:'第三产业',
               type:'bar',
+              barWidth : '40%',
               stack: '产业结构',
               data:[60, 72, 71, 74, 190, 130, 110,230]
             },
@@ -351,173 +345,131 @@
         };
         bar_increment.setOption(option)
       },
-      initNewly(){
-        console.log('=====')
-        var bar_newly = echarts.init(document.getElementById('bar_newly'));
-        var option = {
-          color: ['#0A81E9'],
-          // title: {
-          //   text: '各省数据合格率统计',
-          //   //textStyle: {
-          //   //    color: '#fff'
-          //   //}
-          // },
+      demonstration_area(){
+        var chart_center1 = echarts.init(document.getElementById('demonstration_area'));
+        echarts.registerMap('hainan',  hainan)
+        var pd = [{"name":"海口","value":[110.326837,20.031624,"海口","20.18"]}]
+        var  option = option = {
           tooltip: {
-            trigger: 'axis',
-            axisPointer: {
-              type: 'shadow'
-            },
-            formatter: "{b} <br> 合格率: {c}%"
-          },
-          /*legend: {
-              data: [date]
-          },*/
-          grid: {
-            left: '6',
-            right: '6',
-            bottom: '0',
-            top:'0',
-            containLabel: true
-          },
-          xAxis: {
-            show:false,
-            type: 'value',
-            boundaryGap: [0, 0.01],
-            interval: 20,
-            axisLabel: {
-              formatter: '{value}%',
-              textStyle: {
-                // color: '#fff',
-                fontWeight: '80'
+            trigger: 'item',
+            textStyle: config().textStyle,
+            formatter: function (params) {
+              if(typeof(params.value)[2] == "undefined"){
+                return params.name + ' : ' + params.value;
+              }else{
+                return params.name + ' : ' + params.value[2];
               }
             }
           },
-          yAxis: {
-            axisTick: {
-              show: false,
-              color: '#0A81E9'
-            },
-            type: 'category',
-            data: [
-              '文体产业',
-              '房地产业',
-              '低碳制造业',
-              '医疗产业',
-              '海洋产业',
-              '金融业',
-              '现代物流业',
-              '会展业',
-              '医疗健康产业',
-              '互联网产业',
-              '热带特色高效农业',
-              '旅游业'],
-            axisLabel: {
-              show: true,
-              interval: 0,
-              rotate: 0,
-              margin: 10,
-              inside: false,
-              textStyle: {
-                color: '#fff',
-                fontWeight: '50',
-                fontSize:10
-              }
-            },
-            axisLine:{
-              lineStyle:{
-                color:'#3398DB',
-                width:1,//这里是为了突出显示加上的
-              }
+          legend: {
+            orient: 'vertical',
+            y: 'bottom',
+            x:'right',
+            data:['pm2.5'],
+            textStyle: config().textStyle,
+          },
+          visualMap: {
+            show: false,
+            min: 0,
+            max: 500,
+            left: 'left',
+            top: 'bottom',
+            text: ['高', '低'], // 文本，默认为数值文本
+            calculable: true,
+            seriesIndex: [1],
+            inRange: {
+              // color: ['#3B5077', '#031525'] // 蓝黑
+              // color: ['#ffc0cb', '#800080'] // 红紫
+              // color: ['#3C3B3F', '#605C3C'] // 黑绿
+              //color: ['#0f0c29', '#302b63', '#24243e'] // 黑紫黑
+              //color: ['#23074d', '#cc5333'] // 紫红
+              // color: ['#00467F', '#A5CC82'] // 蓝绿
+              // color: ['#1488CC', '#2B32B2'] // 浅蓝
+              // color: ['#00467F', '#A5CC82'] // 蓝绿
+              // color: ['#00467F', '#A5CC82'] // 蓝绿
+              // color: ['#00467F', '#A5CC82'] // 蓝绿
+              // color: ['#00467F', '#A5CC82'] // 蓝绿
+
             }
           },
-          series: [{
-            type: 'bar',
+
+          geo: {
+            show: true,
+            map: 'hainan',
+            layoutSize: "500%",
+            zoom:9,
+            center: [109.76112,19.2472],
             label: {
               normal: {
-                show: true,
-                // formatter: '{c}',
-                position:'right',
-                formatter: function(v) {
-                  var val = v.data;
-                  if (val == 0) {
-                    return '';
-                  }
-                  return val;
-                },
-                color: '#999'
+                show: false
+              },
+              emphasis: {
+                show: false,
               }
             },
-            barWidth : 10,
-            data: [22, 33, 44, 55, 66, 77, 88, 99, 120, 145,176,213]
-          }]
+            roam: true,
+            itemStyle: {
+              normal: {
+                areaColor: 'transparent',
+                borderColor: '#3fdaff',
+                borderWidth: 2,
+                shadowColor: 'rgba(63, 218, 255, 0.5)',
+                shadowBlur: 30
+              },
+              emphasis: {
+                areaColor: '#2B91B7',
+              }
+            }
+          },
+          series : [
+            { //城市点位
+              name: 'city',
+              type: 'effectScatter',
+              coordinateSystem: 'geo',
+              symbol: 'circle',
+              symbolSize: 30,
+              itemStyle: {
+                normal: {
+                  color: 'red'
+                }
+              },
+              zlevel: 9,
+              data: pd,
+            },
+            { //城市点位
+              name: 'city',
+              type: 'scatter',
+              coordinateSystem: 'geo',
+              symbol: 'pin',
+              symbolSize: 50,
+              itemStyle: {
+                normal: {
+                  color: 'yellow'
+                }
+              },
+              zlevel: 9,
+              data: pd,
+            }
+          ]
         };
-        bar_newly.setOption(option)
+        chart_center1.setOption(option)
+        window.onresize = chart_center1.resize;
       },
       initContribution(){
-        console.log('=====')
         var bar_contribution = echarts.init(document.getElementById('bar_contribution'));
 
         var option = {
-          // backgroundColor: '#031845',
-          // title:{
-          //     text:"123",
-          //     left:'center',
-          //     top:'45%',
-          //     textStyle:{
-          //         color:"#FFF",
-          //         fontSize:"80px",
-
-          //     }
-          // },
           tooltip: {
             trigger: 'item',
+            axisLabel: {
+              rotate:45,//斜体字可不用
+              textStyle:config().textStyle
+            },
             formatter: "{b} : {d}% <br/> {c}"
           },
-          //  graphic: {
-          //  elements: [
-          //         {
-          //          type: 'text',
-          //          left: 'center', // 相对父元素居中
-          //          top: 'center',  // 相对父元素上下的位置
-          //          style: {
-          //              fill: '#FFF',
-          //               text: ['357'],
-          //               zlevel:"100",
-          //               font: '80px Arial Normal',
-          //                  }
-          //         }]
-          //       },
-          //  title: {
-          //     text:'总考生数',
-          //     left:'center',
-          //     top:'center',
-          //     padding:[24,0],
-          //     textStyle:{
-          //         color:'#fff',
-          //         fontSize:18*scale,
-          //         align:'center'
-          //     }
-          // },
-          //   title: {
-          //     text: '3246',
-          //     subtext: '重点人员(人)',
-          //     x: 'center',
-          //     y: '43%',
-          //     textStyle: {
-          //         fontSize: 80,
-          //         fontWeight: 'normal',
-          //         color: '#00FFFF',
-          //     },
-          //     subtextStyle: {
-          //         fontSize: 28,
-          //         fontWeight: 'normal',
-          //         align:"center",
-          //         color:'#CCCCCC'
-          //     },
-          // },
           series: [{
             type: 'pie',
-            radius: ['30%', '40%'],
+            radius: ['45%', '55%'],
             center: ['50%', '50%'],
             color: ['#80C269', '#00FFFF', '#0090F1', '#FFA800','#4658F6'],
             itemStyle:{
@@ -551,37 +503,16 @@
             labelLine: {
               normal: {
                 show: true,
-                length: 5,
-                length2: 15,
                 lineStyle: {
                   color: '#CCCCCC',
-                  width: 1
+                  width: 2
                 }
               }
             },
             label: {
               normal: {
-                formatter: '{b|{b}}',
-                rich: {
-                  b: {
-                    fontSize: 10,
-                    color: '#FFF',
-                    align: 'left',
-                    padding: 1
-                  },
-                  hr: {
-                    borderColor: '#CCCCCC',
-                    width: '100%',
-                    borderWidth: 1,
-                    height: 0,
-                  },
-                  c: {
-                    fontSize: 10,
-                    align: 'center',
-                    padding: 1,
-                    color:'#00EDED'
-                  }
-                }
+                formatter: '{b}',
+                textStyle:config().textStyle
               }
             }
           }
@@ -602,17 +533,15 @@
             //icon: 'circle',//图例形状，示例为原型
             top: '3%',//图例离底部的距离
             right:"5%",
-            itemWidth: 22, // 图例标记的图形宽度。
-            itemHeight: 22, // 图例标记的图形高度。
-            itemGap: 20, // 图例每项之间的间隔。
-            textStyle: {//图例文字的样式设置
-              fontSize: 18,
-              color: '#fff'
-            },
+            itemWidth: config().fontSize, // 图例标记的图形宽度。
+            itemHeight: config().fontSize, // 图例标记的图形高度。
+            itemGap: config().fontSize, // 图例每项之间的间隔。
+            textStyle:config().textStyle,
             data: ['投资额（万元）', '增速（%）'],//图例的名称数据
           },
           tooltip : {
             trigger: 'axis',
+            textStyle:config().textStyle,
             axisPointer : {            // 坐标轴指示器，坐标轴触发有效
               type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
             }
@@ -630,10 +559,7 @@
               data : xData ,
               axisLabel: {
                 //rotate:45,//斜体字可不用
-                textStyle: {
-                  fontSize: '16',
-                  color:'#fff'
-                }
+                textStyle:config().textStyle
               },
             },
           ],
@@ -650,10 +576,7 @@
                 }
               },//设置横线样式
               axisLabel: {
-                textStyle: {
-                  fontSize: '16',
-                  color:'#fff'
-                }
+                textStyle:config().textStyle
               },
             },
             {
@@ -668,10 +591,7 @@
                 show: false
               },
               axisLabel: {
-                textStyle: {
-                  fontSize: '16',
-                  color:'#fff'
-                }
+                textStyle:config().textStyle
               },
             }
           ],
@@ -768,7 +688,11 @@
             type: 'scatter',
             symbol: 'circle',
             symbolSize: function (d) {
-              return d[0] ;
+              var s = 15;
+              if(d[0]/2>=15){
+                s = d[0]/2;
+              }
+              return s ;
             },
             itemStyle: {
               normal: {
@@ -784,10 +708,7 @@
                 //alert(JSON.stringify(v))
                 return v.data[2]
               },
-              textStyle: {
-                color: '#fff',
-                fontSize: 18
-              }
+              textStyle:config().textStyle
             },
             data:[dat[i]]
           };
@@ -801,13 +722,10 @@
             //icon: 'circle',//图例形状，示例为原型
             top: '3%',//图例离底部的距离
             right:"5%",
-            itemWidth: 22, // 图例标记的图形宽度。
-            itemHeight: 22, // 图例标记的图形高度。
-            itemGap: 20, // 图例每项之间的间隔。
-            textStyle: {//图例文字的样式设置
-              fontSize: 18,
-              color: '#fff'
-            },
+            itemWidth: config().fontSize, // 图例标记的图形宽度。
+            itemHeight: config().fontSize, // 图例标记的图形高度。
+            itemGap: config().fontSize, // 图例每项之间的间隔。
+            textStyle:config().textStyle,
             data: ['医药产业', '会展业','医疗健康产业','现代物流业','海洋产业','低碳制造业','互联网产业',
               '金融业','旅游业','房地产业','文体产业','热带高效特色农业'],//图例的名称数据
           },
@@ -816,23 +734,24 @@
             left: '3%',
             right: '10%',
             bottom: '6%',
-            top:'26%',
+            top:'28%',
             containLabel: true
           },
           xAxis: {
             //type: "category",
             name: '增加值增速',
             nameGap: 25,
-            nameTextStyle: {
-              color: '#fff',
-              fontSize: 18
-            },
+            nameTextStyle: config().textStyle,
             axisLine: {
               lineStyle: {
                 width:2,
                 type: 'solid',
                 color: '#447AD5'
               }
+            },
+            axisLabel: {
+              margin:config().fontSize,
+              textStyle:config().textStyle
             },
             boundaryGap: false,
             splitLine: {
@@ -841,21 +760,11 @@
                 type: 'solid',
                 color: '#0A4E60'
               }
-            },
-            axisLabel: {
-              margin:30,
-              textStyle: {
-                color: '#fff',
-                fontSize: 18
-              }
             }
           },
           yAxis: {
             name: '增加值',
-            nameTextStyle: {
-              color: '#fff',
-              fontSize: 18
-            },
+            nameTextStyle: config().textStyle,
             nameGap: 25,
             splitLine: {
               show: true,
@@ -875,11 +784,8 @@
               show: false
             },
             axisLabel: {
-              margin:30,
-              textStyle: {
-                color: '#fff',
-                fontSize: 18
-              },
+              margin:config().fontSize,
+              textStyle:config().textStyle,
               formatter: "{value}%"
             },
           },
