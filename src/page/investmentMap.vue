@@ -577,7 +577,7 @@
         var chart_map_hnInv = echarts.init(document.getElementById(id));
         echarts.registerMap('hainan',  hainan)
         var pd = [{"name":"海口","value":[110.326837,20.031624,"海口","20.18"]}]
-        var option = option = {
+        var option ={
           tooltip: {
             trigger: 'item',
             textStyle: config().textStyle,
