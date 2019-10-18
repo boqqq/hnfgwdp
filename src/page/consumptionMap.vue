@@ -159,7 +159,7 @@
                     }],
                 config:{
                     "radius":	270,	//滚动半径，Number，单位px
-                    "maxFont":	24,	//最大字体大小
+                    "maxFont":	35,	//最大字体大小
                     "color":	'#1e96ff',	//字体颜色。为null时随机
                     "rotateAngleXbase":600,	//600	X方向旋转速度基数，数越小速度越快
                     "rotateAngleYbase":600,	//600	Y方向旋转速度基数，数越小速度越快
