@@ -153,6 +153,9 @@ background-color: #066cf8 !important;
 .el-select .el-input .el-select__caret{
   font-size: 0.8vw !important;
 }
+.el-input--mini .el-input__icon{
+  line-height: 1.3vw !important;
+}
 .charts{
   width: 100%;
   height: 100%;
