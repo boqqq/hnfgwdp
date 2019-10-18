@@ -221,6 +221,10 @@
   import 'font-awesome/css/font-awesome.min.css';
   //import {config,xAxiss,yAxiss,grid,tooltip,dotHtml,legend} from '../../static/js/config/chartConfig.js';
   var echarts = require('echarts');
+  import {config} from '../../static/js/config/chartConfig.js';
+  import '../../static/js/map/china.js';
+  import '../../static/js/map/hainan.js';
+  import hainan from '../../static/js/json/hainan.json';
   export default {
     name:"index",
     components: {
@@ -322,11 +326,10 @@
       this.chart_pie_rich('chart_pie_rich7', this.richArr[6].text, this.richArr[6].color, this.richArr[6].val, this.richArr[6].relVal, this.richArr[6].formatter)
       this.chart_bar_rate('chart_bar_rate1', this.richDim1, this.richSource1)
       this.chart_bar_rate('chart_bar_rate2', this.richDim2, this.richSource2)
-      // this.chart_bar_inv()
       this.chart_bar_invImp('chart_bar_invImp', this.invImpDate, this.invImpBar, this.invImpLine)
-      // this.chart_map_hnInv()
       this.chart_bar_fold('chart_bar_fold1', this.foldAxis1, this.foldAmount1, this.foldSum1)
       this.chart_bar_fold('chart_bar_fold2', this.foldAxis2, this.foldAmount2, this.foldSum2)
+      this.chart_map_hnInv('chart_map_hnInv')
     },
     methods: {
       //全省固定资产投资情况-各领域重点项目投资进度
@@ -570,12 +573,116 @@
         window.onresize=chart_bar_fold.resize;
       },
       //各市县投资进度
-      // chart_map_hnInv(){
-      //   var chart_map_hnInv = echarts.init(document.getElementById('chart_map_hnInv'));
-      //
-      //   chart_map_hnInv.setOption(option);
-      //   window.onresize = chart_map_hnInv.resize;
-      // },
+      chart_map_hnInv(id){
+        var chart_map_hnInv = echarts.init(document.getElementById(id));
+        echarts.registerMap('hainan',  hainan)
+        var pd = [{"name":"海口","value":[110.326837,20.031624,"海口","20.18"]}]
+        var option = option = {
+          tooltip: {
+            trigger: 'item',
+            textStyle: config().textStyle,
+            formatter: function (params) {
+              if(typeof(params.value)[2] == "undefined"){
+                return params.name + ' : ' + params.value;
+              }else{
+                return params.name + ' : ' + params.value[2];
+              }
+            }
+          },
+          legend: {
+            orient: 'vertical',
+            y: 'bottom',
+            x:'right',
+            data:['pm2.5'],
+            textStyle: config().textStyle,
+          },
+          visualMap: {
+            show: false,
+            min: 0,
+            max: 500,
+            left: 'left',
+            top: 'bottom',
+            text: ['高', '低'], // 文本，默认为数值文本
+            calculable: true,
+            seriesIndex: [1],
+            inRange: {
+              // color: ['#3B5077', '#031525'] // 蓝黑
+              // color: ['#ffc0cb', '#800080'] // 红紫
+              // color: ['#3C3B3F', '#605C3C'] // 黑绿
+              //color: ['#0f0c29', '#302b63', '#24243e'] // 黑紫黑
+              //color: ['#23074d', '#cc5333'] // 紫红
+              // color: ['#00467F', '#A5CC82'] // 蓝绿
+              // color: ['#1488CC', '#2B32B2'] // 浅蓝
+              // color: ['#00467F', '#A5CC82'] // 蓝绿
+              // color: ['#00467F', '#A5CC82'] // 蓝绿
+              // color: ['#00467F', '#A5CC82'] // 蓝绿
+              // color: ['#00467F', '#A5CC82'] // 蓝绿
+
+            }
+          },
+
+          geo: {
+            show: true,
+            map: 'hainan',
+            layoutSize: "500%",
+            zoom:9,
+            center: [109.76112,19.2472],
+            label: {
+              normal: {
+                show: false
+              },
+              emphasis: {
+                show: false,
+              }
+            },
+            roam: true,
+            itemStyle: {
+              normal: {
+                areaColor: 'transparent',
+                borderColor: '#3fdaff',
+                borderWidth: 2,
+                shadowColor: 'rgba(63, 218, 255, 0.5)',
+                shadowBlur: 30
+              },
+              emphasis: {
+                areaColor: '#2B91B7',
+              }
+            }
+          },
+          series : [
+            { //城市点位
+              name: 'city',
+              type: 'effectScatter',
+              coordinateSystem: 'geo',
+              symbol: 'circle',
+              symbolSize: 30,
+              itemStyle: {
+                normal: {
+                  color: 'red'
+                }
+              },
+              zlevel: 9,
+              data: pd,
+            },
+            { //城市点位
+              name: 'city',
+              type: 'scatter',
+              coordinateSystem: 'geo',
+              symbol: 'pin',
+              symbolSize: 50,
+              itemStyle: {
+                normal: {
+                  color: 'yellow'
+                }
+              },
+              zlevel: 9,
+              data: pd,
+            }
+          ]
+        };
+        chart_map_hnInv.setOption(option);
+        window.onresize = chart_map_hnInv.resize;
+      },
 
 
     }
