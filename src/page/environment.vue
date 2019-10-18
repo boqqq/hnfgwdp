@@ -69,7 +69,7 @@
                 <div class = "fl"><i class="fa fa-caret-right"></i></div>
               </div>
               <div class = "fix_left h7" style="height:23vh">
-                <div  id="chart_left2" class = "chart80"></div>
+                <div  id="chart_left2" class = "chart80" style="height:23vh;"></div>
               </div>
             </el-col>
             <el-col :span="24">
@@ -79,17 +79,17 @@
                 <div class = "fl"><i class="fa fa-caret-right"></i></div>
               </div>
               <div class = "fix_left h7" style="height:23vh">
-                <div id = "chart_left3" class = "chart80"></div>
+                <div id = "chart_left3" class = "chart80" style="height:23vh;"></div>
               </div>
             </el-col>
           </el-row>
         </el-col>
 
-        <el-col :span="10">
+        <el-col :span="9">
           <el-row>
             <el-col :span="24">
-              <div class = "fix_center h12">
-                <div id = "chart_center1" style="height:63vh">
+              <div class = "fix_center" style="height:56.5vh;">
+                <div id = "chart_center1" style="height:56.5vh;border: 1px solid #23A9F3;">
                 </div>
               </div>
             </el-col>
@@ -105,7 +105,7 @@
                   </el-col>
                   <el-col :span="24">
                     <div class = "fix_left h7">
-                      <div id = "chart_center2" class = "charts" style="height:31vh"></div>
+                      <div id = "chart_center2" class = "charts" style="height:27vh"></div>
                     </div>
                   </el-col>
                 </el-row>
@@ -114,7 +114,7 @@
           </el-row>
         </el-col>
 
-        <el-col :span="7">
+        <el-col :span="8">
           <el-row>
             <el-col :span="24">
               <div class = "chart_title">
@@ -122,16 +122,29 @@
                 <div class = "_tit">森林覆盖</div>
                 <div class = "fl"><i class="fa fa-caret-right"></i></div>
               </div>
-              <div class = "fix_right h7" style="height: 18vh;">
-                <div>
-                  <span>森林覆盖率</span>
-                  <span>森林储积率</span>
-                </div>
-                <div>
-                  <span>62.31%</span>
-                  <span>7090.4万立方米</span>
-                </div>
+              <div class = "h3 fix_right" style="height:18vh;">
+                <el-row>
+                  <el-col :span="12">
+                    <div class = "top_t2 tit3" style="border: 1px solid #23A9F3;height:8vh;">
+                      <p>森林覆盖率</p>
+                    </div>
+                    <div class = "top_v1 vc1" style="border: 1px solid #23A9F3;height:10vh;text-align: center;">
+                      <span>62</span>
+                      <span>.31%</span>
+                    </div>
+                  </el-col>
+                  <el-col :span="12">
+                    <div class = "top_t1 tit3" style="border: 1px solid #23A9F3;height:8vh;">
+                      <p>森林储积率</p>
+                    </div>
+                    <div class = "top_v1 vc2" style="border: 1px solid #23A9F3;height:10vh;">
+                      <span>7090</span>
+                      <span>.4万立方米</span>
+                    </div>
+                  </el-col>
+                </el-row>
               </div>
+
             </el-col>
             <el-col :span="24">
               <el-row>
@@ -260,10 +273,10 @@
         var  colorList=['#7564FF', '#2BBEC5', '#15C8FF', '#3bafff', '#f1bb4c','#aff', "rgba(250,250,250,0.5)"];
         var option = {
           grid: {
-            bottom: '10%',
+            bottom: '5%',
             left: '10%',
             right: '10%',
-            top:'20%'
+            top:'50%'
           },
           legend: {
             show:false,
@@ -423,7 +436,7 @@
           grid: {
             left: '3%',
             right: '4%',
-            bottom: '3%',
+            bottom: '1%',
             top:'10%',
             containLabel: true
           },
@@ -456,7 +469,7 @@
               rotate:40,
               showMinLabel: true,
               textStyle: {
-                fontSize: '16',
+                fontSize: 10,
                 color:'#fff',
               }
             }
@@ -576,8 +589,7 @@
             startAngle: 180, //开始刻度的角度
             endAngle: 0, //结束刻度的角度
             axisTick: {
-              show:true,
-              splitNumber: 1,
+              show:false,
             },
             axisLabel: axisLabel,
             splitLine: {
@@ -604,8 +616,7 @@
               startAngle: 180, //开始刻度的角度
               endAngle: 0, //结束刻度的角度
               axisTick: {
-                show:true,
-                splitNumber: 1,
+                show:false,
               },
               axisLabel: axisLabel,
               splitLine: {
@@ -620,7 +631,7 @@
               axisLine: axisLine,
               data: [{
                 value: 67,
-                name: 'GDP能耗',
+                name: 'GDP碳排放',
               }]
             }]
         };
@@ -1394,8 +1405,46 @@
 </script>
 <style lang="scss" >
   .environment{
+    .tit3{
+    }
     .fix_left{
       margin-top: 0;
+    }
+    .top_t1{
+      color: #fff;
+      font-size: 2.39vh;
+      text-align: left;
+      margin-top: 0vh;
+      p{
+        line-height: 3vh;
+      }
+    }
+    .top_t2{
+      color: #fff;
+      font-size: 2.39vh;
+      text-align: center;
+      margin-top: 0vh;
+      p{
+        line-height: 3vh;
+      }
+    }
+    .vc1{
+      color: #35FF1F;
+    }
+    .vc2{
+      color: #36C5EF;
+    }
+    .top_v1{
+      height: 14vh;
+      line-height: 14vh;
+      span:nth-child(1){
+        font-size: 6.94vh;
+        text-align: center;
+      }
+      span:nth-child(2){
+        font-size: 2.77vh;
+        text-align: center;
+      }
     }
     .fix_right{
       margin-top: 0;
