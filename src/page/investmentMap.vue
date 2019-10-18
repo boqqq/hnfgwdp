@@ -157,38 +157,57 @@
           </el-row>
         </el-col>
         <el-col :span="16">
-          <el-row class="inv_col_box inv_col_second">
+          <el-row class="inv_col_box inv_col_second" style="padding-top: 0;" :gutter="20">
             <el-col :span="10">
               <!--重点项目投资进度-->
-              <div id="chart_bar_invImp" style="height:36vh"></div>
+              <div class = "chart_title">
+                <div class = "fl"><i class="fa fa-caret-left"></i></div>
+                <div class = "_tit">月度经济指标</div>
+                <div class = "fl"><i class="fa fa-caret-right"></i></div>
+              </div>
+              <div class = "chart_box">
+                <div id="chart_bar_invImp" style="height:32vh"></div>
+              </div>
             </el-col>
             <el-col :span="7">
               <!--各领域重点项目投资进度-->
-              <div>
-                <el-row>
+              <div class = "chart_title">
+                <div class = "fl"><i class="fa fa-caret-left"></i></div>
+                <div class = "_tit">各领域重点项目投资进度</div>
+                <div class = "fl"><i class="fa fa-caret-right"></i></div>
+              </div>
+              <div class = "chart_box">
+               <el-row>
                   <el-col :span="12">
-                    <div id="chart_pie_rich4" style=" height:17vh;"></div>
+                  <div id="chart_pie_rich4" style=" height:16vh;"></div>
                   </el-col>
                   <el-col :span="12">
-                    <div id="chart_pie_rich5" style=" height:17vh;"></div>
+                    <div id="chart_pie_rich5" style=" height:16vh;"></div>
                   </el-col>
                   <el-col :span="12">
-                    <div id="chart_pie_rich6" style=" height:17vh;"></div>
+                    <div id="chart_pie_rich6" style=" height:16vh;"></div>
                   </el-col>
                   <el-col :span="12">
-                    <div id="chart_pie_rich7" style=" height:17vh;"></div>
+                    <div id="chart_pie_rich7" style=" height:16vh;"></div>
                   </el-col>
                 </el-row>
               </div>
             </el-col>
             <el-col :span="7">
               <!--重点项目完成进度-->
-              <ul class="inv_rate_table">
-                <li class="item"><span class="value"><b>64</b>个</span><i class="icon icon-task"></i><p class="title">计划项目开工数</p></li>
-                <li class="item"><span class="value"><b>23.1</b>%</span><i class="icon icon-chart"></i><p class="title">开工率</p></li>
-                <li class="item"><span class="value"><b>89</b>个</span><i class="icon icon-buil"></i><p class="title">计划竣工数目</p></li>
-                <li class="item"><span class="value"><b>91.41</b>%</span><i class="icon icon-floor"></i><p class="title">竣工率</p></li>
-              </ul>
+              <div class = "chart_title">
+                <div class = "fl"><i class="fa fa-caret-left"></i></div>
+                <div class = "_tit">重点项目完成进度</div>
+                <div class = "fl"><i class="fa fa-caret-right"></i></div>
+              </div>
+              <div class = "chart_box">
+                <ul class="inv_rate_table">
+                  <li class="item"><span class="value"><b>64</b>个</span><i class="icon icon-task"></i><p class="title">计划项目开工数</p></li>
+                  <li class="item"><span class="value"><b>23.1</b>%</span><i class="icon icon-chart"></i><p class="title">开工率</p></li>
+                  <li class="item"><span class="value"><b>89</b>个</span><i class="icon icon-buil"></i><p class="title">计划竣工数目</p></li>
+                  <li class="item"><span class="value"><b>91.41</b>%</span><i class="icon icon-floor"></i><p class="title">竣工率</p></li>
+                </ul>
+              </div>
             </el-col>
           </el-row>
         </el-col>
@@ -322,7 +341,7 @@
             borderRadius: 6,
             shadowColor:'rgba(66,177,232,.8)',
             shadowBlur:'10',
-            padding: [6, 10, 4, 10],
+            padding: [6, 5, 4, 5],
             bottom:'10%',
             left:'center',
             textStyle: {
@@ -565,6 +584,9 @@
 </script>
 <style lang="scss" scoped>
   #index{ margin-top: 7vh;}
+  .chart_title { left: 50%; margin-left: -5vw;}
+  .chart_box {border:1px solid #23A9F3;}
+  .fix_left{margin-top:0;}
   .chart_main { margin: 10px 15px; }
   .chart_main .el-row { margin:0;}
   .inv_col_first { height: 50vh;}
