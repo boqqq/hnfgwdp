@@ -56,7 +56,7 @@
         <el-col :span="8">
           <div class = "fix_down content-padding ">
             <div class = "_tit2"><h4>消费印象</h4></div>
-            <div><tag-cloud :data="hotTag" :config="config" @clickTag="null"></tag-cloud></div>
+            <div style="margin-top: 10vh"><tag-cloud :data="hotTag" :config="config" ></tag-cloud></div>
           </div>
         </el-col>
 
@@ -127,12 +127,12 @@
                     "name": "景区很美人太多"
                 }],
                 config:{
-                    "radius":	100,	//滚动半径，Number，单位px
+                    "radius":	350,	//滚动半径，Number，单位px
                     "maxFont":	24,	//最大字体大小
                     "color":	'#1e96ff',	//字体颜色。为null时随机
                     "rotateAngleXbase":600,	//600	X方向旋转速度基数，数越小速度越快
                     "rotateAngleYbase":600,	//600	Y方向旋转速度基数，数越小速度越快
-                    "hover":	true	//是否开启悬浮联动
+                    "hover":	false	//是否开启悬浮联动
                 }
             }
         },
