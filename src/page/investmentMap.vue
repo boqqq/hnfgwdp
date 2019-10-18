@@ -229,6 +229,61 @@
         foldAmount2:[33,10,22,14,15],
         foldSum1:[15,14,20,11,10],
         foldSum2:[22,10,30,50,14],
+        invImpDate: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+        invImpBar:[64,68,72,76,80,84,86,90,94,96,100,110],
+        invImpLine:[64,68,72,76,80,84,86,90,94,96,100,110],
+        richArr:
+          [
+            {
+              text:'投资项目总数',
+              color:'#42b1e8',
+              val:8454,
+              relVal:0,
+              formatter: '{c}',
+            },
+            {
+              text:'备案类项目',
+              color:'#33ce12',
+              val:4521,
+              relVal:0,
+              formatter: '{c}',
+            },
+            {
+              text:'审批类项目',
+              color:'#feb544',
+              val:1245,
+              relVal:0,
+              formatter: '{c}',
+            },
+            {
+              text:'总部经济',
+              color:'#42b1e8',
+              val:99,
+              relVal:100,
+              formatter: '{d}%',
+            },
+            {
+              text:'十二重点产业',
+              color:'#33ce12',
+              val:88,
+              relVal:100,
+              formatter: '{d}%',
+            },
+            {
+              text:'“五网”基础设施',
+              color:'#feb544',
+              val:110,
+              relVal:100,
+              formatter: '{d}%',
+            },
+            {
+              text:'社会民生',
+              color:'#ff4ef6',
+              val:100,
+              relVal:100,
+              formatter: '{d}%',
+            },
+          ],
       }
     },
     components: {
@@ -239,29 +294,29 @@
 
     },
     mounted () {
-      this.chart_pie_rich('chart_pie_rich1')
-      this.chart_pie_rich('chart_pie_rich2')
-      this.chart_pie_rich('chart_pie_rich3')
-      this.chart_pie_rich('chart_pie_rich4')
-      this.chart_pie_rich('chart_pie_rich5')
-      this.chart_pie_rich('chart_pie_rich6')
-      this.chart_pie_rich('chart_pie_rich7')
+      this.chart_pie_rich('chart_pie_rich1', this.richArr[0].text, this.richArr[0].color, this.richArr[0].val, this.richArr[0].relVal, this.richArr[0].formatter)
+      this.chart_pie_rich('chart_pie_rich2', this.richArr[1].text, this.richArr[1].color, this.richArr[1].val, this.richArr[1].relVal, this.richArr[1].formatter)
+      this.chart_pie_rich('chart_pie_rich3', this.richArr[2].text, this.richArr[2].color, this.richArr[1].val, this.richArr[2].relVal, this.richArr[2].formatter)
+      this.chart_pie_rich('chart_pie_rich4', this.richArr[3].text, this.richArr[3].color, this.richArr[3].val, this.richArr[3].relVal, this.richArr[3].formatter)
+      this.chart_pie_rich('chart_pie_rich5', this.richArr[4].text, this.richArr[4].color, this.richArr[4].val, this.richArr[4].relVal, this.richArr[4].formatter)
+      this.chart_pie_rich('chart_pie_rich6', this.richArr[5].text, this.richArr[5].color, this.richArr[5].val, this.richArr[5].relVal, this.richArr[5].formatter)
+      this.chart_pie_rich('chart_pie_rich7', this.richArr[6].text, this.richArr[6].color, this.richArr[6].val, this.richArr[6].relVal, this.richArr[6].formatter)
       this.chart_bar_rate('chart_bar_rate1', this.richDim1, this.richSource1)
       this.chart_bar_rate('chart_bar_rate2', this.richDim2, this.richSource2)
       // this.chart_bar_inv()
-      this.chart_bar_invImp()
+      this.chart_bar_invImp('chart_bar_invImp', this.invImpDate, this.invImpBar, this.invImpLine)
       // this.chart_map_hnInv()
       this.chart_bar_fold('chart_bar_fold1', this.foldAxis1, this.foldAmount1, this.foldSum1)
       this.chart_bar_fold('chart_bar_fold2', this.foldAxis2, this.foldAmount2, this.foldSum2)
     },
     methods: {
       //全省固定资产投资情况-各领域重点项目投资进度
-      chart_pie_rich(id){
+      chart_pie_rich(id, text, color, val, relVal, formatter){
         var chart_pie_rich = echarts.init(document.getElementById(id));
         var option = {
           title:{
-            text: '投资项目总数',
-            backgroundColor:'#42b1e8',
+            text: text,
+            backgroundColor:color,
             borderColor:'rgba(255,255,255,.3)',
             borderWidth: 1,
             borderRadius: 6,
@@ -276,45 +331,47 @@
               fontWeight:'normal',
             }
           },
-          series: [{
-            name: 'pie',
-            startAngle:'270',//起始角度
-            type: 'pie',
-            color:'#42b1e8',
-            radius: ['64%', '70%'],
-            label: {
-              normal: {
-                position: 'center'
-              }
-            },
-            data: [{
-              value: 100,
-              name: '占有率',
+          series: [
+            {
+              name: 'pie',
+              startAngle:'270',//起始角度
+              type: 'pie',
+              color: color,
+              radius: ['64%', '70%'],
               label: {
                 normal: {
-                  formatter: '{c}',
-                  textStyle: {
-                    fontSize: 16,
-                    fontWeight:'bold',
+                  position: 'center'
+                }
+              },
+              data: [{
+                value: val,
+                name: '占有率',
+                label: {
+                  normal: {
+                    formatter: formatter,
+                    textStyle: {
+                      fontSize: 16,
+                      fontWeight:'bold',
+                    }
                   }
                 }
-              }
-            }, {
-              value: 100,
-              tooltip: {
-                show: false
-              },
-              itemStyle: {
-                normal: {
-                  color: 'rgba(255,255,255,.2)'
+              }, {
+                value: relVal,
+                tooltip: {
+                  show: false
                 },
-                emphasis: {
-                  color: 'rgba(255,255,255,.2)'
-                }
-              },
-              hoverAnimation: false
-            }]
-          }]
+                itemStyle: {
+                  normal: {
+                    color: 'rgba(255,255,255,.2)'
+                  },
+                  emphasis: {
+                    color: 'rgba(255,255,255,.2)'
+                  }
+                },
+                hoverAnimation: false
+              }]
+            },
+          ]
         };
         chart_pie_rich.setOption(option);
         window.onresize = chart_pie_rich.resize;
@@ -373,8 +430,8 @@
 
       },
       //重点项目投资进度bar
-      chart_bar_invImp(){
-        var chart_bar_invImp = echarts.init(document.getElementById('chart_bar_invImp'));
+      chart_bar_invImp(id,date,bar,line){
+        var chart_bar_invImp = echarts.init(document.getElementById(id));
         var option = {
           barWidth:'15',
           xAxis: {
@@ -387,7 +444,7 @@
             textStyle:{
               color:'#fff'
             },
-            data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+            data: date
           },
           yAxis: {
             splitLine: {
@@ -411,7 +468,7 @@
           },
           series: [
             {
-              data: [64,68,72,76,80,84,86,90,94,96,100,110],
+              data:bar,
               type: 'bar',
               name: '柱状图',
               itemStyle: {
@@ -434,7 +491,7 @@
               }
             },
             {
-              data: [64,68,72,76,80,84,86,90,94,96,100,110],
+              data: line,
               type: 'line',
               name: '折线图',
               color:'#3f6999'
