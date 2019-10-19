@@ -10,14 +10,12 @@
                 <div class = "_tit">空气质量</div>
                 <div class = "fl"><i class="fa fa-caret-right"></i></div>
               </div>
-              <div class = "fix_left h7" style="height:38vh">
+              <div class = "fix_left h8">
                 <el-row style="padding-top: 5%;">
                   <el-col :span="14">
-                    <el-row>
-                      <div style="text-align: center; height: 2vh; line-height: 2vh">
-                        <span style="color: #fff; font-size: 0.8vw;">{{enObj.dataLabel}}</span>
-                      </div>
-                    </el-row>
+                    <div style="text-align: center; height: 2vh;">
+                      <span style="color: #fff; font-size: 0.8vw;">{{enObj.dataLabel}}</span>
+                    </div>
                     <el-row style="padding: 0 5%">
                       <vCalendar
                         ref="vcalendar"
@@ -53,7 +51,7 @@
                       <el-col :span="12"><span :class="getEnVlaClass(enObj.pm10)">{{enObj.pm10}}</span></el-col>
                     </el-row>
                     <el-row class="en-box-item">
-                      <el-col :span="12"><span class="en-box-label">AQI</span>
+                      <el-col :span="12"><span class="en-box-label" style="line-height: 4.5vh">AQI</span>
                       </el-col>
                       <el-col :span="12"><span :class="getEnVlaClass(enObj.aqi)">{{enObj.aqi}}</span></el-col>
                     </el-row>
@@ -63,13 +61,13 @@
               </div>
             </el-col>
             <el-col :span="24">
-              <div class = "chart_title">
+              <div class = "chart_title" style="width: 13vw;left: 8.5vw">
                 <div class = "fl"><i class="fa fa-caret-left"></i></div>
-                <div class = "_tit">近一年空气优良天气占比</div>
+                <div class = "_tit"  style="width: 13vw">近一年空气优良天气占比</div>
                 <div class = "fl"><i class="fa fa-caret-right"></i></div>
               </div>
-              <div class = "fix_left h7" style="height:23vh">
-                <div  id="chart_left2" class = "chart80" style="height:23vh;"></div>
+              <div class = "fix_left h6">
+                <div  id="chart_left2" class = "h6"></div>
               </div>
             </el-col>
             <el-col :span="24">
@@ -78,43 +76,35 @@
                 <div class = "_tit">环境问题热度</div>
                 <div class = "fl"><i class="fa fa-caret-right"></i></div>
               </div>
-              <div class = "fix_left h7" style="height:23vh">
-                <div id = "chart_left3" class = "chart80" style="height:23vh;"></div>
+              <div class = "fix_left">
+                <div id = "chart_left3" style="height: 26vh"></div>
               </div>
             </el-col>
           </el-row>
         </el-col>
 
-        <el-col :span="9">
+        <el-col :span="10">
           <el-row>
             <el-col :span="24">
-              <div class = "fix_center" style="height:56.5vh;">
-                <div id = "chart_center1" style="height:56.5vh;border: 1px solid #23A9F3;">
+              <div class = "fix_center h14">
+                <div id = "chart_center1" class="h14">
                 </div>
               </div>
             </el-col>
             <el-col :span="24">
-              <div class = "fix_center h10">
-                <el-row>
-                  <el-col :span="24">
-                    <div class="chart_title">
+                <div class="chart_title" style="width: 18vw;left: 12vw">
                     <div class = "fl"><i class="fa fa-caret-left"></i></div>
-                    <div class = "_tit">前两年完成"十三五"目标进度情况</div>
+                    <div class = "_tit" style="width: 18vw">前两年完成"十三五"目标进度情况</div>
                     <div class = "fl"><i class="fa fa-caret-right"></i></div>
-                    </div>
-                  </el-col>
-                  <el-col :span="24">
-                    <div class = "fix_left h7">
-                      <div id = "chart_center2" class = "charts" style="height:27vh"></div>
-                    </div>
-                  </el-col>
-                </el-row>
-              </div>
+                </div>
+               <div class = "fix_center2" style="margin-top: 0">
+                      <div id = "chart_center2" class = "h7" style="height: 30.5vh"></div>
+                </div>
             </el-col>
           </el-row>
         </el-col>
 
-        <el-col :span="8">
+        <el-col :span="7">
           <el-row>
             <el-col :span="24">
               <div class = "chart_title">
@@ -122,62 +112,49 @@
                 <div class = "_tit">森林覆盖</div>
                 <div class = "fl"><i class="fa fa-caret-right"></i></div>
               </div>
-              <div class = "h3 fix_right" style="height:18vh;">
-                <el-row>
-                  <el-col :span="12">
-                    <div class = "top_t2 tit3" style="border: 1px solid #23A9F3;height:8vh;">
-                      <p>森林覆盖率</p>
-                    </div>
-                    <div class = "top_v1 vc1" style="border: 1px solid #23A9F3;height:10vh;text-align: center;">
-                      <span>62</span>
-                      <span>.31%</span>
-                    </div>
-                  </el-col>
-                  <el-col :span="12">
-                    <div class = "top_t1 tit3" style="border: 1px solid #23A9F3;height:8vh;">
-                      <p>森林储积率</p>
-                    </div>
-                    <div class = "top_v1 vc2" style="border: 1px solid #23A9F3;height:10vh;">
-                      <span>7090</span>
-                      <span>.4万立方米</span>
-                    </div>
-                  </el-col>
-                </el-row>
+              <div class = "fix_right h4">
+                <div>
+                  <span>森林覆盖率</span>
+                  <span>森林储积率</span>
+                </div>
+                <div>
+                  <span>62.31%</span>
+                  <span>7090.4万立方米</span>
+                </div>
               </div>
-
             </el-col>
             <el-col :span="24">
               <el-row>
                 <el-col :span="12">
-                  <div class = "chart_title">
+                  <div class = "chart_title" style="left: 2.5vw">
                     <div class = "fl"><i class="fa fa-caret-left"></i></div>
-                    <div class = "_tit1">污水垃圾处理率</div>
+                    <div class = "_tit">污水垃圾处理率</div>
                     <div class = "fl"><i class="fa fa-caret-right"></i></div>
                   </div>
-                  <div class = "fix_right h7"  style="height: 23vh;">
+                  <div class = "fix_center2 h6" style="margin-top: 0">
                     <div id = "chart_right2" class = "charts"></div>
                   </div>
                 </el-col>
                 <el-col :span="12">
-                  <div class = "chart_title">
+                  <div class = "chart_title" style="left: 2vw">
                     <div class = "fl"><i class="fa fa-caret-left"></i></div>
-                    <div class = "_tit1">水体质量</div>
+                    <div class = "_tit">水体质量</div>
                     <div class = "fl"><i class="fa fa-caret-right"></i></div>
                   </div>
-                  <div class = "fix_right h7"  style="height: 23vh;">
-                    <div id = "chart_right4" class = "charts"></div>
+                  <div class = "fix_right h6" >
+                    <div id = "chart_right3" class = "charts"></div>
                   </div>
                 </el-col>
               </el-row>
             </el-col>
             <el-col :span="24">
-              <div class = "chart_title">
+              <div class = "chart_title" style="width: 13vw;left: 8.5vw">
                 <div class = "fl"><i class="fa fa-caret-left"></i></div>
-                <div class = "_tit">近一年PM2.5趋势变化</div>
+                <div class = "_tit" style="width: 13vw">近一年PM2.5趋势变化</div>
                 <div class = "fl"><i class="fa fa-caret-right"></i></div>
               </div>
-              <div class = "fix_right h7"  style="height: 43vh;">
-                <div id = "chart_right3" class = "charts"></div>
+              <div class = "fix_right">
+                <div id = "chart_right4" style="height: 43vh"></div>
               </div>
             </el-col>
           </el-row>
@@ -195,7 +172,7 @@
   import '../../static/js/map/jiangxi.js';
   import vCalendar from 'vue-calendar-component';
 
-  //import {config,xAxiss,yAxiss,grid,tooltip,dotHtml,legend} from '../../static/js/config/chartConfig.js';
+  import {config} from '../../static/js/config/chartConfig.js';
   var echarts = require('echarts');
   export default {
     name:"index",
@@ -221,11 +198,11 @@
     mounted () {
       this.chart_left2();
       this.chart_left3();
+      this.chart_center1();
       this.chart_center2();
+      this.chart_right2();
       this.chart_right3();
       this.chart_right4();
-      this.chart_right2();
-      this.chart_center1();
     },
     methods: {
       clickDay(data) {
@@ -273,21 +250,17 @@
         var  colorList=['#7564FF', '#2BBEC5', '#15C8FF', '#3bafff', '#f1bb4c','#aff', "rgba(250,250,250,0.5)"];
         var option = {
           grid: {
-            bottom: '5%',
+            bottom: '10%',
             left: '10%',
             right: '10%',
-            top:'50%'
+            top:'20%'
           },
           legend: {
             show:false,
             orient: 'vertical',
             top: "middle",
             right: "5%",
-            textStyle: {
-              color: '#f2f2f2',
-              fontSize: 12,
-
-            },
+            textStyle: config().textStyle,
             icon: 'roundRect'
           },
           series: [
@@ -436,7 +409,7 @@
           grid: {
             left: '3%',
             right: '4%',
-            bottom: '1%',
+            bottom: '3%',
             top:'10%',
             containLabel: true
           },
@@ -469,7 +442,7 @@
               rotate:40,
               showMinLabel: true,
               textStyle: {
-                fontSize: 10,
+                fontSize: '16',
                 color:'#fff',
               }
             }
@@ -589,7 +562,8 @@
             startAngle: 180, //开始刻度的角度
             endAngle: 0, //结束刻度的角度
             axisTick: {
-              show:false,
+              show:true,
+              splitNumber: 1,
             },
             axisLabel: axisLabel,
             splitLine: {
@@ -616,7 +590,8 @@
               startAngle: 180, //开始刻度的角度
               endAngle: 0, //结束刻度的角度
               axisTick: {
-                show:false,
+                show:true,
+                splitNumber: 1,
               },
               axisLabel: axisLabel,
               splitLine: {
@@ -631,15 +606,15 @@
               axisLine: axisLine,
               data: [{
                 value: 67,
-                name: 'GDP碳排放',
+                name: 'GDP能耗',
               }]
             }]
         };
         chart_center1.setOption(option)
         window.onresize = chart_center1.resize;
       },
-      chart_right3(){
-        var myChart=echarts.init(document.getElementById("chart_right3"));
+      chart_right4(){
+        var myChart=echarts.init(document.getElementById("chart_right4"));
         var option = {
           tooltip: {
             trigger: 'axis',
@@ -877,7 +852,7 @@
         };
         myChart.setOption(option);
       },
-      chart_right4(){
+      chart_right3(){
         var dataStyle = {
           normal: {
             label: {
@@ -904,7 +879,7 @@
             color: 'rgba(0,0,0,0)'
           }
         };
-        var myChart=echarts.init(document.getElementById("chart_right4"));
+        var myChart=echarts.init(document.getElementById("chart_right3"));
         var option = {
           color: ['#FFD622','#FF8820','#FC3459'],
           tooltip : {
@@ -1405,46 +1380,8 @@
 </script>
 <style lang="scss" >
   .environment{
-    .tit3{
-    }
     .fix_left{
       margin-top: 0;
-    }
-    .top_t1{
-      color: #fff;
-      font-size: 2.39vh;
-      text-align: left;
-      margin-top: 0vh;
-      p{
-        line-height: 3vh;
-      }
-    }
-    .top_t2{
-      color: #fff;
-      font-size: 2.39vh;
-      text-align: center;
-      margin-top: 0vh;
-      p{
-        line-height: 3vh;
-      }
-    }
-    .vc1{
-      color: #35FF1F;
-    }
-    .vc2{
-      color: #36C5EF;
-    }
-    .top_v1{
-      height: 14vh;
-      line-height: 14vh;
-      span:nth-child(1){
-        font-size: 6.94vh;
-        text-align: center;
-      }
-      span:nth-child(2){
-        font-size: 2.77vh;
-        text-align: center;
-      }
     }
     .fix_right{
       margin-top: 0;
@@ -1475,33 +1412,14 @@
     .ind_val3 span{
       color: #F28A2E;
     }
-    ._tit1{
-      width: 4vw;
-      background-color: #052439;
-      border: 1px #23A9F3 solid;
-      text-align: center;
-      color: #fff;
-      font-size: 18px;
-      line-height: 3vh;
-      border-radius:5px;
-    }
+
     .ind_val4 span{
       color: #D644E2;
     }
     .ind_val5 span{
       color: #2FBD57;
     }
-    .t_tl{
-      height: 2vh;
-      border: 1px #0091ff solid;
-      border-radius: 5px;
-      font-size: 16px;
-      color: #fff;
-      line-height: 2vh;
-      text-align: center;
-      margin-top: 3vh;
-      margin-left: 10px;
-    }
+
     .center_lis{
       background-color: #0E345B;
       width: 80%;
@@ -1523,7 +1441,7 @@
       max-width: none;
     }
     .wh_content_item{
-      height: 4.2vh;
+      height: 3.5vh;
       font-size: 0.8vw;
     }
     .wh_top_changge li{
@@ -1551,12 +1469,13 @@
     }
     .en-box-item{
       height: 10vh;
-      padding-top: 4vh;
+      padding-top: 2vh;
 
       .en-box-label{
         font-size: 1vw;
         line-height: 2vh;
         color: #fff;
+        margin-top: 2vh;
       }
       .en-box-val{
         color: #33E8BF;
