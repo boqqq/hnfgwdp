@@ -523,8 +523,8 @@
   #index{ margin-top: 7vh;}
   .chart_main { margin: 10px 15px;}
   .chart_main .el-row { margin:0;}
-  .live_col_first { height: 50vh; margin-bottom: 10px;}
-  .live_col_second { height: 36vh; margin-bottom:10px;}
+  .live_col_first { height: 50vh;}
+  .live_col_second { height: 36vh;}
   .inv_col_box { margin: 10px; border:1px solid #14436c;}
   .live_col_tit {
     .el-button {
@@ -540,7 +540,7 @@
      overflow: hidden;
      height:4vh;
      span {
-       font-size:1.2vw;
+       font-size:2.6vh;
        color: #fff;
        &:before,
        &:after {
@@ -573,7 +573,7 @@
   .live_pop_vel {
     margin-right:1vw;
     text-align: right;
-    padding: 1vw 0;
+    padding: 1vh 0;
     .live_pop_tag {
       color: #fff;
       font-size:2vh;
@@ -581,7 +581,7 @@
       line-height: 1.2em;
     }
     .live_pop_num {
-      font-size: 2vw;
+      font-size: 4.4vh;
       text-align: right;
       line-height: 1.2em;
       font-weight: 600;
@@ -617,30 +617,31 @@
     color: #fff;
     overflow: hidden;
     >h3 {
-      font-size:1.2vw;
+      font-size:2.6vh;
       margin-top:20%;
     }
     >p {
-      font-size:1.6vw;
+      font-size:3vh;
     }
   }
   .live_saf_list {
     margin: 0 0 4vh;
     padding:0 1vw !important;
     .tip {
-      font-size:.8vw;
+      font-size:1.8vh;
       color:#3e9ec4;
-      margin-bottom: 10px;
       white-space: nowrap;
       overflow: hidden;
+      line-height: 1.2em;
     }
     .vel_box {
       position: relative;
       height:4vh;
-      margin: 3vh 0 0 5vh;
-      font-size:1vw;
+      margin: 2vh 2vh 0 4vh;
+      font-size:1.8vh;
       color: #fff;
-      border:.36vh solid #43b8fe;
+      border:.6vh solid #43b8fe;
+      white-space: nowrap;
       border-top: none;
       border-left:none;
       >span {
@@ -649,7 +650,7 @@
         left: -4vh;
         text-shadow: 0 0 10px #04cbe0;
       >b{
-        font-size: 2vw;
+        font-size:4vh;
         margin-right:6px;
       }
       }
