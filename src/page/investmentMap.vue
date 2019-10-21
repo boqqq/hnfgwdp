@@ -166,7 +166,7 @@
                 <div class = "fl"><i class="fa fa-caret-right"></i></div>
               </div>
               <div class = "chart_box">
-                <div id="chart_bar_invImp" style="height:33vh"></div>
+                <div id="chart_bar_invImp" style="height:31vh"></div>
               </div>
             </el-col>
             <el-col :span="7">
@@ -179,16 +179,16 @@
               <div class = "chart_box">
                <el-row>
                   <el-col :span="12">
-                  <div id="chart_pie_rich4" style=" height:16.5vh;"></div>
+                  <div id="chart_pie_rich4" style=" height:15vh;"></div>
                   </el-col>
                   <el-col :span="12">
-                    <div id="chart_pie_rich5" style=" height:16.5vh;"></div>
+                    <div id="chart_pie_rich5" style=" height:15vh;"></div>
                   </el-col>
                   <el-col :span="12">
-                    <div id="chart_pie_rich6" style=" height:16.5vh;"></div>
+                    <div id="chart_pie_rich6" style=" height:15vh;"></div>
                   </el-col>
                   <el-col :span="12">
-                    <div id="chart_pie_rich7" style=" height:16.5vh;"></div>
+                    <div id="chart_pie_rich7" style=" height:15vh;"></div>
                   </el-col>
                 </el-row>
               </div>
@@ -527,6 +527,9 @@
       chart_bar_fold(id,axis,amount,sum){
         var chart_bar_fold = echarts.init(document.getElementById(id));
         var option = {
+          grid:{
+            x: '80%', y: '87%',
+          },
           angleAxis: {
             show:false,
           },
@@ -691,7 +694,7 @@
 <style lang="scss" scoped>
   #index{ margin-top: 7vh;}
   .chart_title { left: 50%; margin-left: -5vw;}
-  .chart_box {border:1px solid #23A9F3;}
+  .chart_box {border:1px solid #23A9F3; padding-top: 2vh;}
   .fix_left{margin-top:0;}
   .chart_main { margin: 10px 15px; }
   .chart_main .el-row { margin:0 !important;}
@@ -748,7 +751,7 @@
   }
   .inv_rate_table {
     padding:0 1vh;
-    height: 32vh;
+    height: 30vh;
     line-height: 6vh;
     .item {
       &:nth-child(2n+1) b {
@@ -756,18 +759,18 @@
       }
       margin:1vh 0;
       position: relative;
-      font-size:1.1vw;
+      font-size:2.6vh;
       color: #fff;
       .title {
         white-space: nowrap;
         overflow: hidden;
-        margin: 0 8vh 0 7vh;
+        margin: 0 10vh;
       }
       .icon {
         position: absolute;
         z-index: 9;
         top:0;
-        left: 0;
+        left: 2vh;
         width: 6vh;
         height: 6vh;
         display: inline-block;
@@ -778,10 +781,10 @@
         z-index: 9;
         top:0;
         right: 0;
-        font-size: 1vw;
+        font-size: 2vh;
         b {
           color: #25e2ff;
-          font-size:1.2vw; margin-right:5px;
+          font-size:3vh; margin-right:5px;
         }
       }
     }
