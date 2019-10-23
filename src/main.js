@@ -10,12 +10,14 @@ import 'element-ui/lib/theme-chalk/index.css';
 import axios from 'axios';
 import httpRequest from './utils/httpRequest';
 import vueSeamlessScroll from 'vue-seamless-scroll';
+import tagCloud from 'v-tag-cloud'
 
 Vue.prototype.axios=axios;
 Vue.prototype.vueSeamlessScroll=vueSeamlessScroll;
 Vue.prototype.$echarts = echarts;
 Vue.config.productionTip = false;
 Vue.use(ElementUI);
+Vue.use(tagCloud)
 
 // 挂载全局
 Vue.prototype.$http = httpRequest // ajax请求方法

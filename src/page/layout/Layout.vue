@@ -56,33 +56,40 @@ export default {
         this.title = this.nav[index].title
         //this.threeGo()
       },
-      // indexShow(){
-      //   this.isCollapse =  this.isCollapse == true?false:true
-      // },
+      currentPage(){
+        var s = 0
+        for (let i = 0; i < this.nav.length; i++) {
+          if(this.nav[i].path == this.$route.path){
+            this.navIndex  =  i;
+            this.title = this.nav[i].title
+          }
+        }
+        //return s;
+      },
+      checkRouterLocal(path) {
+        // 查找当前路由下标高亮
+        this.navIndex = this.nav.findIndex(item => item.path === path);
+        console.log(path,"path")
+      },
 
 
     },
     watch: {
         // "$route"() {
         //     let path = this.$route.path;
+        //   alert(path)
         //     // 检索当前路径
         //     this.checkRouterLocal(path);
-        //     if(path == '/dockings'){
-        //         this.navIndex = 3
-        //     }
-        //   if(path == '/lineMap4'||path == '/lineMap3'||path == '/lineMap2'||path == '/lineMap'){
-        //     this.navIndex = 2
-        //   }
         // }
     },
     mounted () {
-
+      this.currentPage()
     },
 }
 </script>
 
 <style lang="scss" scoped>
-.charts{
+  .charts{
     overflow:auto;
     width: 100%;
     .selfont{
@@ -106,14 +113,14 @@ export default {
       z-index: -1;
       h4{
         width: 100%;
-        font-size: 2vw;
+        font-size: 3.3vh;
         color: #fff;
         text-align: center;
       }
     }
     .item_index{
       height: 93%;
-      width: 250px;
+      width: 12vw;
       display: flex;
       position: fixed;
       top: 7%;
@@ -123,12 +130,13 @@ export default {
         margin-top: 10px;
       }
       ul li{
-        height: 50px;
+        height: 7vh;
       }
       ul li a{
-        line-height: 50px;
+        line-height: 7vh;
         text-align: left;
-        margin-left: 13%;
+        margin-left: 3vw;
+        font-size: 0.6vw;
         color: #fff;
         font-weight: bold;
         font-family: 'ºÚÌå',Verdana, Arial, Helvetica, AppleGothic, sans-serif;
@@ -148,35 +156,35 @@ export default {
       background-size: 100%;
     }
     .titleBox{
-        width: 100%;
-        height: 7vh;
-        position: fixed;
-        top: 0;
-        z-index: 99999;
+      width: 100%;
+      height: 7vh;
+      position: fixed;
+      top: 0;
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-image:url('../../../static/img/top_line_bg1.png');
+      background-repeat: no-repeat;
+      background-size: 100% 200%;
+
+      .titleCountent{
+        width: 80%;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        background-image:url('../../../static/img/top_line_bg1.png');
-        background-repeat: no-repeat;
-        background-size: 100% 200%;
-
-        .titleCountent{
-            width: 80%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            h4{
-              font-size:1.5vw;
-              color: #76CEFB;
-              margin-left: 50px;
-              font-weight: bolder;
-              background-image: -webkit-linear-gradient(left, #74cdfb , #bcface );
-              -webkit-text-fill-color: transparent;
-              -webkit-background-clip: text;
-            }
+        h4{
+          font-size:2.4vh;
+          color: #76CEFB;
+          margin-left: 50px;
+          font-weight: bolder;
+          background-image: -webkit-linear-gradient(left, #74cdfb , #bcface );
+          -webkit-text-fill-color: transparent;
+          -webkit-background-clip: text;
         }
+      }
     }
- }
+  }
 
 </style>
 <style lang="scss">

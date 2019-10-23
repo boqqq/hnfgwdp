@@ -17,7 +17,7 @@
               </el-col>
             </el-row>
 
-            <div id="bar_increment" style="height: 80%">
+            <div id="bar_increment" style="height: 39.5vh">
 
             </div>
 
@@ -46,7 +46,7 @@
           <div class = "fix_down content-padding">
 
             <div class = "_tit2"><h4>消费环境评价指数</h4></div>
-            <div id="consume-index" style="height: 100%;"></div>
+            <div id="consume-index" style="height:36.5vh"></div>
 
           </div>
 
@@ -56,7 +56,7 @@
         <el-col :span="8">
           <div class = "fix_down content-padding ">
             <div class = "_tit2"><h4>消费印象</h4></div>
-            <div style="margin-top: 10vh"><tag-cloud :data="hotTag" :config="config" ></tag-cloud></div>
+            <div><tag-cloud :data="hotTag" :config="config"  style = "height: 36.7vh"></tag-cloud></div>
           </div>
         </el-col>
 
@@ -68,7 +68,7 @@
               <el-button size="mini" @click="shoppingTypeChange(2)" :class="{'btn-selected':IncrementType == 2}" style="margin-left: 10px">数量</el-button>
               <el-button size="mini" @click="shoppingTypeChange(3)" :class="{'btn-selected':IncrementType == 3}" style="margin-left: 10px">金额</el-button>
             </div>
-            <div id="taxfree-shopping" style="height: 100%;"></div>
+            <div id="taxfree-shopping" style="height: 36.5vh;"></div>
 
           </div>
 
@@ -158,8 +158,8 @@
                         "name": "景区很美人太多"
                     }],
                 config:{
-                    "radius":	270,	//滚动半径，Number，单位px
-                    "maxFont":	35,	//最大字体大小
+                    "radius":	config().fontSize*10,	//滚动半径，Number，单位px
+                    "maxFont":	config().fontSize*3,	//最大字体大小
                     "color":	'#1e96ff',	//字体颜色。为null时随机
                     "rotateAngleXbase":600,	//600	X方向旋转速度基数，数越小速度越快
                     "rotateAngleYbase":600,	//600	Y方向旋转速度基数，数越小速度越快
