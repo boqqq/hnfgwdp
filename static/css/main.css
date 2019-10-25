@@ -70,19 +70,19 @@ body{
 .chart_title{
   display: flex;
   position: relative;
-  width: 10vw;
+  width: 26%;
   height: 3vh;
   top: 1.5vh;
-  left: 42vh;
+  left: 37%;
 }
 
 ._tit{
-   width: 20vh;
+   width: 100%;
    background-color: #052439;
    border: 1px #23A9F3 solid;
    text-align: center;
    color: #fff;
-   font-size: 1.8vh;
+   font-size: 2vh;
    line-height: 3vh;
    border-radius:5px;
  }
@@ -109,7 +109,7 @@ body{
   text-align: left;
   font-weight: bold;
   color: #0391F3;
-  font-size: 1.8vh;
+  font-size: 2vh;
   margin-left: 2vh;
   line-height: 5vh;
 }
@@ -137,21 +137,21 @@ background-color: #066cf8 !important;
 }
 .el-input__inner{
   color: #fff !important;
-  font-size: 1.4vh !important;
+  font-size: 1.5vh !important;
 }
 .el-select-dropdown__item{
   color: #fff !important;
   height: 2.5vh !important;
   line-height: 2.5vh !important;
-  font-size: 1.4vh !important;
+  font-size: 1.5vh !important;
 }
 .el-input--mini .el-input__inner{
   height: 2.5vh !important;
-  font-size: 1.4vh !important;
+  font-size: 1.5vh !important;
   line-height: 2.5vh !important;
 }
 .el-select .el-input .el-select__caret{
-  font-size: 1.4vh !important;
+  font-size: 1.5vh !important;
 }
 .charts{
   width: 100%;

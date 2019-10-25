@@ -149,7 +149,7 @@
                     <div class="inv_col_tit">
                       <span>重点项目投资进度情况</span>
                     </div>
-                    <div  style=" height:10vh;" id="chart_bar_rate2"></div>
+                    <div  style=" height:13vh;" id="chart_bar_rate2"></div>
                   </div>
                 </el-col>
               </el-row>
@@ -166,12 +166,12 @@
                 <div class = "fl"><i class="fa fa-caret-right"></i></div>
               </div>
               <div class = "chart_box">
-                <div id="chart_bar_invImp" style="height:31vh"></div>
+                <div id="chart_bar_invImp" style="height:33vh"></div>
               </div>
             </el-col>
             <el-col :span="7">
               <!--各领域重点项目投资进度-->
-              <div class = "chart_title">
+              <div class = "chart_title" style="width: 42%;left:29%">
                 <div class = "fl"><i class="fa fa-caret-left"></i></div>
                 <div class = "_tit">各领域重点项目投资进度</div>
                 <div class = "fl"><i class="fa fa-caret-right"></i></div>
@@ -179,23 +179,23 @@
               <div class = "chart_box">
                <el-row>
                   <el-col :span="12">
-                  <div id="chart_pie_rich4" style=" height:15vh;"></div>
+                  <div id="chart_pie_rich4" style=" height:16.5vh;"></div>
                   </el-col>
                   <el-col :span="12">
-                    <div id="chart_pie_rich5" style=" height:15vh;"></div>
+                    <div id="chart_pie_rich5" style=" height:16.5vh;"></div>
                   </el-col>
                   <el-col :span="12">
-                    <div id="chart_pie_rich6" style=" height:15vh;"></div>
+                    <div id="chart_pie_rich6" style=" height:16.5vh;"></div>
                   </el-col>
                   <el-col :span="12">
-                    <div id="chart_pie_rich7" style=" height:15vh;"></div>
+                    <div id="chart_pie_rich7" style=" height:16.5vh;"></div>
                   </el-col>
                 </el-row>
               </div>
             </el-col>
             <el-col :span="7">
               <!--重点项目完成进度-->
-              <div class = "chart_title">
+              <div class = "chart_title" style="width:30%;left:35%">
                 <div class = "fl"><i class="fa fa-caret-left"></i></div>
                 <div class = "_tit">重点项目完成进度</div>
                 <div class = "fl"><i class="fa fa-caret-right"></i></div>
@@ -349,7 +349,7 @@
             left:'center',
             textStyle: {
               color: '#fff',
-              fontSize: 12,
+              fontSize: config().fontSize,
               fontWeight:'normal',
             }
           },
@@ -372,7 +372,7 @@
                   normal: {
                     formatter: formatter,
                     textStyle: {
-                      fontSize: 16,
+                      fontSize: config().fontSize*2,
                       fontWeight:'bold',
                     }
                   }
@@ -403,14 +403,15 @@
         var chart_bar_rate = echarts.init(document.getElementById(id));
         var option = {
           legend: {
-            textStyle:{
-             color:'#fff',
-            },
+            textStyle:config().textStyle,
+            itemWidth: config().fontSize, // 图例标记的图形宽度。
+            itemHeight: config().fontSize, // 图例标记的图形高度。
+            itemGap: config().fontSize,
             right:'4%',
             icon: 'circle'
           },
           color:['#db5e32','#7df27f','#1ab4f4'],
-          barWidth : 15,
+          barWidth : '10%',
           barGap:'50%',
           tooltip: {},
           dataset: {
@@ -423,6 +424,11 @@
               lineStyle: {
                 color: "#fff",
               }},
+            axisLabel: {
+              margin:config().fontSize*0.5,
+              //rotate:45,//斜体字可不用
+              textStyle:config().textStyle
+            },
               },
           yAxis: {
             axisLine:{
@@ -430,6 +436,11 @@
               lineStyle:{
                 color:'#fff'
               }
+            },
+            axisLabel: {
+              margin:config().fontSize,
+              //rotate:45,//斜体字可不用
+              textStyle:config().textStyle
             },
             min: 60,
             max: 100,
@@ -539,10 +550,7 @@
             z: 10,
             axisLabel: {
               interval:0,
-              textStyle: {
-                color: '#fff',
-                fontSize:'10',
-              }
+              textStyle: config().textStyle
             }
           },
           polar: {
@@ -550,6 +558,7 @@
           series: [{
             type: 'bar',
             data: amount,
+            //center:['80%','60%'],
             coordinateSystem: 'polar',
             color:'#61a2ff',
             name: '项目总数',
@@ -564,12 +573,11 @@
           },],
           legend: {
             show: true,
+            orient: 'vertical',
             data: ['项目总数', '项目金额'],
+            right:'15%',
             color:'#fff',
-            textStyle: {
-              color: '#fff',
-              fontSize:10
-            }
+            textStyle: config().textStyle
           }
         };
         chart_bar_fold.setOption(option)
@@ -693,7 +701,7 @@
 </script>
 <style lang="scss" scoped>
   #index{ margin-top: 7vh;}
-  .chart_title { left: 50%; margin-left: -5vw;}
+  .chart_title { left: 37%;}
   .chart_box {border:1px solid #23A9F3; padding-top: 2vh;}
   .fix_left{margin-top:0;}
   .chart_main { margin: 10px 15px; }
@@ -707,12 +715,12 @@
     overflow: hidden;
     height: 3vh;
     span {
-     font-size:1vw;
+     font-size:2vh;
      color: #fff;
       &:before,
       &:after {
        content:'◆';
-        font-size:1.2vw;
+        font-size:3vh;
        color:#20baff;
         margin: 0 .2em;
         vertical-align:middle;
@@ -735,8 +743,8 @@
       border:.4vw solid rgba(255,255,255,.1);
       text-align: center;
       color: #fff;
-      font-size:1vw;
-      h3 { 
+      font-size:2vh;
+      h3 {
         margin: 3vh 0 0;
         white-space: nowrap;
         overflow: hidden;
@@ -751,7 +759,7 @@
   }
   .inv_rate_table {
     padding:0 1vh;
-    height: 30vh;
+    height: 32vh;
     line-height: 6vh;
     .item {
       &:nth-child(2n+1) b {
@@ -759,20 +767,20 @@
       }
       margin:1vh 0;
       position: relative;
-      font-size:2.6vh;
+      font-size:2vh;
       color: #fff;
       .title {
         white-space: nowrap;
         overflow: hidden;
-        margin: 0 10vh;
+        margin: 0 19%;
       }
       .icon {
         position: absolute;
         z-index: 9;
-        top:0;
-        left: 2vh;
-        width: 6vh;
-        height: 6vh;
+        top:1vh;
+        left: 10%;
+        width: 4vh;
+        height: 4vh;
         display: inline-block;
         background-size: 70%;
       }
@@ -780,7 +788,7 @@
         position: absolute;
         z-index: 9;
         top:0;
-        right: 0;
+        right: 10%;
         font-size: 2vh;
         b {
           color: #25e2ff;
@@ -795,7 +803,7 @@
     line-height:4vh;
     margin: 1vh auto 2vh;
     color: #fff;
-    font-size:1vw;
+    font-size:3vh;
     text-align: center;
     background: url("../../static/img/diamond_tit_bg.png") no-repeat;
     background-size: 100% 100%;

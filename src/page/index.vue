@@ -12,7 +12,7 @@
             </div>
             <div class = "fix_left h7">
               <div class = "chart_select">
-                <div class = "t_sel" style="padding-top: 5%">
+                <div class = "t_sel" style="padding-top: 3%">
                   <el-select size="mini" v-model="value">
                     <el-option
                       v-for="item in options"
@@ -34,7 +34,7 @@
             </div>
             <div class = "fix_left h7">
               <div class = "chart_select">
-                <el-row :gutter="5">
+                <el-row :gutter="10" style="margin: 0 20%">
                   <el-col :span="8">
                     <div class = "t_tl">
                       十二大重点产业增加值
@@ -62,8 +62,8 @@
               <div class = "fl"><i class="fa fa-caret-right"></i></div>
             </div>
             <div class = "fix_left h7">
-              <div class = "chart_select" style="width: 80%;margin-left: 10%">
-                <el-row :gutter="10">
+              <div class = "chart_select">
+                <el-row :gutter="10" style="margin: 0 22%">
                   <el-col :span="4">
                     <div class = "t_tl">
                       PMI
@@ -128,7 +128,7 @@
             <div class = "fix_center h10">
               <el-row>
                 <el-col :span="24">
-                  <div class = "center2_tit">宏观经济大数据指数</div>
+                  <div class="diamond_tit_bg">宏观经济大数据指数</div>
                 </el-col>
                 <el-col :span="6">
                   <div class = "center_lis" style="margin-top: 6vh">
@@ -140,7 +140,7 @@
                   <div class = "center_lis">消费评价指数</div>
                 </el-col>
                 <el-col :span="18">
-                  <div id = "chart_center2" class = "charts" style="height:31vh">
+                  <div id = "chart_center2" class = "charts" style="height:32vh">
                   </div>
                 </el-col>
               </el-row>
@@ -270,6 +270,7 @@
               },
               axisLabel: {
                 //rotate:45,//斜体字可不用
+                margin:config().fontSize,
                 textStyle: config().textStyle
               },
             },
@@ -401,6 +402,7 @@
               data : xData ,
               axisLabel: {
                 //rotate:45,//斜体字可不用
+                margin:config().fontSize,
                 textStyle: config().textStyle
               },
             },
@@ -519,14 +521,12 @@
                 color: "#fff",
                 width: 0.6 //这里是为了突出显示加上的
               }
-              // symbol: ['none', 'arrow'],
-              // symbolSize: [6, 12],
-              // symbolOffset: [0, 8]
             },
             axisLabel: {
               //interval: 0, //隔几个显示
               //rotate: 30,
               showMinLabel: true,
+              margin:config().fontSize,
               textStyle: config().textStyle
             }
           },
@@ -600,7 +600,8 @@
                  type : 'category',
                  data : xData ,
                  axisLabel: {
-                   rotate:45,//斜体字可不用
+                   //rotate:45,//斜体字可不用
+                   margin:config().fontSize,
                    textStyle: config().textStyle
                  },
                }
@@ -640,7 +641,7 @@
                  name:'系统外部',
                  type:'bar',
                  data:data1,
-                 barWidth:8
+                 barWidth:'40%'
                },{
                  name: "销售水量",
                  type: "line",
@@ -702,6 +703,7 @@
             type: 'category',
             boundaryGap: false,
             axisLabel: {
+              margin:config().fontSize,
               textStyle: config().textStyle
             },
             axisLine: {
@@ -1244,15 +1246,8 @@
                   barBorderRadius: 4
                 }
               },
+
               barWidth:'30%',
-              label: {
-                normal: {
-                  show: true,
-                  position: 'top',
-                  formatter: '{c}',
-                  textStyle: config().textStyle,
-                }
-              },
               data: data1[i]
             },
               {
@@ -1285,11 +1280,11 @@
               axisType: 'category',
               autoPlay: true,
               symbolSize: config().fontSize*0.8,
-              bottom:'3%',
+              bottom:'1%',
               left:'10%',
               right:'10%',
               playInterval: 2000,
-              height:config().fontSize*2.5,
+              height:config().fontSize*2.8,
               data: tData,
               label: {
                 normal: {
@@ -1309,13 +1304,13 @@
               checkpointStyle: {
                 color : '#2288fc',
                 borderColor: 'rgna(0,0,0,0)',
-                symbolSize: 16,
+                symbolSize: config().fontSize,
               },
             },
             calculable: true,
             grid: {
               top: '10%',
-              bottom: '22%',
+              bottom: '28%',
               left:'3%',
               right:'3%',
 
@@ -1334,6 +1329,7 @@
               },
               axisLabel: {
                 show: true,
+                margin:config().fontSize,
                 textStyle: config().textStyle,
               },
               axisLine: {
@@ -1411,21 +1407,21 @@
       margin-top: 0;
     }
     .ind_tit{
-     font-size: 0.8vw;
+     font-size: 2vh;
       color: #fff;
       text-align: center;
       height: 5vh;
       line-height: 5vh;
     }
     .ind_val{
-      font-size: 1.8vw;
+      font-size: 4vh;
       color: #fff;
       text-align: center;
       height: 4vh;
       line-height: 4vh;
     }
     .ind_val span:nth-child(2){
-      font-size: 0.8vw;
+      font-size: 2vh;
     }
     .ind_val1 span{
       color: #0000ff;
@@ -1446,18 +1442,29 @@
       height: 2vh;
       border: 1px #0091ff solid;
       border-radius: 5px;
-      font-size: 0.8vw;
+      font-size: 1.5vh;
       color: #fff;
       line-height: 2vh;
       text-align: center;
       margin-top: 3vh;
     }
+    .diamond_tit_bg{
+      width: 14vw;
+      height:4vh;
+      line-height:4vh;
+      margin: 1vh auto 2vh;
+      color: #fff;
+      font-size: 2vh;
+      text-align: center;
+      background: url("../../static/img/diamond_tit_bg.png") no-repeat;
+      background-size: 100% 100%;
+    }
     .center_lis{
      background-color: #0E345B;
-      width: 80%;
+      width: 60%;
       height: 3vh;
-      font-size: 0.8vw;
-      margin-left: 10%;
+      font-size: 2vh;
+      margin-left: 25%;
       margin-top: 1.5vh;
       color: #fff;
       line-height: 3vh;
@@ -1467,6 +1474,7 @@
       width: 100%;
       height: 7vh;
       color: #fff;
+      font-size: 2vh;
       line-height: 7vh;
       text-align: center;
     }

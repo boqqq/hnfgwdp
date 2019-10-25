@@ -14,7 +14,7 @@
                 <el-row style="padding-top: 5%;">
                   <el-col :span="14">
                     <div style="text-align: center; height: 2vh;">
-                      <span style="color: #fff; font-size: 0.8vw;">{{enObj.dataLabel}}</span>
+                      <span style="color: #fff; font-size: 1.5vh;">{{enObj.dataLabel}}</span>
                     </div>
                     <el-row style="padding: 0 5%">
                       <vCalendar
@@ -23,35 +23,35 @@
                         v-on:isToday="clickToday"
                       ></vCalendar>
                     </el-row>
-                    <el-row style="padding-left: 5%">
-                      <el-col :span="4" style="padding-left: 0.5vh"><el-col class="wh-color1"></el-col></el-col>
+                    <el-row style="padding-left: 9%;margin-top: 1.2vh">
+                      <el-col :span="4" style="padding-left: 0.5vh;margin-left: 1.4vh"><el-col class="wh-color1"></el-col></el-col>
                       <el-col :span="4" style="padding-left: 0.5vh"><el-col class="wh-color2"></el-col></el-col>
                       <el-col :span="4" style="padding-left: 0.5vh"><el-col class="wh-color3"></el-col></el-col>
                       <el-col :span="4" style="padding-left: 0.5vh"><el-col class="wh-color4"></el-col></el-col>
                       <el-col :span="4" style="padding-left: 0.5vh"><el-col class="wh-color5"></el-col></el-col>
                     </el-row>
-                    <el-row style="padding-left: 5%; color: #fff; font-size: 0.8vw; margin-top: 0.5vh">
-                      <el-col :span="4">50</el-col>
+                    <el-row style="padding-left: 9%; color: #fff; font-size: 1.5vh; margin-top: 0.5vh">
+                      <el-col :span="4" style="margin-left: 0.6vh">50</el-col>
                       <el-col :span="4">100</el-col>
                       <el-col :span="4">150</el-col>
                       <el-col :span="4">200</el-col>
                       <el-col :span="4">250</el-col>
-                      <el-col :span="4">500</el-col>
+                      <el-col :span="3">500</el-col>
                     </el-row>
                   </el-col>
-                  <el-col :span="10">
+                  <el-col :span="8" style="margin-left: 2vw">
                     <el-row class="en-box-item">
-                      <el-col :span="12"><span class="en-box-label">PM<br>2.5</span>
+                      <el-col :span="12"><span class="en-box-label" style="line-height: 2.9vh">PM<br>2.5</span>
                       </el-col>
                       <el-col :span="12"><span :class="getEnVlaClass(enObj.pm25)">{{enObj.pm25}}</span></el-col>
                     </el-row>
                     <el-row class="en-box-item">
-                      <el-col :span="12"><span class="en-box-label">PM<br>10</span>
+                      <el-col :span="12"><span class="en-box-label" style="line-height: 3vh">PM<br>10</span>
                       </el-col>
                       <el-col :span="12"><span :class="getEnVlaClass(enObj.pm10)">{{enObj.pm10}}</span></el-col>
                     </el-row>
                     <el-row class="en-box-item">
-                      <el-col :span="12"><span class="en-box-label" style="line-height: 4.5vh">AQI</span>
+                      <el-col :span="12"><span class="en-box-label" style="line-height: 6vh">AQI</span>
                       </el-col>
                       <el-col :span="12"><span :class="getEnVlaClass(enObj.aqi)">{{enObj.aqi}}</span></el-col>
                     </el-row>
@@ -61,7 +61,7 @@
               </div>
             </el-col>
             <el-col :span="24">
-              <div class = "chart_title" style="width: 13vw;left: 8.5vw">
+              <div class = "chart_title" style="width: 30%;left: 35%">
                 <div class = "fl"><i class="fa fa-caret-left"></i></div>
                 <div class = "_tit"  style="width: 13vw">近一年空气优良天气占比</div>
                 <div class = "fl"><i class="fa fa-caret-right"></i></div>
@@ -77,7 +77,7 @@
                 <div class = "fl"><i class="fa fa-caret-right"></i></div>
               </div>
               <div class = "fix_left">
-                <div id = "chart_left3" style="height: 26vh"></div>
+                <div id = "chart_left3" style="height: 27.2vh"></div>
               </div>
             </el-col>
           </el-row>
@@ -87,18 +87,19 @@
           <el-row>
             <el-col :span="24">
               <div class = "fix_center h14">
-                <div id = "chart_center1" class="h14">
+                <div class="cen_title">全国重点城市空气质量排名</div>
+                <div id = "chart_center1" class="h13">
                 </div>
               </div>
             </el-col>
             <el-col :span="24">
-                <div class="chart_title" style="width: 18vw;left: 12vw">
+                <div class="chart_title" style="width: 28%;left: 36%">
                     <div class = "fl"><i class="fa fa-caret-left"></i></div>
                     <div class = "_tit" style="width: 18vw">前两年完成"十三五"目标进度情况</div>
                     <div class = "fl"><i class="fa fa-caret-right"></i></div>
                 </div>
                <div class = "fix_center2" style="margin-top: 0">
-                      <div id = "chart_center2" class = "h7" style="height: 30.5vh"></div>
+                      <div id = "chart_center2" class = "h7" style="height: 30.6vh"></div>
                 </div>
             </el-col>
           </el-row>
@@ -107,26 +108,36 @@
         <el-col :span="7">
           <el-row>
             <el-col :span="24">
-              <div class = "chart_title">
+              <div class = "chart_title" style="width: 16%;left: 42%">
                 <div class = "fl"><i class="fa fa-caret-left"></i></div>
                 <div class = "_tit">森林覆盖</div>
                 <div class = "fl"><i class="fa fa-caret-right"></i></div>
               </div>
-              <div class = "fix_right h4">
-                <div>
-                  <span>森林覆盖率</span>
-                  <span>森林储积率</span>
-                </div>
-                <div>
-                  <span>62.31%</span>
-                  <span>7090.4万立方米</span>
-                </div>
+              <div class = "fix_right h5">
+                <el-row>
+                  <el-col :span="12">
+                    <div class = "forest_tit">森林覆盖率</div>
+                    <div class = "forest_val forest_val1">
+                      <span>62</span>
+                      <span>.31</span>
+                      <span>%</span>
+                    </div>
+                  </el-col>
+                  <el-col :span="12">
+                    <div class = "forest_tit">森林储积量</div>
+                    <div class = "forest_val forest_val2">
+                      <span>7090</span>
+                      <span>.4</span>
+                      <span>万立方米</span>
+                    </div>
+                  </el-col>
+                </el-row>
               </div>
             </el-col>
             <el-col :span="24">
               <el-row>
                 <el-col :span="12">
-                  <div class = "chart_title" style="left: 2.5vw">
+                  <div class = "chart_title" style="width: 40%;left: 30%">
                     <div class = "fl"><i class="fa fa-caret-left"></i></div>
                     <div class = "_tit">污水垃圾处理率</div>
                     <div class = "fl"><i class="fa fa-caret-right"></i></div>
@@ -136,7 +147,7 @@
                   </div>
                 </el-col>
                 <el-col :span="12">
-                  <div class = "chart_title" style="left: 2vw">
+                  <div class = "chart_title" style="width: 30%;left: 35%">
                     <div class = "fl"><i class="fa fa-caret-left"></i></div>
                     <div class = "_tit">水体质量</div>
                     <div class = "fl"><i class="fa fa-caret-right"></i></div>
@@ -148,13 +159,13 @@
               </el-row>
             </el-col>
             <el-col :span="24">
-              <div class = "chart_title" style="width: 13vw;left: 8.5vw">
+              <div class = "chart_title">
                 <div class = "fl"><i class="fa fa-caret-left"></i></div>
                 <div class = "_tit" style="width: 13vw">近一年PM2.5趋势变化</div>
                 <div class = "fl"><i class="fa fa-caret-right"></i></div>
               </div>
               <div class = "fix_right">
-                <div id = "chart_right4" style="height: 43vh"></div>
+                <div id = "chart_right4" style="height: 39.2vh"></div>
               </div>
             </el-col>
           </el-row>
@@ -257,8 +268,8 @@
           },
           legend: {
             show:false,
-            orient: 'vertical',
-            top: "middle",
+            //orient: 'vertical',
+            top: "2%",
             right: "5%",
             textStyle: config().textStyle,
             icon: 'roundRect'
@@ -302,52 +313,9 @@
                     }
                     return str
                   },
-                  padding: [0, -45],
+                  //padding: [0, -45],
                   height: 35,
-                  rich: {
-                    a: {
-                      width:38,
-                      height:38,
-                      lineHeight: 50,
-
-                      align: 'left'
-                    },
-                    b: {
-                      width:29,
-                      height:45,
-                      lineHeight: 50,
-                      align: 'left'
-                    },
-                    c: {
-                      width:34,
-                      height:33,
-                      lineHeight: 50,
-
-                      align: 'left'
-                    },
-                    d: {
-                      width:34,
-                      height:44,
-                      lineHeight: 50,
-                      align: 'left'
-                    },
-                    e: {
-                      width:38,
-                      height:30,
-                      lineHeight: 50,
-                      align: 'left'
-                    },
-                    nameStyle: {
-                      fontSize: 16,
-                      color: "#555",
-                      align: 'left'
-                    },
-                    rate: {
-                      fontSize: 20,
-                      color: "#1ab4b8",
-                      align: 'left'
-                    }
-                  }
+                  textStyle: config().textStyle,
                 }
               },
               data: [
@@ -404,7 +372,7 @@
         var option = {
           tooltip: {
             trigger: 'axis',
-
+            textStyle: config().textStyle,
           },
           grid: {
             left: '3%',
@@ -431,20 +399,13 @@
                 color: "#fff",
                 width: 0.6 //这里是为了突出显示加上的
               }
-              // symbol: ['none', 'arrow'],
-              // symbolSize: [6, 12],
-              // symbolOffset: [0, 8]
             },
             axisLabel: {
-              //interval: 0, //隔几个显示
-              //rotate: 30,
               interval:0,
-              rotate:40,
-              showMinLabel: true,
-              textStyle: {
-                fontSize: '16',
-                color:'#fff',
-              }
+              rotate:30,
+              //showMinLabel: true,
+              //margin:config().fontSize,
+              textStyle: config().textStyle,
             }
           },
           yAxis:   {
@@ -508,7 +469,7 @@
           offsetCenter: [0, "95%"], //相对于仪表盘中心的偏移位置，数组第一项是水平方向的偏移，第二项是垂直方向的偏移。可以是绝对的数值，也可以是相对于仪表盘半径的百分比。
           // 文字的颜色,默认 #333。
           color:"#fff",
-          fontSize: 16,
+          fontSize: config().fontSize,
           x: "38%",
           y: '60%',
         };
@@ -530,19 +491,23 @@
         var axisLine = {
           show: true,
           lineStyle: {
-            width: 10,
+            width: config().fontSize,
             shadowBlur: 0,
             color: [[1, axislineColor]]
           }
         };
-        var detail = {
-          fontSize: 16,
-          color:'#fff',
-          formatter: '{value}%'
-        }
+        var data1 = [{
+          value: 52,
+          name: 'GDP能耗',
+        }];
+        var data2 = [{
+          value: 8,
+          name: 'GDP碳排放',
+        }];
         var axisLabel = { // 刻度标签。
           show: true, // 是否显示标签,默认 true。
           color:'#fff',
+          fontSize: config().fontSize,
           formatter:function (v) {
             if(v == 0 || v == 50 || v == 100){
               return v;
@@ -557,7 +522,13 @@
             type: 'gauge',
             radius: '80%',
             center: ['25%', '70%'],
-            detail:detail ,
+            detail:{
+              fontSize: config().fontSize*1.5,
+              color:'#fff',
+              formatter:function (val) {
+                return data1[0].name+': '+val +' %'
+              }
+            } ,
             title: title,
             startAngle: 180, //开始刻度的角度
             endAngle: 0, //结束刻度的角度
@@ -567,25 +538,28 @@
             },
             axisLabel: axisLabel,
             splitLine: {
-              length: 10,
+              length: config().fontSize,
               lineStyle: {
                 color: 'auto'
               }
             },
             pointer: {
-              width: 3
+              width: config().fontSize*0.5,
             },
             axisLine: axisLine,
-            data: [{
-              value: 67,
-              name: 'GDP能耗',
-            }]
+            data: data1
           },
             {
               type: 'gauge',
               radius: '80%',
               center: ['75%', '70%'],
-              detail:detail ,
+              detail:{
+                fontSize: config().fontSize*1.5,
+                color:'#fff',
+                formatter:function (val) {
+                  return data2[0].name+': '+val +' %'
+                }
+              } ,
               title: title,
               startAngle: 180, //开始刻度的角度
               endAngle: 0, //结束刻度的角度
@@ -595,19 +569,16 @@
               },
               axisLabel: axisLabel,
               splitLine: {
-                length: 10,
+                length: config().fontSize,
                 lineStyle: {
                   color: 'auto'
                 }
               },
               pointer: {
-                width: 3
+                width:  config().fontSize*0.5,
               },
               axisLine: axisLine,
-              data: [{
-                value: 67,
-                name: 'GDP能耗',
-              }]
+              data: data2
             }]
         };
         chart_center1.setOption(option)
@@ -618,26 +589,26 @@
         var option = {
           tooltip: {
             trigger: 'axis',
+            textStyle: config().textStyle,
             axisPointer: {
               type: 'shadow'
             }
           },
           legend: {
             data: ['海南', '海口', '三亚'],
-            align: 'right',
+            //align: 'right',
             right: '5%',
             top: '10%',
-            textStyle: {
-              color: "#fff"
-            },
-            itemWidth: 10,
-            itemHeight: 10,
-            itemGap: 35
+            textStyle: config().textStyle,
+            itemWidth: config().fontSize,
+            itemHeight: config().fontSize,
+            itemGap: config().fontSize,
           },
           grid: {
             left: '3%',
             right: '4%',
             bottom: '3%',
+            top:'22%',
             containLabel: true
           },
           xAxis: [{
@@ -664,15 +635,16 @@
             },
             axisLabel: {
               show: true,
-              textStyle: {
-                color: "#fff",
-              }
+              margin:config().fontSize,
+              textStyle: config().textStyle,
             },
           }],
           yAxis: [{
             type: 'value',
             name:'PM2.5值',
+            nameTextStyle: config().textStyle,
             axisLabel: {
+              textStyle: config().textStyle,
               formatter: '{value}'
             },
             axisTick: {
@@ -698,7 +670,7 @@
             name: '海南',
             type: 'bar',
             data: [20, 30, 35, 18, 13, 18, 27, 40],
-            barWidth: 8, //柱子宽度
+            barWidth: '15%', //柱子宽度
             barGap: 0.5, //柱子之间间距
             itemStyle: {
               normal: {
@@ -716,7 +688,7 @@
             name: '海口',
             type: 'bar',
             data: [40, 40, 40, 11,25, 27, 20, 22],
-            barWidth: 8,
+            barWidth: '15%',
             barGap: 0.5,
             itemStyle: {
               normal: {
@@ -734,7 +706,7 @@
             name: '三亚',
             type: 'bar',
             data: [20, 28, 33,38, 23, 27, 30, 32],
-            barWidth: 8,
+            barWidth: '15%',
             barGap: 0.5,
             itemStyle: {
               normal: {
@@ -784,24 +756,18 @@
           color: ['#4BB8FD','#53F532'],
           tooltip : {
             show: true,
+            textStyle: config().textStyle,
             formatter: "{b} : {c}%"
           },
 
           legend: {
             top: "10%",
-            x: 'right',
             right: "5%",
-            itemWidth:10,itemHeight:10,
+            itemWidth:config().fontSize,
+            itemHeight:config().fontSize,
             data: ['污水处理率','垃圾处理率'],
-            itemGap: 10,
-            textStyle: {
-              color: '#fff',
-              align:'center',
-              x: 'right',
-              textAlign:'right',
-              fontSize:10
-            },
-
+            itemGap: config().fontSize,
+            textStyle: config().textStyle,
             selectedMode: true,
             orient: "horizontal",
 
@@ -812,6 +778,7 @@
               type: 'pie',
               clockWise: true,
               hoverAnimation: false,
+              center:['50%','60%'],
               radius: ['45%', '55%'],
               itemStyle: dataStyle,
 
@@ -821,9 +788,9 @@
               }, {
                 value: 10,
                 name: '总数',
-                tooltip: {
-                  show: false
-                },
+                // tooltip: {
+                //   show: false
+                // },
                 itemStyle: placeHolderStyle
               }
 
@@ -832,6 +799,7 @@
               name: 'Line 2',
               type: 'pie',
               clockWise: true,
+              center:['50%','60%'],
               radius: ['30%', '40%'],
               itemStyle: dataStyle,
               hoverAnimation: false,
@@ -842,9 +810,9 @@
               }, {
                 value: 10,
                 name: '总数',
-                tooltip: {
-                  show: false
-                },
+                // tooltip: {
+                //   show: false
+                // },
                 itemStyle: placeHolderStyle
               }]
             }
@@ -884,23 +852,17 @@
           color: ['#FFD622','#FF8820','#FC3459'],
           tooltip : {
             show: true,
+            textStyle: config().textStyle,
             formatter: "{b} : {c}%"
           },
           legend: {
             top: "10%",
-            x: 'right',
             right: "5%",
-            itemWidth:10,itemHeight:10,
+            itemWidth:config().fontSize,
+            itemHeight:config().fontSize,
             data: ['饮用水','地表水','近岸水域'],
-            itemGap: 10,
-            textStyle: {
-              color: '#fff',
-              align:'center',
-              x: 'right',
-              textAlign:'right',
-              fontSize:10
-            },
-
+            itemGap: config().fontSize,
+            textStyle: config().textStyle,
             selectedMode: true,
             orient: "horizontal",
 
@@ -911,6 +873,7 @@
               type: 'pie',
               clockWise: true,
               hoverAnimation: false,
+              center:['50%','60%'],
               radius: ['45%', '55%'],
               itemStyle: dataStyle,
 
@@ -920,9 +883,6 @@
               }, {
                 value: 10,
                 name: '总数',
-                tooltip: {
-                  show: false
-                },
                 itemStyle: placeHolderStyle
               }
 
@@ -931,6 +891,7 @@
               name: 'Line 2',
               type: 'pie',
               clockWise: true,
+              center:['50%','60%'],
               radius: ['30%', '40%'],
               itemStyle: dataStyle,
               hoverAnimation: false,
@@ -941,15 +902,13 @@
               }, {
                 value: 10,
                 name: '总数',
-                tooltip: {
-                  show: false
-                },
                 itemStyle: placeHolderStyle
               }]
             },, {
               name: 'Line 3',
               type: 'pie',
               clockWise: true,
+              center:['50%','60%'],
               radius: ['15%', '25%'],
               itemStyle: dataStyle,
               hoverAnimation: false,
@@ -960,9 +919,6 @@
               }, {
                 value: 10,
                 name: '总数',
-                tooltip: {
-                  show: false
-                },
                 itemStyle: placeHolderStyle
               }]
             }
@@ -972,137 +928,89 @@
       },
       chart_center1(){
         var myChart=echarts.init(document.getElementById("chart_center1"));
-        var name_title = "全国重点城市空气质量排名"
-        var nameColor = " rgb(55, 75, 113)"
         var name_fontFamily = '等线'
-        var name_fontSize = 18
         var mapName = 'china'
         var data = [
-          {name:"乌鲁木齐",value:1},
-          {name:"拉萨",value:2},
-          {name:"西宁",value:3},
-          {name:"兰州",value:4},
-          {name:"呼和浩特",value:5},
-          {name:"银川",value:6},
-          {name:"成都",value:7},
-          {name:"昆明",value:8},
-          {name:"西安",value:9},
-          {name:"太原",value:10},
-          {name:"重庆",value:11},
-          {name:"贵阳",value:12},
-          {name:"南宁",value:13},
-          {name:"海口",value:14},
-          {name:"三亚",value:15},
-          {name:"广州",value:16},
-          {name:"台北",value:17},
-          {name:"福州",value:18},
-          {name:"南昌",value:19},
-          {name:"长沙",value:20},
-          {name:"武汉",value:21},
-          {name:"合肥",value:22},
-          {name:"杭州",value:23},
-          {name:"南京",value:24},
-          {name:"郑州",value:25},
-          {name:"济南",value:26},
-          {name:"上海",value:27},
-          {name:"石家庄",value:28},
-          {name:"天津",value:29},
-          {name:"北京",value:30},
-          {name:"沈阳",value:31},
-          {name:"大连",value:32},
-          {name:"长春",value:33},
-          {name:"哈尔滨",value:34}
+          {name:"北京",value:177},
+          {name:"天津",value:42},
+          {name:"河北",value:102},
+          {name:"山西",value:81},
+          {name:"内蒙古",value:47},
+          {name:"辽宁",value:67},
+          {name:"吉林",value:82},
+          {name:"黑龙江",value:66},
+          {name:"上海",value:24},
+          {name:"江苏",value:92},
+          {name:"浙江",value:114},
+          {name:"安徽",value:109},
+          {name:"福建",value:116},
+          {name:"江西",value:91},
+          {name:"山东",value:119},
+          {name:"河南",value:137},
+          {name:"湖北",value:116},
+          {name:"湖南",value:114},
+          {name:"重庆",value:91},
+          {name:"四川",value:125},
+          {name:"贵州",value:62},
+          {name:"云南",value:83},
+          {name:"西藏",value:9},
+          {name:"陕西",value:80},
+          {name:"甘肃",value:56},
+          {name:"青海",value:10},
+          {name:"宁夏",value:18},
+          {name:"新疆",value:67},
+          {name:"广东",value:123},
+          {name:"广西",value:59},
+          {name:"海南",value:14},
         ];
 
-        var geoCoordMap = {"乌鲁木齐":[87.500966,  43.983832],
-          "拉萨":[90.959657,  29.881987],
-          "西宁":[101.703679, 36.733408],
-          "兰州":[103.764176, 36.198433],
-          "呼和浩特":[111.711808, 40.98898],
-          "银川":[106.192619, 38.605171],
-          "成都":[103.984944, 30.712171],
-          "昆明":[102.733927, 25.025991],
-          "西安":[112.521289, 38.025365],
-          "太原":[108.84183,  34.510421],
-          "重庆":[106.413387, 29.689402],
-          "贵阳":[106.560565, 26.756654],
-          "南宁":[108.326706, 22.99805,],
-          "海口":[110.129641, 20.14162,],
-          "三亚":[109.7525,18.40005],
-          "广州":[113.183592, 23.202287],
-          "台北":[121.49917,  25.12653,],
-          "福州":[119.107522, 26.193691],
-          "南昌":[115.722419, 28.882959],
-          "长沙":[112.778851, 28.363482],
-          "武汉":[114.177046, 30.743959],
-          "合肥":[117.120614, 31.943998],
-          "杭州":[119.990592, 30.361806],
-          "南京":[118.665986, 32.194658],
-          "郑州":[113.441154, 34.8448],
-          "济南":[116.973435, 36.763019],
-          "上海":[121.315197, 31.314325],
-          "石家庄":[114.397814, 38.170754],
-          "天津":[117.194203, 39.180291],
-          "北京":[116.384722, 39.977552],
-          "沈阳":[123.412489, 41.875105],
-          "大连": [121.5255,38.95223],
-          "长春":[125.252219, 43.850841],
-          "哈尔滨":[126.503235, 45.865719]
-        };
+        var geoCoordMap = {};
         var toolTipData = [
-          {name:"乌鲁木齐",value:1},
-          {name:"拉萨",value:2},
-          {name:"西宁",value:3},
-          {name:"兰州",value:4},
-          {name:"呼和浩特",value:5},
-          {name:"银川",value:6},
-          {name:"成都",value:7},
-          {name:"昆明",value:8},
-          {name:"西安",value:9},
-          {name:"太原",value:10},
-          {name:"重庆",value:11},
-          {name:"贵阳",value:12},
-          {name:"南宁",value:13},
-          {name:"海口",value:14},
-          {name:"三亚",value:15},
-          {name:"广州",value:16},
-          {name:"台北",value:17},
-          {name:"福州",value:18},
-          {name:"南昌",value:19},
-          {name:"长沙",value:20},
-          {name:"武汉",value:21},
-          {name:"合肥",value:22},
-          {name:"杭州",value:23},
-          {name:"南京",value:24},
-          {name:"郑州",value:25},
-          {name:"济南",value:26},
-          {name:"上海",value:27},
-          {name:"石家庄",value:28},
-          {name:"天津",value:29},
-          {name:"北京",value:30},
-          {name:"沈阳",value:31},
-          {name:"大连",value:32},
-          {name:"长春",value:33},
-          {name:"哈尔滨",value:34}
+          {name:"北京",value:[{name:"文科",value:95},{name:"理科",value:82}]},
+          {name:"天津",value:[{name:"文科",value:22},{name:"理科",value:20}]},
+          {name:"河北",value:[{name:"文科",value:60},{name:"理科",value:42}]},
+          {name:"山西",value:[{name:"文科",value:40},{name:"理科",value:41}]},
+          {name:"内蒙古",value:[{name:"文科",value:23},{name:"理科",value:24}]},
+          {name:"辽宁",value:[{name:"文科",value:39},{name:"理科",value:28}]},
+          {name:"吉林",value:[{name:"文科",value:41},{name:"理科",value:41}]},
+          {name:"黑龙江",value:[{name:"文科",value:35},{name:"理科",value:31}]},
+          {name:"上海",value:[{name:"文科",value:12},{name:"理科",value:12}]},
+          {name:"江苏",value:[{name:"文科",value:47},{name:"理科",value:45}]},
+          {name:"浙江",value:[{name:"文科",value:57},{name:"理科",value:57}]},
+          {name:"安徽",value:[{name:"文科",value:57},{name:"理科",value:52}]},
+          {name:"福建",value:[{name:"文科",value:59},{name:"理科",value:57}]},
+          {name:"江西",value:[{name:"文科",value:49},{name:"理科",value:42}]},
+          {name:"山东",value:[{name:"文科",value:67},{name:"理科",value:52}]},
+          {name:"河南",value:[{name:"文科",value:69},{name:"理科",value:68}]},
+          {name:"湖北",value:[{name:"文科",value:60},{name:"理科",value:56}]},
+          {name:"湖南",value:[{name:"文科",value:62},{name:"理科",value:52}]},
+          {name:"重庆",value:[{name:"文科",value:47},{name:"理科",value:44}]},
+          {name:"四川",value:[{name:"文科",value:65},{name:"理科",value:60}]},
+          {name:"贵州",value:[{name:"文科",value:32},{name:"理科",value:30}]},
+          {name:"云南",value:[{name:"文科",value:42},{name:"理科",value:41}]},
+          {name:"西藏",value:[{name:"文科",value:5},{name:"理科",value:4}]},
+          {name:"陕西",value:[{name:"文科",value:38},{name:"理科",value:42}]},
+          {name:"甘肃",value:[{name:"文科",value:28},{name:"理科",value:28}]},
+          {name:"青海",value:[{name:"文科",value:5},{name:"理科",value:5}]},
+          {name:"宁夏",value:[{name:"文科",value:10},{name:"理科",value:8}]},
+          {name:"新疆",value:[{name:"文科",value:36},{name:"理科",value:31}]},
+          {name:"广东",value:[{name:"文科",value:63},{name:"理科",value:60}]},
+          {name:"广西",value:[{name:"文科",value:29},{name:"理科",value:30}]},
+          {name:"海南",value:[{name:"文科",value:8},{name:"理科",value:6}]},
         ];
-
 
         /*获取地图数据*/
-        /*var mapFeatures = echarts.getMap(mapName).geoJson.features;
-        var str='';
+        myChart.showLoading();
+        var mapFeatures = echarts.getMap(mapName).geoJson.features;
         myChart.hideLoading();
         mapFeatures.forEach(function(v) {
-            // 地区名称
-            var name = v.properties.name;
-            // 地区经纬度
-            geoCoordMap[name] = v.properties.cp;
+          // 地区名称
+          var name = v.properties.name;
+          // 地区经纬度
+          geoCoordMap[name] = v.properties.cp;
 
-        });*/
-// console.log("============geoCoordMap===================")
-// console.log(geoCoordMap)
-// console.log("================data======================")
-        console.log(data)
-        console.log(toolTipData)
+        });
+
         var max = 480,
           min = 9; // todo
         var maxSize4Pin = 100,
@@ -1122,23 +1030,18 @@
           return res;
         };
         var option = {
-          title: {
-            text: name_title,
-            x: 'center',
-            textStyle: {
-              color: nameColor,
-              fontFamily: name_fontFamily,
-              fontSize: name_fontSize
-            }
-          },
           tooltip: {
             trigger: 'item',
+            textStyle: config().textStyle,
             formatter: function(params) {
               if (typeof(params.value)[2] == "undefined") {
                 var toolTiphtml = ''
                 for(var i = 0;i<toolTipData.length;i++){
                   if(params.name==toolTipData[i].name){
-                    toolTiphtml += toolTipData[i].name+':<br>'+"排名:"+toolTipData[i].value
+                    toolTiphtml += toolTipData[i].name+':<br>'
+                    for(var j = 0;j<toolTipData[i].value.length;j++){
+                      toolTiphtml+=toolTipData[i].value[j].name+':'+toolTipData[i].value[j].value+"<br>"
+                    }
                   }
                 }
                 console.log(toolTiphtml)
@@ -1148,7 +1051,10 @@
                 var toolTiphtml = ''
                 for(var i = 0;i<toolTipData.length;i++){
                   if(params.name==toolTipData[i].name){
-                    toolTiphtml += toolTipData[i].name+':<br>'+"排名:"+toolTipData[i].value
+                    toolTiphtml += toolTipData[i].name+':<br>'
+                    for(var j = 0;j<toolTipData[i].value.length;j++){
+                      toolTiphtml+=toolTipData[i].value[j].name+':'+toolTipData[i].value[j].value+"<br>"
+                    }
                   }
                 }
                 console.log(toolTiphtml)
@@ -1157,53 +1063,26 @@
               }
             }
           },
-          // legend: {
-          //     orient: 'vertical',
-          //     y: 'bottom',
-          //     x: 'right',
-          //     data: ['credit_pm2.5'],
-          //     textStyle: {
-          //         color: '#fff'
-          //     }
-          // },
+
           visualMap: {
             show: true,
             min: 0,
             max: 200,
-            left: 'left',
-            top: 'bottom',
+            left: '5%',
+            bottom: '5%',
+            itemHeight:100,
             text: ['高', '低'], // 文本，默认为数值文本
+            textStyle: config().textStyle,
             calculable: true,
             seriesIndex: [1],
             inRange: {
-              // color: ['#3B5077', '#031525'] // 蓝黑
-              // color: ['#ffc0cb', '#800080'] // 红紫
-              // color: ['#3C3B3F', '#605C3C'] // 黑绿
-              // color: ['#0f0c29', '#302b63', '#24243e'] // 黑紫黑
-              // color: ['#23074d', '#cc5333'] // 紫红
+
               color: ['#00467F', '#A5CC82'] // 蓝绿
-              // color: ['#1488CC', '#2B32B2'] // 浅蓝
-              // color: ['#00467F', '#A5CC82'] // 蓝绿
-              // color: ['#00467F', '#A5CC82'] // 蓝绿
-              // color: ['#00467F', '#A5CC82'] // 蓝绿
-              // color: ['#00467F', '#A5CC82'] // 蓝绿
+
 
             }
           },
-          /*工具按钮组*/
-          // toolbox: {
-          //     show: true,
-          //     orient: 'vertical',
-          //     left: 'right',
-          //     top: 'center',
-          //     feature: {
-          //         dataView: {
-          //             readOnly: false
-          //         },
-          //         restore: {},
-          //         saveAsImage: {}
-          //     }
-          // },
+
           geo: {
             show: true,
             map: mapName,
@@ -1215,6 +1094,8 @@
                 show: false,
               }
             },
+            //layoutSize: "500%",
+            zoom:1.2,
             roam: true,
             itemStyle: {
               normal: {
@@ -1246,7 +1127,7 @@
             },
             itemStyle: {
               normal: {
-                color: 'white'
+                color: '#05C3F9'
               }
             }
           },
@@ -1285,12 +1166,7 @@
               type: 'scatter',
               coordinateSystem: 'geo',
               symbol: 'pin', //气泡
-              symbolSize: function(val) {
-                var a = (maxSize4Pin - minSize4Pin) / (max - min);
-                var b = minSize4Pin - a * min;
-                b = maxSize4Pin - a * max;
-                return a * val[2] + b;
-              },
+              symbolSize: config().fontSize*3,
               label: {
                 normal: {
                   show: true,
@@ -1309,45 +1185,14 @@
               data: convertData(data),
             },
             {
-              name: 'Top 3',
+              name: 'Top 5',
               type: 'effectScatter',
               coordinateSystem: 'geo',
-              data: convertData(data.sort(function(b) {
-                return b.value
-              }).slice(0, 3)),
+              data: convertData(data.sort(function(a, b) {
+                return b.value - a.value;
+              }).slice(0, 5)),
               symbolSize: function(val) {
-                return val[2] / 10;
-              },
-              showEffectOn: 'render',
-              rippleEffect: {
-                brushType: 'stroke'
-              },
-              hoverAnimation: true,
-              label: {
-                normal: {
-                  formatter: '{b}',
-                  position: 'right',
-                  show: true
-                }
-              },
-              itemStyle: {
-                normal: {
-                  color: '#3AC4E0',
-                  shadowBlur: 10,
-                  shadowColor: '#3AC4E0'
-                }
-              },
-              zlevel: 1
-            },
-            {
-              name: 'Top 3-20',
-              type: 'effectScatter',
-              coordinateSystem: 'geo',
-              data: convertData(data.sort(function(b) {
-                return b.value
-              }).slice(3, 20)),
-              symbolSize: function(val) {
-                return val[2] / 10;
+                return val[2] /4;
               },
               showEffectOn: 'render',
               rippleEffect: {
@@ -1430,6 +1275,12 @@
       line-height: 3vh;
       text-align: center;
     }
+    .cen_title{
+      height: 4vh;
+      text-align: center;
+      font-size: 2vh;
+      color: #fff
+    }
     .center2_tit{
       width: 100%;
       height: 7vh;
@@ -1441,8 +1292,8 @@
       max-width: none;
     }
     .wh_content_item{
-      height: 3.5vh;
-      font-size: 0.8vw;
+      height: 3vh;
+      font-size: 1.5vh;
     }
     .wh_top_changge li{
       display: none;
@@ -1468,43 +1319,43 @@
       padding-bottom: 0;
     }
     .en-box-item{
-      height: 10vh;
+      height: 8vh;
       padding-top: 2vh;
 
       .en-box-label{
-        font-size: 1vw;
+        font-size: 2vh;
         line-height: 2vh;
         color: #fff;
         margin-top: 2vh;
       }
       .en-box-val{
         color: #33E8BF;
-        font-size: 2vw;
+        font-size: 5vh;
         font-weight: bold;
       }
       .en-box-val1{
         color: #24D349;
-        font-size: 2vw;
+        font-size: 5vh;
         font-weight: bold;
       }
       .en-box-val2{
         color: #DFCC22;
-        font-size: 2vw;
+        font-size: 5vh;
         font-weight: bold;
       }
       .en-box-val3{
         color: #D9793C;
-        font-size: 2vw;
+        font-size: 5vh;
         font-weight: bold;
       }
       .en-box-val4{
         color: #D83D3B;
-        font-size: 2vw;
+        font-size: 5vh;
         font-weight: bold;
       }
       .en-box-val5{
         color: #4D2324;
-        font-size: 2vw;
+        font-size: 5vh;
         font-weight: bold;
       }
     }
@@ -1527,6 +1378,31 @@
     .wh-color5{
       background-color: #4D2324;
       height: 1vh;
+    }
+    .forest_tit{
+      font-size: 2vh;
+      color: #fff;
+      text-align: center;
+      line-height: 9vh;
+    }
+    .forest_val{
+      font-size: 2vh;
+      color: #fff;
+      text-align: center;
+      line-height: 9vh;
+      span:nth-child(1){
+        font-size: 7vh;
+      }
+    }
+    .forest_val1{
+      span:nth-child(1),span:nth-child(2){
+        color: #35FF1F;
+      }
+    }
+    .forest_val2{
+      span:nth-child(1),span:nth-child(2){
+        color: #36C6EE;
+      }
     }
   }
 </style>

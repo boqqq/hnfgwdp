@@ -10,7 +10,7 @@
             <div class="live_pop_count">
               <el-row :gutter="20">
                 <el-col :span="6"><i class="icon_group_fill icon"></i></el-col>
-                <el-col :span="18">
+                <el-col :span="17">
                   <div class="live_pop_vel">
                     <h3 class="live_pop_tag">常驻人口</h3>
                     <p class="live_pop_num" style="color:#f0a90f;">4855万人</p>
@@ -18,8 +18,8 @@
                 </el-col>
               </el-row>
               <el-row :gutter="20">
-                <el-col :span="6"><i class="icon_chart_fill icon"></i></el-col>
-                <el-col :span="18">
+                <el-col :span="6"><i class="icon_chart_fill icon" style="margin-top: 9%"></i></el-col>
+                <el-col :span="17">
                   <div class="live_pop_vel">
                     <h3 class="live_pop_tag">常驻人口城镇化率</h3>
                     <p class="live_pop_num" style="color:#e63bec;">32.5%</p>
@@ -30,8 +30,8 @@
                 </el-col>
               </el-row>
               <el-row :gutter="20">
-                <el-col :span="6"><i class="icon_addressbook_fill icon"></i></el-col>
-                <el-col :span="18">
+                <el-col :span="6"><i class="icon_addressbook_fill icon" style="margin-top: 9%"></i></el-col>
+                <el-col :span="17">
                   <div class="live_pop_vel">
                     <h3 class="live_pop_tag">户籍人口城镇化率</h3>
                     <p class="live_pop_num" style="color:#04cbe0;">76.3%</p>
@@ -46,7 +46,6 @@
         </el-col>
         <el-col :span="10">
           <div  class="live_col_first">
-            <!--民生领域获得感-->
             <div class="diamond_tit_bg">民生领域获得感</div>
             <el-row :gutter="20" class="live_ring_row">
               <el-col :span="8">
@@ -134,7 +133,7 @@
             <div class="live_col_tit">
               <span>就业和社会保障</span>
             </div>
-            <el-row :gutter="20">
+            <el-row :gutter="20" style="margin-top: 4vh">
               <el-col :span="8" class="live_saf_list">
                 <p class="tip">2016年以来民生<br>支出占财政支出比值</p>
                 <div class="vel_box">
@@ -180,7 +179,7 @@
             <div class="live_col_tit">
               <span>十件民生实事完成情况</span>
             </div>
-            <div id="chart_bar_live" style="height: 30vh;"></div>
+            <div id="chart_bar_live" style="height: 34vh;"></div>
           </div>
         </el-col>
         <el-col :span="7">
@@ -189,7 +188,7 @@
             <div class="live_col_tit">
               <span>脱贫攻坚</span>
             </div>
-            <el-row :gutter="20">
+            <el-row :gutter="20" style="margin-top: 1vh">
               <el-col :span="12" class="live_pole_col">
                 <p class="tip">2016年以来减少建档<br />立卡贫困人口</p>
                 <div class="vel_box" style="background: #1ab4f4;">603万人</div>
@@ -218,7 +217,7 @@
 <script>
   //import axios from 'axios';
   import 'font-awesome/css/font-awesome.min.css';
-  //import {config,xAxiss,yAxiss,grid,tooltip,dotHtml,legend} from '../../static/js/config/chartConfig.js';
+  import {config} from '../../static/js/config/chartConfig.js';
   var echarts = require('echarts');
   export default {
     name:"index",
@@ -265,16 +264,18 @@
       chart_bar_live(){
         var chart_bar_live = echarts.init(document.getElementById('chart_bar_live'));
         var option = {
-          grid:{
-            top:'5%',
+          grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '5%',
+            top:'10%',
+            containLabel: true
           },
           legend: {
             data:[''],
             right:'10%',
-            top:'5%',
-            textStyle:{
-              color:'#fff',
-            }
+            top:'3%',
+            textStyle:config().textStyle
           },
           xAxis: {
             data:this.liveSaf,
@@ -284,10 +285,8 @@
             axisLabel:{
               interval: 0,
               rotate:25,
-              textStyle: {
-                color:'#fff',
-                fontSize:12,
-              }
+              margin:config().fontSize,
+              textStyle:config().textStyle
             },
             axisLine: {
               lineStyle: {
@@ -308,10 +307,7 @@
               }
             },
             axisLabel: {
-              textStyle: {
-                color: '#fff',
-                fontSize:12,//坐标值得具体的颜色
-              }
+              textStyle:config().textStyle
             },
             axisLine: {
               show:false,
@@ -320,7 +316,7 @@
           series: [{
             name: '',
             type: 'bar',
-            barWidth:20,
+            barWidth:'30%',
             data:this.liveVal,        //数据
             itemStyle: {
               normal: {
@@ -357,11 +353,17 @@
           barWidth:'15',
           legend: {
             data: ['人均可支配收入', '人均可支配收入增速'],
-            textStyle: {
-              color: '#fff'
-            },
+            top:'3%',
+            right:'5%',
+            itemWidth: config().fontSize, // 图例标记的图形宽度。
+            itemHeight: config().fontSize, // 图例标记的图形高度。
+            itemGap: config().fontSize, // 图例每项之间的间隔。
+            textStyle: config().textStyle,
           },
-          tooltip: {},
+          tooltip: {
+            trigger: 'axis',
+            textStyle: config().textStyle,
+          },
           xAxis: {
             type: 'category',
             axisLine:{
@@ -369,8 +371,10 @@
                 color:'#fff'
               }
             },
-            textStyle:{
-              color:'#fff'
+            axisLabel: {
+              //rotate:45,//斜体字可不用
+              margin:config().fontSize,
+              textStyle: config().textStyle
             },
             data: this.incDate,
           },
@@ -380,13 +384,15 @@
               show:false
             },
             type: 'value',
+            axisLabel: {
+              //rotate:45,//斜体字可不用
+              textStyle: config().textStyle
+            },
             axisLine:{
               lineStyle:{
                 color:'#fff'
               }
             },
-            // min:1000,
-            // max:10000,
           },
           grid:{
             top:'10%',
@@ -399,6 +405,7 @@
             {
               data: this.incData,
               type: 'bar',
+              barWidth:'15%',
               name: '人均可支配收入',
               itemStyle: {
                 emphasis: {
@@ -436,19 +443,23 @@
         var option = {
           tooltip: {
             trigger: 'axis',
+            textStyle: config().textStyle,
           },
           color:['#b80295','#ff1e06'],
           legend: {
             data:['CPI','PPI'],
-            textStyle: {
-              color: '#fff'
-            },
+            top:'3%',
+            right:'5%',
+            itemWidth: config().fontSize, // 图例标记的图形宽度。
+            itemHeight: config().fontSize, // 图例标记的图形高度。
+            itemGap: config().fontSize, // 图例每项之间的间隔。
+            textStyle: config().textStyle,
           },
           grid: {
             top:'20%',
             left: '3%',
             right: '4%',
-            bottom: '20%',
+            bottom: '10%',
             containLabel: true,
           },
           xAxis: {
@@ -462,10 +473,8 @@
             data: this.indexDate,
             axisLabel: {
               show: true,
-              textStyle: {
-                color:'#fff',
-                fontSize:10,
-              }
+              margin:config().fontSize,
+              textStyle: config().textStyle,
             },
             splitLine:{
               show:false
@@ -487,10 +496,7 @@
             },
             axisLabel: {
               show: true,
-              textStyle: {
-                color:'#fff',
-                fontSize:10,
-              }
+              textStyle: config().textStyle
             }
           },
           series: [
@@ -528,24 +534,25 @@
   .inv_col_box { margin: 10px; border:1px solid #14436c;}
   .live_col_tit {
     .el-button {
-      padding:1vh;
+      padding:0.8vh;
       background: none;
       border-color:#23b0e8;
       color: #fff;
       border-radius: .4vh;
-      font-size:1.8vh;
+      font-size:2vh;
+      width: 5vw;
     }
     padding:1vh 2vh;
      white-space: nowrap;
      overflow: hidden;
      height:4vh;
      span {
-       font-size:2.6vh;
+       font-size:2vh;
        color: #fff;
        &:before,
        &:after {
          content:'◆';
-         font-size:1.6vw;
+         font-size:3vh;
          color:#20baff;
          margin: 0 .2em;
          vertical-align:middle;
@@ -565,9 +572,10 @@
     .el-row { height: 33.3%;}
     .el-col { height: 100%;}
     .icon {
-      width:80%;
-      height:80%;
+      width:60%;
+      height:60%;
       display: inline-block;
+      margin-top: 5%;
     }
   }
   .live_pop_vel {
@@ -585,6 +593,7 @@
       text-align: right;
       line-height: 1.2em;
       font-weight: 600;
+      line-height: 5vh;
     }
     .bar {
       float: right;
@@ -626,13 +635,14 @@
   }
   .live_saf_list {
     margin: 0 0 4vh;
-    padding:0 1vw !important;
+    padding:0 2vw !important;
     .tip {
-      font-size:1.8vh;
+      font-size:1.5vh;
+      margin-left: 1vw;
       color:#3e9ec4;
       white-space: nowrap;
       overflow: hidden;
-      line-height: 1.2em;
+      line-height: 2vh;
     }
     .vel_box {
       position: relative;
@@ -640,14 +650,14 @@
       margin: 2vh 2vh 0 4vh;
       font-size:1.8vh;
       color: #fff;
-      border:.6vh solid #43b8fe;
+      border:.4vh solid #43b8fe;
       white-space: nowrap;
       border-top: none;
       border-left:none;
       >span {
         position:absolute;
         top:-1.2vh;
-        left: -4vh;
+        left: 0vh;
         text-shadow: 0 0 10px #04cbe0;
       >b{
         font-size:4vh;
@@ -657,7 +667,6 @@
     }
   }
   .live_pole_col {
-    padding:10px;
     text-align: center;
     margin-bottom: 3vh;
     .tip {
@@ -671,7 +680,7 @@
     .vel_box {
       margin: 0 3vh;
       padding:1vh 2vh;
-      font-size: 2vh;
+      font-size: 4vh;
       color: #fff;
     }
   }
@@ -681,7 +690,7 @@
     line-height:4vh;
     margin: 1vh auto 2vh;
     color: #fff;
-    font-size: 1.2vw;
+    font-size: 2vh;
     text-align: center;
     background: url("../../static/img/diamond_tit_bg.png") no-repeat;
     background-size: 100% 100%;

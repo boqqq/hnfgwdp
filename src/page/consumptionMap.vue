@@ -29,7 +29,7 @@
         <el-col :span="8">
           <div class = "fix_up content-padding">
             <div class = "_tit2"><h4>商圈分布情况</h4></div>
-            <div id = "shopping_center" class = "h10"></div>
+            <div id = "shopping_center" style="height: 41vh"></div>
           </div>
         </el-col>
 
@@ -37,7 +37,7 @@
           <div class = "fix_up content-padding">
 
             <div class = "_tit2"><h4>网上零售总额</h4></div>
-            <div id="total-retail" style="height: 100% ;"></div>
+            <div id="total-retail" style="height: 41vh ;"></div>
           </div>
         </el-col>
       </el-row>
@@ -62,13 +62,19 @@
 
         <el-col :span="8">
           <div class = "fix_down content-padding ">
-            <div class = "_tit2"><h4>离岛免税购物</h4></div>
-            <div id="shoppingType" style="float: right;padding-right: 23px"  >
-              <el-button size="mini" @click="shoppingTypeChange(1)" :class="{'btn-selected':IncrementType == 1}" style="margin-left: 40px;">人次</el-button>
-              <el-button size="mini" @click="shoppingTypeChange(2)" :class="{'btn-selected':IncrementType == 2}" style="margin-left: 10px">数量</el-button>
-              <el-button size="mini" @click="shoppingTypeChange(3)" :class="{'btn-selected':IncrementType == 3}" style="margin-left: 10px">金额</el-button>
-            </div>
-            <div id="taxfree-shopping" style="height: 36.5vh;"></div>
+            <el-row>
+              <el-col :span="15">
+                <div class = "_tit2"><h4>离岛免税购物</h4></div>
+              </el-col>
+              <el-col :span="9" >
+                <div  class = "h1 indu_butt " style="margin-top: 3vh">
+                  <el-button size="mini" @click="shoppingTypeChange(1)" :class="{'btn-selected':IncrementType1 == 1}" style="margin-left: 40px;">人次</el-button>
+                  <el-button size="mini" @click="shoppingTypeChange(2)" :class="{'btn-selected':IncrementType1 == 2}" style="margin-left: 10px">数量</el-button>
+                  <el-button size="mini" @click="shoppingTypeChange(3)" :class="{'btn-selected':IncrementType1 == 3}" style="margin-left: 10px">金额</el-button>
+                </div>
+              </el-col>
+            </el-row>
+            <div id="taxfree-shopping" style="height: 33vh;"></div>
 
           </div>
 
@@ -95,6 +101,7 @@
         data(){
             return{
                 IncrementType:1,
+                IncrementType1:1,
                 hotTag: [{
                     "id": "05023f8da31c4b4187cc6899e2a3aec2",
                     "name": "风景很美"
@@ -193,12 +200,15 @@
             IncrementTypeChange(val){
                 this.IncrementType = val;
             },
+            shoppingTypeChange(val){
+              this.IncrementType1 = val;
+            },
             initIncrement(){
-                console.log('=====')
                 var bar_increment = echarts.init(document.getElementById('bar_increment'),'macarons');
                 var option = {
                     tooltip : {
                         trigger: 'axis',
+                       textStyle:config().textStyle,
                         axisPointer : {            // 坐标轴指示器，坐标轴触发有效
                             type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
                         }
@@ -206,15 +216,16 @@
                     legend: {
                         top:'3%',
                         right:'4%',
-                        textStyle:{
-                            color : 'white',
-                        },
+                      itemWidth: config().fontSize, // 图例标记的图形宽度。
+                      itemHeight: config().fontSize, // 图例标记的图形高度。
+                      itemGap: config().fontSize,
+                      textStyle:config().textStyle,
                         data:['商品','餐饮','增速',]
                     },
                     grid: {
-                        left: '3%',
+                        left: '4%',
                         right: '4%',
-                        bottom: '3%',
+                        bottom: '4%',
                         containLabel: true
                     },
                     xAxis : [
@@ -222,8 +233,8 @@
                             type : 'category',
                             axisLabel:{
                                 interval:0,
-                                color:'#fff',
-                                margin:20
+                              textStyle:config().textStyle,
+                                margin:config().fontSize
                             },
                             data : ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
                         }
@@ -232,6 +243,17 @@
                         {
                             type : 'value',
                             splitLine:false,
+                          axisLine:{
+                            show:false,
+                            lineStyle:{
+                              color:'#fff'
+                            }
+                          },
+                          axisLabel: {
+                            margin:config().fontSize,
+                            //rotate:45,//斜体字可不用
+                            textStyle:config().textStyle
+                          },
                         },
 
                     ],
@@ -239,6 +261,7 @@
                         {
                             name:'商品',
                             type:'bar',
+                            barWidth:'40%',
                             stack: '额度',
                             color:'#10a2ff',
                             data:[40, 40, 40, 40, 50, 60, 70, 80, 90, 100, 110, 120]
@@ -246,6 +269,7 @@
                         {
                             name:'餐饮',
                             type:'bar',
+                           barWidth:'40%',
                             stack: '额度',
                             color:'#ff2e83',
                             data:[40, 40, 50, 60, 70, 60, 70, 80, 90, 100, 110, 120]
@@ -265,31 +289,30 @@
             },
             //网上零售总额
             init_total_retail(){
-                console.log('=====')
                 var bar_increment = echarts.init(document.getElementById('total-retail'),'macarons');
                 var option = {
                     tooltip : {
                         trigger: 'axis',
+                      textStyle:config().textStyle,
                         axisPointer : {            // 坐标轴指示器，坐标轴触发有效
                             type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
                         }
                     },
                     legend: {
-                        top:'-5',
-                        right:'3%',
-                        bottom:10,
-                        orient: 'vertical',
-                        textStyle:{
-                            color : 'white',
-                        },
+                        top:'2%',
+                        right:'5%',
+                        itemWidth: config().fontSize, // 图例标记的图形宽度。
+                        itemHeight: config().fontSize, // 图例标记的图形高度。
+                        itemGap: config().fontSize,
+                        //orient: 'vertical',
+                        textStyle:config().textStyle,
                         data:['海南买方交易额','海南卖方交易额','增速',]
                     },
                     grid: {
                         left: '3%',
                         right: '3%',
-                        bottom: '1%',
+                        bottom: '4%',
                         top:'14%',
-                        height: '72%',
                         containLabel: true
                     },
                     xAxis : [
@@ -297,8 +320,8 @@
                             type : 'category',
                             axisLabel:{
                                 interval:0,
-                                color:'#fff',
-                                margin:20
+                              textStyle:config().textStyle,
+                                margin:config().fontSize
                             },
                             data : ['2017Q1','2017Q2','2017Q3','2017Q4','2018Q1','2018Q2','2018Q3']
                         }
@@ -306,8 +329,18 @@
                     yAxis : [
                         {
                             type : 'value',
-
                             splitLine:false,
+                          axisLine:{
+                            show:false,
+                            lineStyle:{
+                              color:'#fff'
+                            }
+                          },
+                          axisLabel: {
+                            margin:config().fontSize,
+                            //rotate:45,//斜体字可不用
+                            textStyle:config().textStyle
+                          },
                         },
 
                     ],
@@ -316,12 +349,14 @@
                             name:'海南买方交易额',
                             type:'bar',
                             stack: '广告',
+                          barWidth:'20%',
                             color:'#09f5ff',
                             data:[ 60, 70, 80, 90, 100, 110, 120]
                         },
                         {
                             name:'海南卖方交易额',
                             type:'bar',
+                          barWidth:'20%',
                             stack: '广告',
                             color:'#eee810',
                             data:[60, 70, 80, 90, 100, 110, 120]
@@ -345,19 +380,18 @@
                 var option = {
                     tooltip : {
                         trigger: 'axis',
+                      textStyle: config().textStyle,
                         axisPointer: {
                             type: 'cross',
-                            label: {
-                                backgroundColor: '#6a7985'
-                            }
                         }
                     },
                     legend: {
                         top:0,
                         right:'4%',
-                        textStyle:{
-                            color : 'white',
-                        },
+                      itemWidth: config().fontSize, // 图例标记的图形宽度。
+                      itemHeight: config().fontSize, // 图例标记的图形高度。
+                      itemGap: config().fontSize, // 图例每项之间的间隔。
+                      textStyle: config().textStyle,
                         data:['海南','全国']
                     },
 
@@ -366,8 +400,6 @@
                         left: '4%',
                         right: '4%',
                         bottom: '4%',
-                        height:'70%',
-                        //width:'90%',
                         show:false,
                         containLabel: true
                     },
@@ -382,7 +414,8 @@
                             },
                             axisLabel:{
                                 interval:0,
-                                color:'#fff',
+                              textStyle:config().textStyle,
+                              margin:config().fontSize
 
                             },
                             boundaryGap: false,
@@ -392,7 +425,18 @@
                     yAxis : [
                         {
                             type : 'value',
-                            show:false
+                            show:false,
+                          axisLine:{
+                            show:false,
+                            lineStyle:{
+                              color:'#fff'
+                            }
+                          },
+                          axisLabel: {
+                            margin:config().fontSize,
+                            //rotate:45,//斜体字可不用
+                            textStyle:config().textStyle
+                          },
                         }
                     ],
                     series : [
@@ -412,12 +456,6 @@
                                 }
                             },
                             stack: '海南',
-                            label: {
-                                normal: {
-                                    show: true,
-                                    position: 'top'
-                                }
-                            },
                             data:[6, 7, 6, 7, 5, 6, 7,8,]
                         },
                         {
@@ -446,12 +484,6 @@
                                 }
                             },
                             stack: '全国',
-                            label: {
-                                normal: {
-                                    show: true,
-                                    position: 'top'
-                                }
-                            },
                             data:[7, 6, 7, 6, 6, 7, 6,7,]
                         }
 
@@ -462,49 +494,57 @@
             },
             //离岛免税购物
             init_taxfree_shopping(){
-                var taxfree_shopping = echarts.init(document.getElementById('taxfree-shopping'),'macarons');
-
+                var chart_center1 = echarts.init(document.getElementById('taxfree-shopping'));
                 var option = {
                     tooltip : {
                         trigger: 'axis',
+                      textStyle: config().textStyle,
                         axisPointer: {
-                            type: 'cross',
-                            label: {
-                                backgroundColor: '#6a7985'
-                            }
+                            type: 'cross'
                         }
                     },
                     legend: {
-                        top:'5%',
+                        top:'2%',
                         right:'2%',
-                        textStyle:{
-                            color : 'white',
-                        },
+                      itemWidth: config().fontSize, // 图例标记的图形宽度。
+                      itemHeight: config().fontSize, // 图例标记的图形高度。
+                      itemGap: config().fontSize, // 图例每项之间的间隔。
+                      textStyle: config().textStyle,
                         data:['总额','增速']
                     },
                     xAxis: {
                         type: 'category',
                         axisLabel:{
                             interval:0,
-                            color:'#fff',
+                          textStyle: config().textStyle,
+                          margin:config().fontSize
 
                         },
                         data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
                     },
-                    yAxis: {
-                        type: 'value'
+                    yAxis:  {
+                      type : 'value',
+                      //minInterval:100,//设置左侧Y轴最小刻度
+                      splitLine: {
+                       show:false
+                      },//设置横线样式
+                      axisLabel: {
+                        formatter: "{value}",
+                        textStyle: config().textStyle
+                      },
                     },
-                    grid: {
-                        top:'12%',
-                        left: '2%',
-                        right: '2%',
-                        bottom: '20%',
-                        containLabel: true
-                    },
+                  grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    top:'18%',
+                    containLabel: true
+                  },
                     series: [{
                         name:'总额',
                         data: [120, 200, 150, 110, 100, 110, 130, 150, 105, 108, 110, 130],
                         type: 'bar',
+                        barWidth:'40%',
                         itemStyle: {    // 图形的形状
                             color: {
                                 type: 'linear',  x: 0, y: 0,
@@ -532,7 +572,8 @@
 
                     ]
                 }
-                taxfree_shopping.setOption(option);
+              chart_center1.setOption(option)
+              window.onresize = chart_center1.resize;
             },
             //商圈分布
             init_shopping_center(){
@@ -739,22 +780,23 @@
     }
     .el-button--mini, .el-button--mini.is-round{
       padding: 4px 0;
-      font-size: 0.8vw;
+      font-size: 1.5vh;
     }
     .el-button {
-      width: 5vw;
+      width: 3vw;
       display: inline-block;
       line-height: 2vh;
       white-space: nowrap;
       cursor: pointer;
-      background: transparent;
-      border: 1px solid #DCDFE6;
+      background: #0B1038;
+      border: 1px solid #A8AAAE;
       color: #999;
       -webkit-appearance: none;
       text-align: center;
       box-sizing: border-box;
       outline: 0;
       margin: 0;
+      color: #0091ff;
       transition: .1s;
       font-weight: 500;
     }

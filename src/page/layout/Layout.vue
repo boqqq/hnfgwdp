@@ -113,7 +113,7 @@ export default {
       z-index: -1;
       h4{
         width: 100%;
-        font-size: 3.3vh;
+        font-size: 4vh;
         color: #fff;
         text-align: center;
       }
@@ -136,7 +136,7 @@ export default {
         line-height: 7vh;
         text-align: left;
         margin-left: 3vw;
-        font-size: 0.6vw;
+        font-size: 2vh;
         color: #fff;
         font-weight: bold;
         font-family: 'ºÚÌå',Verdana, Arial, Helvetica, AppleGothic, sans-serif;
@@ -144,7 +144,7 @@ export default {
     }
     .titleBoxs {
       width: 100%;
-      height: 30vh;
+      height: 20vh;
       position: fixed;
       top: 0;
       z-index: 0;
@@ -153,7 +153,7 @@ export default {
       justify-content: space-between;
       background-image:url('../../../static/img/top_center_bg.png');
       background-repeat: no-repeat;
-      background-size: 100%;
+      background-size: 100% 97%;
     }
     .titleBox{
       width: 100%;

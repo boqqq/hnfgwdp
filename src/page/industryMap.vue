@@ -65,16 +65,16 @@
           <div  class = "fix_center2 h11" style="margin-left: 2vh;margin-right: 2vh">
             <el-row>
               <el-col :span="7">
-                <div  class = "fix_center h10">
+                <div  class = "h11">
                   <el-row>
                     <el-col :span="17">
                       <div class = "_tit2"><h4>十二大重点产业税收贡献前5名</h4></div>
-                      <div id="bar_contribution" class = "h9">
+                      <div id="bar_contribution" class = "h10">
 
                       </div>
                     </el-col>
                     <el-col :span="7">
-                      <div class = "cont_topN">
+                      <div class = "cont_topN" style="margin-top: 3vh">
                         <div class = "cont_topN1">
                           <p>十二大重点产业增加值占GDP比重</p>
                           <p><span>83.21</span><span>%</span></p>
@@ -97,17 +97,17 @@
                 </div>
               </el-col>
               <el-col :span="7">
-                <div  class = "fix_center h10">
+                <div  class = "h11">
                   <div class = "_tit2"><h4>十二大重点产业投资额增速</h4></div>
-                  <div id="investmentRate" class = "h9">
+                  <div id="investmentRate" class = "h10">
 
                   </div>
                 </div>
               </el-col>
               <el-col :span="10">
-                <div  class = "fix_center h10">
+                <div  class = "h11">
                   <div class = "_tit2"><h4>十二大重点产业发展情况</h4></div>
-                  <div id="developmentSituation" class = "h9">
+                  <div id="developmentSituation" class = "h10">
 
                   </div>
                 </div>
@@ -226,6 +226,7 @@
             interval: 20,
             axisLabel: {
               formatter: '{value}%',
+              margin:config().fontSize,
               textStyle:config().textStyle
             }
           },
@@ -303,7 +304,7 @@
               type : 'category',
               axisLabel: {
                 margin:config().fontSize,
-                rotate:45,//斜体字可不用
+                //rotate:45,//斜体字可不用
                 textStyle:config().textStyle
               },
               data : ['2011','2012','2013','2014','2015','2016','2017','2018Q3']
@@ -559,6 +560,7 @@
               data : xData ,
               axisLabel: {
                 //rotate:45,//斜体字可不用
+                margin:config().fontSize,
                 textStyle:config().textStyle
               },
             },
@@ -733,7 +735,7 @@
           grid: {
             left: '3%',
             right: '10%',
-            bottom: '6%',
+            bottom: '3%',
             top:'28%',
             containLabel: true
           },
@@ -801,6 +803,10 @@
 <style lang="scss">
   $title-color1:#145FA1;
   .industry{
+    .indu_butt{
+      text-align: center;
+      margin-top: 2vh;
+    }
     .indu_sel{
       margin-top: 1.2vh;
       float:right;
@@ -808,28 +814,103 @@
       width: 80%;
       min-width: 70px;
     }
-    .indu_butt{
+
+    .cont_topN{
+      height: 12vh;
+      border: 1px #1D3C7D solid;
+      width: 65%;
+      margin-top: 1vh;
+    }
+    .cont_topN1{
+      margin:0.3vh;
+      height: 11.4vh;
+      background-color: #1D3C7D;
       text-align: center;
-      margin-top: 2vh;
+      p:nth-child(1){
+        font-size: 1.5vh;
+        width: 70%;
+        text-align: left;
+        line-height: 2vh;
+        margin-left: 10%;
+        padding-top: 0.5vh;
+        color: #fff;
+      }
+      p:nth-child(2){
+        color: #fff;
+        text-align: center;
+        font-weight: bold;
+        text-shadow: 0 0 1vw #8df;
+        span:nth-child(1){
+          font-size: 5vh;
+          line-height: 7vh;
+        }
+        span:nth-child(2){
+          font-size: 2vh;
+        }
+      }
+    }
+    .el-input{
+      width: 85px;
+    }
+    .el-input__icon{
+      width: 20px;
+    }
+    .el-select__caret el-input__icon el-icon-arrow-up{
+      line-height:20px
+    }
+    .el-input--mini .el-input__icon{
+      line-height: 20px;
+    }
+    .el-select__caret el-input__icon el-icon-arrow-up{
+      width: 20px
+    }
+    .el-input--mini .el-input__inner{
+      height: 20px;
+      line-height: 20px
+    }
+    .el-input__inner{
+      background-color: transparent;
+      color: #fff;
+      border: 1px solid $title-color1;
+      padding: 0 5px;
+      border-radius: 0;
+    }
+    .el-input--suffix .el-input__inner{
+      padding-right: 5px;
+    }
+    .el-select-dropdown__item {
+      font-size: 12px;
+      padding: 0 10px;
+      position: relative;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: #606266;
+      height: 26px;
+      line-height: 26px;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      cursor: pointer;
     }
     .el-button--mini, .el-button--mini.is-round{
       padding: 4px 0;
-      font-size: 0.8vw;
+      font-size: 1.5vh;
     }
     .el-button {
-      width: 5vw;
+      width: 3vw;
       display: inline-block;
       line-height: 2vh;
       white-space: nowrap;
       cursor: pointer;
-      background: transparent;
-      border: 1px solid #DCDFE6;
+      background: #0B1038;
+      border: 1px solid #A8AAAE;
       color: #999;
       -webkit-appearance: none;
       text-align: center;
       box-sizing: border-box;
       outline: 0;
       margin: 0;
+      color: #0091ff;
       transition: .1s;
       font-weight: 500;
     }
@@ -840,36 +921,6 @@
     .btn-selected{
       background-color: $title-color1;
       color: #fff;
-    }
-    .cont_topN{
-      height: 10.6vh;
-      border: 1px #1D3C7D solid;
-      width: 90%;
-      margin-top: 2vh;
-    }
-    .cont_topN1{
-      margin:0.3vh;
-      height: 10vh;
-      background-color: #1D3C7D;
-      text-align: center;
-      p:nth-child(1){
-        font-size: 0.8vw;
-        line-height: 2vh;
-        padding-top: 0.5vh;
-        color: #fff;
-      }
-      p:nth-child(2){
-        color: #fff;
-        text-align: center;
-        font-weight: bold;
-        span:nth-child(1){
-          font-size: 2.2vw;
-          line-height: 5vh;
-        }
-        span:nth-child(2){
-          font-size: 0.8vw;
-        }
-      }
     }
   }
 </style>

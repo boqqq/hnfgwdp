@@ -13,8 +13,8 @@
                 <el-row>
                   <el-col :span="24">
                     <div class = "h1">
-                      <span style="font-size:0.8vw;color:#1EFFFF;margin-left: 3%;">专家总数:{{professorCount}}</span>
-                      <span style="font-size:0.8vw;color:#1EFFFF;margin-right: 3%;float: right" id="count"></span>
+                      <span style="font-size:2vh;color:#1EFFFF;margin-left: 3%;">专家总数:{{professorCount}}</span>
+                      <span style="font-size:2vh;color:#1EFFFF;margin-right: 3%;float: right" id="count"></span>
                     </div>
                   </el-col>
                 </el-row>
@@ -48,7 +48,7 @@
         <el-col :span="9">
           <el-row>
             <el-col :span="24">
-              <div class = "fix_right2 h13">
+              <div class = "fix_right h13">
                 <div class = "_tit2"><h4>各行业供需关系</h4></div>
                 <div id = "relation" class = "h12">
 
@@ -56,7 +56,7 @@
               </div>
             </el-col>
             <el-col :span="24">
-              <div class = "fix_right2 h9">
+              <div class = "fix_right h9">
                 <div class = "_tit2"><h4>行业人才需求对比</h4></div>
                 <div id = "compare" class = "h8">
 
@@ -73,7 +73,7 @@
 <script>
   //import axios from 'axios';
   import 'font-awesome/css/font-awesome.min.css';
-  //import {config,xAxiss,yAxiss,grid,tooltip,dotHtml,legend} from '../../static/js/config/chartConfig.js';
+  import {config} from '../../static/js/config/chartConfig.js';
   var echarts = require('echarts');
   export default {
     name:"index",
@@ -413,19 +413,14 @@
           tooltip : {
             trigger: 'axis',
             padding: [0, 0, 0, 0],
-            textStyle: {
-              color: '#FFFFFF'
-            }
+            textStyle:config().textStyle,
           },
           legend: {
             right:'8%',
             top:'10%',
-            itemWidth:15,
-            itemHeight:5,
-            textStyle:{
-              color:'rgba(255,255,255,1)' ,
-              fontSize:10
-            },
+            itemWidth:config().fontSize,
+            itemHeight:config().fontSize,
+            textStyle:config().textStyle,
             nameTextStyle :{
               color:'rgba(255,255,255,1)'
             },
@@ -436,8 +431,8 @@
               type : 'category',
               boundaryGap : false,
               axisLabel:{
-                color: '#FFF',
-                fontSize:10
+                margin:config().fontSize,
+                textStyle:config().textStyle,
               },
               axisLine:{
                 show:true,
@@ -462,17 +457,11 @@
             {
               type : 'value',
               name : '次数/(次)',
-              nameTextStyle:{
-                color:'#fff',
-                fontSize:14
-              },
+              nameTextStyle:config().textStyle,
               show:false,
               axisLabel : {
                 formatter: '{value}',
-                textStyle:{
-                  color:'#0B6472',
-                  fontSize:16
-                }
+                textStyle:config().textStyle,
               },
               axisLine:{
                 lineStyle:{
@@ -575,13 +564,10 @@
             ],
             top: '3%',
             right: '5%',
-            textStyle: {
-              color: '#FFFFFF',
-              fontSize: 10
-            },
-            itemGap: 10,
-            itemWidth: 10,
-            itemHeight: 10
+            textStyle:config().textStyle,
+            itemGap: config().fontSize,
+            itemWidth:config().fontSize,
+            itemHeight: config().fontSize
           },
           grid: {
             left: '3%',
@@ -593,9 +579,7 @@
           tooltip: {
             trigger: 'axis',
             padding: [0, 0, 0, 0],
-            textStyle: {
-              color: '#FFFFFF'
-            },
+            textStyle:config().textStyle,
           },
           xAxis: {
             type: 'category',
@@ -611,8 +595,8 @@
               show: false
             },
             axisLabel: {
-              color:'#FFF',
-              fontSize: 10,
+              margin:config().fontSize,
+              textStyle:config().textStyle,
               interval:0,
               rotate:40
             },
@@ -635,8 +619,7 @@
               show: true
             },
             axisLabel: {
-              fontSize: 13,
-              color: '#5F5F6B'
+              textStyle:config().textStyle,
             }
           },
           series: [
@@ -685,7 +668,8 @@
         var option = {
 
           tooltip: {
-            trigger: 'axis'
+            trigger: 'axis',
+            textStyle:config().textStyle,
           },
           grid: {
             left: '5%',
@@ -698,12 +682,10 @@
             data: ['海口', '三亚'],
             right: '8%',
             top:'5%',
-            textStyle: {
-              color: "#fff"
-            },
-            itemWidth: 12,
-            itemHeight: 10,
-            // itemGap: 35
+            textStyle:config().textStyle,
+            itemWidth:config().fontSize,
+            itemHeight:config().fontSize,
+            itemGap: config().fontSize
           },
           xAxis: {
             type: 'category',
@@ -717,11 +699,8 @@
             axisLabel: {
               margin:5,
               inside:true,
-              textStyle: {
-                fontFamily: 'Microsoft YaHei',
-                color:"#FFF",
-                fontSize:10,
-              },
+              margin:config().fontSize,
+              textStyle:config().textStyle,
               formatter:function(value){
                 return value.split("").join("\n");
               }
@@ -740,7 +719,8 @@
               }
             },
             axisLabel:{
-              show:false
+              show:false,
+              textStyle:config().textStyle,
             },
             splitLine: {
               show: true,
@@ -796,7 +776,8 @@
         var myChart=echarts.init(document.getElementById("relation"));
         var option = {
           tooltip : {
-            trigger: 'axis'
+            trigger: 'axis',
+            textStyle:config().textStyle,
           },
           grid: {
             left: '15%',
@@ -809,14 +790,9 @@
             right: '8%',
             top:'5%',
             data:['海口', '三亚'],
-            textStyle:{
-              color:'#1bb4f6'
-            },
-            itemWidth: 12,
-            itemHeight: 10,
-          },
-          toolbox: {
-            show : true,
+            textStyle:config().textStyle,
+            itemWidth: config().fontSize,
+            itemHeight: config().fontSize,
           },
           calculable : true,
           xAxis : [
@@ -825,10 +801,8 @@
               show:false,
               boundaryGap : [0, 0.01],
               axisLabel: {
-                textStyle: {
-                  fontSize: 18,
-                  color: '#D5CBE8'
-                }
+                margin:config().fontSize,
+                textStyle:config().textStyle,
               },
               axisLine: {
                 lineStyle: {
@@ -852,10 +826,7 @@
                 show: false
               }  ,
               axisLabel: {
-                textStyle: {
-                  fontSize: 10,
-                  color: '#D5CBE8'
-                }
+                textStyle:config().textStyle,
               },
               axisLine: {
                 lineStyle: {
@@ -913,7 +884,8 @@
         var option = {
           tooltip: {
             trigger: 'item',
-            triggerOn: 'mousemove'
+            triggerOn: 'mousemove',
+            textStyle:config().textStyle,
           },
           calculable : true,
           series: [
@@ -939,8 +911,7 @@
                   position: 'left',
                   verticalAlign: 'middle',
                   align: 'right',
-                  fontSize: 9,
-                  color:'#FFF'
+                  textStyle:config().textStyle,
                 }
               },
 

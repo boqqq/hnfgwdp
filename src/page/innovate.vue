@@ -415,8 +415,8 @@
             top: '18%',
             left: '3%',
             right: '3%',
-            bottom: '10%',
-            // containLabel: true
+            bottom: '4%',
+            containLabel: true
           },
           xAxis: [{
             type: 'category',
@@ -869,17 +869,17 @@
     .inn_topN{
       color: #fff;
       text-align: center;
-      font-size: 1vw;
+      font-size: 2vh;
       height: 8.5vh;
       span:nth-child(1) div,span:nth-child(2) div{
-        font-size: 4vw;
+        font-size: 10vh;
         background-color: #494C5F;
         border-radius: 6px;
         float: left;
         margin-left: 20px;
-        width: 3vw;
+        width: 8vh;
         //height: 14vw;
-        line-height: 5vw;
+        line-height: 11vh;
         margin-top: 2vh;
       }
       span:nth-child(1) div{
@@ -888,15 +888,15 @@
       span:nth-child(3),span:nth-child(5){
         float: left;
         margin-left: 0.5vw;
-        margin-top: 8.5vh;
+        margin-top: 10.5vh;
       }
       span:nth-child(5){
         margin-left: 15px;
       }
       span:nth-child(4){
-        margin-left: 1vw;
-        margin-top: 8.7vh;
-        font-size: 1vw;
+        margin-left: 3vh;
+        margin-top: 10.4vh;
+        font-size: 2.5vh;
         float: left;
         color: #28ca09;
       }
@@ -905,12 +905,12 @@
       color: #fff;
       text-align: center;
       p:nth-child(1){
-        font-size: 1vw;
+        font-size: 2vh;
         line-height: 5.5vh;
       }
       p:nth-child(2){
         color: #6CCAF5;
-        font-size: 2vw;
+        font-size: 5vh;
         line-height: 7vh;
       }
     }

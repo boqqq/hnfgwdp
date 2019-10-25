@@ -60,24 +60,18 @@
                   </div>
                 </div>
                 <div class = "h7">
-                  <div class = "h1">
-                      <el-row>
-                        <el-col :span="16">
-                          <div class = "_tit2">
-                            <h4>进出口总额及增速</h4>
-                          </div>
-                        </el-col>
-                        <el-col :span="8">
-                          <div class="in_out">
-                            进口
-                          </div>
-                          <div class="in_out">
-                            出口
-                          </div>
-                        </el-col>
-                      </el-row>
-                  </div>
-                  <div id = "top_chart3" class = "h6"></div>
+                  <el-row>
+                    <el-col :span="16">
+                      <div class = "_tit2"><h4>进出口总额及增速</h4></div>
+                    </el-col>
+                    <el-col :span="8" >
+                      <div  class = "h1 indu_butt ">
+                        <el-button size="mini" @click="IncrementTypeChange(1)" :class="{'btn-selected':IncrementType == 1}" style="margin-left: 90px">进口</el-button>
+                        <el-button size="mini" @click="IncrementTypeChange(2)" :class="{'btn-selected':IncrementType == 2}" style="margin-left: 10px">出口</el-button>
+                      </div>
+                    </el-col>
+                  </el-row>
+                  <div id = "top_chart3" style="height: 22vh"></div>
                 </div>
               </div>
             </el-col>
@@ -150,6 +144,7 @@
           {num1:3,cla1:'cou3',country1:'印度',num2:8,cla2:'cou8',country2:'巴基斯坦'},
           {num1:4,cla1:'cou4',country1:'泰国',num2:9,cla2:'cou9',country2:'菲律宾'},
           {num1:5,cla1:'cou5',country1:'马来西亚',num2:10,cla2:'cou10',country2:'柬埔寨'}],
+        IncrementType:1,
       }
     },
     components: {
@@ -168,6 +163,9 @@
       this.bottom_chart4();
     },
     methods: {
+      IncrementTypeChange(val){
+        this.IncrementType = val;
+      },
       top_chart1(){
         var top_chart = echarts.init(document.getElementById('top_chart1'));
         var option = {
@@ -567,7 +565,9 @@
                   show: true,
                   position: 'right', //显示位置
                   offset: [5, 0], //偏移设置
-                  formatter: '{b}' //圆环显示文字
+                  formatter: '{b}', //圆环显示文字
+                  //textStyle: config().textStyle
+                  fontSize:config().fontSize
                 },
                 emphasis: {
                   show: true
@@ -609,7 +609,8 @@
                   color: '#00ffff',
                   formatter: '{b}',
                   textStyle: {
-                    color: "#00ffff"
+                    color: "#00ffff",
+                    fontSize:config().fontSize
                   }
                 },
                 emphasis: {
@@ -1160,10 +1161,12 @@
   }
 </script>
 <style lang="scss" scoped>
+  $title-color1:#145FA1;
   #index{
+
     .top_t1{
       color: #fff;
-      font-size: 1.39vh;
+      font-size: 1.5vh;
       text-align: center;
       margin-top: 4vh;
       p{
@@ -1184,7 +1187,7 @@
         text-align: center;
       }
       span:nth-child(2){
-        font-size: 2.77vh;
+        font-size: 3vh;
         text-align: center;
       }
     }
@@ -1199,7 +1202,7 @@
       /*height:4vh;*/
       /*line-height: 4vh;*/
       padding: 0.9vh 0;
-      font-size: 0.8vw;
+      font-size: 1.5vh;
       color: #0475C3;
       transition: all 0.5s;
       overflow: hidden;
@@ -1254,13 +1257,13 @@
         text-align: left;
       }
       .tltleBox,.textBox{
-        padding: 1.5vh 0;
+        padding: 0.6vh 0;
       }
       .countrys{
         height: 1vw;
         width: 1.6vw;
         background-repeat: no-repeat;
-        background-size: 1.6vw 1vw;
+        background-size: 1.4vw 0.85vw;
       }
       .cou1{
         background-image:url('../../static/img/guoqi/eluosi.png');
@@ -1292,6 +1295,84 @@
       .cou10{
         background-image:url('../../static/img/guoqi/jianpuzhai.png');
       }
+    }
+
+    .indu_butt{
+      text-align: center;
+      margin-top: 2vh;
+    }
+    .el-input{
+      width: 85px;
+    }
+    .el-input__icon{
+      width: 20px;
+    }
+    .el-select__caret el-input__icon el-icon-arrow-up{
+      line-height:20px
+    }
+    .el-input--mini .el-input__icon{
+      line-height: 20px;
+    }
+    .el-select__caret el-input__icon el-icon-arrow-up{
+      width: 20px
+    }
+    .el-input--mini .el-input__inner{
+      height: 20px;
+      line-height: 20px
+    }
+    .el-input__inner{
+      background-color: transparent;
+      color: #fff;
+      border: 1px solid $title-color1;
+      padding: 0 5px;
+      border-radius: 0;
+    }
+    .el-input--suffix .el-input__inner{
+      padding-right: 5px;
+    }
+    .el-select-dropdown__item {
+      font-size: 12px;
+      padding: 0 10px;
+      position: relative;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: #606266;
+      height: 26px;
+      line-height: 26px;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      cursor: pointer;
+    }
+    .el-button--mini, .el-button--mini.is-round{
+      padding: 4px 0;
+      font-size: 1.5vh;
+    }
+    .el-button {
+      width: 2vw;
+      display: inline-block;
+      line-height: 2vh;
+      white-space: nowrap;
+      cursor: pointer;
+      background: #0B1038;
+      border: 1px solid #A8AAAE;
+      color: #999;
+      -webkit-appearance: none;
+      text-align: center;
+      box-sizing: border-box;
+      outline: 0;
+      margin: 0;
+      color: #0091ff;
+      transition: .1s;
+      font-weight: 500;
+    }
+    .el-button:hover{
+      background-color: $title-color1;
+      color: #fff;
+    }
+    .btn-selected{
+      background-color: $title-color1;
+      color: #fff;
     }
   }
 </style>
